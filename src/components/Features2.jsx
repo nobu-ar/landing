@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';  
 import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
-import modulos from "../assets/images/modulos.jpg";
+import spaces from "../assets/images/spaces.jpg";
 
 export const Features2 = () => (
   <section className="w-full bg-customGray mt-12 mb-10 lg:my-20 pt-4 pb-2">
@@ -49,8 +49,8 @@ export const Features2 = () => (
 
         <div className="w-full px-2 lg:px-16 border-hidden drop-shadow-2xl">
           <img
-            src={modulos}
-            alt="Modulos"
+            src={spaces}
+            alt="Espacios"
             className="w-full h-auto rounded custom-border-gray"
           />
         </div>
