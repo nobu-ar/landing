@@ -64,13 +64,13 @@ export const FeaturesDiagonal = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
             >
-              <div className="2xl:w-96 xl:w-96 md:w-auto sm:w-auto mt-1 mb-24 drop-shadow-2xl items-center mx-auto">
-                <div
-                  className=" custom-button-colored rounded text-xl 2xl:w-92 text-center h-16"
+              <div className="w-full max-w-md mx-auto px-4 mt-1 mb-24">
+                <button
+                  className="custom-button-colored rounded w-full py-4 text-base sm:text-lg md:text-xl lg:text-2xl transition-all duration-300 ease-in-out hover:scale-105"
                   onClick={() => setIsModalOpen(true)}
                 >
                   Comienza a mejorar tu operatoria
-                </div>
+                </button>
               </div>
         </motion.div>
         
