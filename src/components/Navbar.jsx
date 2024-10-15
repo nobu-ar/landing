@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LogoColorVersion2 from '/Logo_Color_Version_1.svg';
+
 
 import { TailcastLogo } from "../assets/logos/TailcastLogo";
 import { GithubIcon } from "../assets/icons/GithubIcon";
 
 const navbarLinks = [
-  { label: "Home", href: "#home", ariaLabel: "Home" },
+  { label: "Inicio", href: "#home", ariaLabel: "Home" },
   { label: "Servicios", href: "#features", ariaLabel: "Features" },
-  { label: "About Us", href: "#aboutus", ariaLabel: "Pricing" },
+  { label: "Contactate", href: "#aboutus", ariaLabel: "Pricing" },
   // { label: "Feedback", href: "#feedback", ariaLabel: "Feedback" },
   // { label: "FAQ", href: "#FAQ", ariaLabel: "FAQ" },
 ];
@@ -16,7 +18,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full h-20 flex flex-col justify-center items-center fixed bg-customDarkBg1 lg:bg-customDarkBgTransparent z-40 lg:backdrop-blur-xl">
+    <nav className="w-full h-20 flex flex-col justify-center items-center fixed bg-customPrimary z-40 lg:backdrop-blur-xl">
       <div className="2xl:w-[1280px] xl:w-10/12 w-11/12 flex justify-between items-center relative">
         <motion.div
           initial={{ opacity: 0 }}
@@ -27,10 +29,7 @@ export const Navbar = () => {
           <a className="navbar-link" href="#home" aria-label="Home">
             <div className="flex justify-start items-center grow basis-0">
               <div className="text-white mr-2 text-6xl">
-                <TailcastLogo />
-              </div>
-              <div className="text-white font-['Inter'] font-bold text-xl">
-                NOBU
+                <img src={LogoColorVersion2} className="w-10 h-10 navbar-place" />
               </div>
             </div>
           </a>
@@ -54,6 +53,7 @@ export const Navbar = () => {
             ))}
           </div>
         </motion.div>
+
         {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -73,13 +73,14 @@ export const Navbar = () => {
             </a>
           </div>
         </motion.div> */}
+        
         <div
-          className="lg:hidden flex flex-col  px-2 py-3 border-solid border border-gray-600 rounded-md cursor-pointer hover:bg-customDarkBg2"
+          className="lg:hidden flex flex-col  px-2 py-3 border-solid border border-white rounded-md cursor-pointer hover:bg-customNobuGreen"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <div className="w-5 h-0.5 bg-gray-500  mb-1"></div>
-          <div className="w-5 h-0.5 bg-gray-500  mb-1"></div>
-          <div className="w-5 h-0.5 bg-gray-500 "></div>
+          <div className="w-5 h-0.5 bg-white  mb-1"></div>
+          <div className="w-5 h-0.5 bg-white mb-1"></div>
+          <div className="w-5 h-0.5 bg-white "></div>
         </div>
       </div>
       {/* Mobile navbar */}
@@ -92,7 +93,7 @@ export const Navbar = () => {
             exit={{ opacity: 0 }}
           >
             <div
-              className="flex flex-col mt-16 lg:hidden absolute top-4 left-0  bg-customDarkBg1 z-50 w-full 
+              className="flex flex-col mt-16 lg:hidden absolute top-4 left-0  bg-customTercery z-50 w-full 
         items-center gap-10 pb-10 border-y border-solid border-customDarkBg3 pt-10
         "
             >

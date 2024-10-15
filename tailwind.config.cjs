@@ -4,21 +4,29 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customPrimary: "rgb(99, 102, 241)",
+        customPrimary: "rgb(32, 92, 250, 0.8)",
         customSecondary: "rgb(161, 163, 247)",
-        customDarkBg1: "rgb(31, 32, 35)",
-        customDarkBg2: "rgb(38, 39, 43)",
-        customDarkBg3: "rgb(48, 49, 54)",
+        customTercery: "rgb(2, 92, 250, 0.6)",
+        customDarkBg1: "rgb(255, 255, 255)",
+        customDarkBg2: "rgb(2, 92, 250, 0.6)",
+        customDarkBg3: "rgb(255, 255, 255)",
         customDarkBg3Hover: "rgb(55, 56, 62)",
         customContentSubtitle: "rgb(178, 184, 205)",
         customGrayBorder: "rgb(255,255,255,0.1)",
         customGrayText: "rgb(174, 178, 183)",
         customDarkBgTransparent: "rgb(31, 32, 35, 0.7)",
         customDarkBgTransparentDarker: "rgb(0,0,0,0.5)",
-        customDarkBgTransparentLighter: "rgb(48, 49, 54, 0.7)"  
+        customDarkBgTransparentLighter: "rgb(48, 49, 54, 0.7)",
+        customNobuColor: "rgb(32, 92, 250)",
+        customWhite: "rgb(255, 255, 255, 1)",
+        customNobuGreen: "rgb(11, 219, 144)",
+        customGray: "rgb(241, 242, 246)",
       },
       fontFamily: {
         Inter: "Inter",
+      },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(180deg, #0BDB90 20%, #0BDB90 60%, #0BDB90 100%)',
       },
       screens: {
         xs: "530px",
@@ -32,4 +40,3 @@ module.exports = {
     },
   },
 };
-
