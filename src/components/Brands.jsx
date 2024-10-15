@@ -8,7 +8,7 @@ import { SpotifyLogo } from "../assets/logos/SpotifyLogo";
 import { StripeLogo } from "../assets/logos/StripeLogo";
 
 export const Brands = () => (
-  <section className="py-12 sm:py-24 bg-customDarkBg1 w-full mt-16 mb-16">
+  <section className="py-12 sm:py-24 bg-customNobuColor w-full mt-16 mb-16">
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
