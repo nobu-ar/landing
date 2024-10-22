@@ -32,14 +32,14 @@ export const FeaturesDiagonal = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
           >
-          <div className=" bg-customGray lg:pt-22  lg:pb-12lg:flex-row flex-col  mx-auto p-3">
+          <div className=" bg-customGray lg:pt-22  lg:pb-12lg:flex-row flex-col  mx-auto mt-20 p-3 px-7">
             <div className="lg:w-1/2 flex flex-col lg:mx-unset mx-auto">
               <span className="justify-center items-center text-center custom-block-subtitle ">
               Nuestros Valores
               </span>
-              <h2 className="2xl:text-5xl sm:text-2xl mt-10 mb-8 text-2xl lg:text-5xl custom-block-big-title sm:w-auto mx-auto ">En NOBU, nos guiamos por nuestros principios y nos comprometemos a darte un sistema:</h2>
+              <h2 className="2xl:text-5xl sm:text-2xl mt-10 mb-8 text-2xl lg:text-5xl custom-block-big-title sm:w-auto mx-auto ">Nos guiamos por principios sólidos y nos comprometemos a ofrecerte un sistema seguro y fácil de usar. Tu tranquilidad y eficiencia son nuestra prioridad</h2>
     
-              <ul className="mb-6 mt-12= text-customNobuColor">
+              {/* <ul className="mb-6 mt-12= text-customNobuColor">
                 <li className="mb-4 flex">
                   <CheckArrowIcon/>
                   <span>Transparente: Operaciones claras y accesibles para todos.</span>
@@ -52,7 +52,7 @@ export const FeaturesDiagonal = () => {
                   <CheckArrowIcon />
                   <span>Trazable: Seguimiento detallado de cada operación para garantizar la precisión y responsabilidad.</span>
                 </li>
-              </ul>
+              </ul> */}
 
             </div>
             <span className="flex bottom-10 p-8 justify-center text-center text-4xl lg:text-5xl custom-block-big-title">¿Queres saber más?</span>

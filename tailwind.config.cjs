@@ -26,7 +26,7 @@ module.exports = {
         Inter: "Inter",
       },
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(180deg, #0BDB90 20%, #0BDB90 60%, #0BDB90 100%)',
+        'custom-gradient': 'linear-gradient(to right, rgb(11, 219, 144), rgb(32, 92, 250, 0.8))',
       },
       screens: {
         xs: "530px",

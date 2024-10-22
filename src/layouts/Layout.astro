@@ -26,12 +26,12 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-custom-gradient">
     <slot />
     <style is:global>
       html {
         font-family: Inter;
-        background-color: #FFFFFF;
+        background-color: transparent;
         overflow-x: hidden;
         scroll-behavior: smooth;
       }

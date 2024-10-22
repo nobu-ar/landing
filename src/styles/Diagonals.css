@@ -50,19 +50,10 @@
   transform: rotateY(180deg);
 }
 
-.elevated-form {
-  /* transform: translateY(-50px); 
-  transform: translateX(100px); */
-}
-
-.title-place {
-  /* transform: translateY(-120px); Ajusta el valor según sea necesario */
-}
-
-.navbar-place{
-  /* transform: translateX(-100px); */
-}
-
 .clip-path {
   clip-path: polygon(0 0, 0% 0, 100% 100%, 0% 100%);
+}
+
+.filter-bottom-shadow {
+  filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.5));
 }

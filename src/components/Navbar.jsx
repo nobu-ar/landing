@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoColorVersion2 from '/Logo_Color_Version_1.svg';
 
@@ -16,6 +16,25 @@ const navbarLinks = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+    setIsOpen(!isOpen);
+  };
 
   return (
     <nav className="w-full h-20 flex flex-col justify-center items-center fixed bg-customPrimary z-40 lg:backdrop-blur-xl">
@@ -76,7 +95,7 @@ export const Navbar = () => {
         
         <div
           className="lg:hidden flex flex-col  px-2 py-3 border-solid border border-white rounded-md cursor-pointer hover:bg-customNobuGreen"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleMenu}
         >
           <div className="w-5 h-0.5 bg-white  mb-1"></div>
           <div className="w-5 h-0.5 bg-white mb-1"></div>

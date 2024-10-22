@@ -9,7 +9,7 @@ import nobuPc from "../assets/images/nobuPc.png";
 export const Features1 = () => {
   return (
     <section
-      className="w-full bg-customGray lg:my-20"
+      className="w-full bg-customGray py-12 sm:py-16 md:py-20 lg:py-24 px-7 sm:px-6 md:px-8 lg:px-12"
       id="features"
     >
       <motion.div
@@ -18,45 +18,21 @@ export const Features1 = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className="mt-20 flex flex-wrap items-center justify-between 2xl:w-[1450px] xl:w-[1300px] md:w-[1200px] w-11/12 mx-auto xl:pr-16 md-pr-16 xl:pl-16 md-pl-16 md:w-auto">
-          <div className="w-full lg:w-1/3 mb-12 lg:mb-0 mt-20 md:w-auto ">
-            <span className="text-customNobuColor custom-block-subtitle">Un espacio adaptado a tus necesidades</span>
+        <div className="flex flex-col lg:flex-row items-center justify-between max-w-7xl mx-auto">
+          <div className="w-full lg:w-1/2 mb-8 lg:mb-0 flex flex-col justify-center items-center lg:items-start">
+            <span className="text-customNobuColor custom-block-subtitle text-justify sm:text-center lg:text-left">Un espacio adaptado a tus necesidades</span>
 
-            <h2 className="text-customNobuColor mt-8 mb-8 text-4xl lg:text-5xl custom-block-big-title">Gestión Integral de tus espacios con NOBU</h2>
+            <h2 className="text-customNobuColor mt-4 mb-6 text-3xl sm:text-4xl lg:text-5xl custom-block-big-title text-justify sm:text-center lg:text-left">Gestión Integral de tus espacios con NOBU</h2>
 
-            <p className="text-customNobuColor mb-10 leading-loose md:w-auto">Ofrecemos una solución completa para la gestión de socios, empleados, proveedores y lo que necesites. Ideal para municipalidades, clubes y mutuales, nuestro sistema optimiza todas tus operaciones administrativas.</p>
-          
-          
-            <ul className=" text-customNobuColor">
-              <li className="md:mt-10 mb-4 flex mt-20">
-                <CheckArrowIcon />
-                  <span>Cobranza: Facilita el proceso de pagos y cuotas.</span>
-              </li>
-              <li className="mb-4 flex">
-                <CheckArrowIcon />
-                  <span>Administración de Espacios Públicos: Optimiza el uso y mantenimiento de tus instalaciones.</span>
-              </li>
-              <li className="mb-4 flex">
-                <CheckArrowIcon />
-                  <span>Gestión de Servicios e Impuestos: Simplifica el pago y control de servicios e impuestos.</span>
-              </li>
-              <li className="mb-4 flex">
-                <CheckArrowIcon />
-                  <span>Accesos a Eventos: Gestiona entradas y controla el acceso.</span>
-              </li>
-              <li className="mb-4 flex">
-                <CheckArrowIcon />
-                  <span>Manejo de Personal: Administra el personal de manera eficiente.</span>
-              </li>
-            </ul>
+            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">Ofrecemos una solución integral para la gestión de tu sistema, accesible de manera segura con tu usuario y contraseña. Desde un panel intuitivo, podrás organizar y controlar tu espacio de forma sencilla, asignando permisos a otros usuarios según tus necesidades. Gestiona todo con confianza y eficiencia en una plataforma diseñada para facilitar tu día a día.</p>
           </div>
 
-          <div className="w-full lg:w-2/3 flex justify-end md:w-auto">
-            <div className="mb-10 lg:px-0 border-hidden drop-shadow-2xl md:ml-20 md:w-auto sm:w-auto">
+          <div className="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center items-center">
+            <div className="border-hidden drop-shadow-2xl w-full h-full">
               <img
                 src={nobuPc}
                 alt="Módulos"
-                className="w-full h-auto rounded custom-border-gray md:w-auto"
+                className="w-full h-auto rounded custom-border-gray object-contain"
               />
             </div>
           </div>
