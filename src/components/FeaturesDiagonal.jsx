@@ -41,7 +41,7 @@ export const FeaturesDiagonal = () => {
                 Nuestros Valores
               </span>
               <h2 className="2xl:text-5xl sm:text-2xl mt-10 mb-8 text-2xl lg:text-5xl custom-block-big-title sm:w-auto mx-auto xs:justify-center">
-                Nos guiamos por principios sólidos y nos comprometemos a ofrecerte un sistema seguro y fácil de usar. Tu tranquilidad y eficiencia son nuestra prioridad
+                Nos comprometemos a ofrecerte un sistema seguro y fácil de usar. Tu tranquilidad y eficiencia son nuestra prioridad
               </h2>
               <span className="flex justify-center text-center text-4xl lg:text-5xl custom-block-big-title mb-8">
                 ¿Queres saber más?

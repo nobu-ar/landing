@@ -19,7 +19,7 @@ export const Features1 = () => {
 
             <h2 className="text-customNobuColor mt-4 mb-6 text-3xl sm:text-4xl lg:text-5xl custom-block-big-title text-justify sm:text-center lg:text-left">Gestión Integral de tus espacios con NOBU</h2>
 
-            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar. Te ofrecemos un servicio de calidad pensado para optimizar tu gestión de manera eficiente</p>
+            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">Ofrecemos una solución integral para gestionar tu sistema de forma segura con usuario y contraseña. Desde un panel intuitivo, podrás organizar y controlar tu espacio, asignando permisos a otros usuarios según lo necesites. Gestiona todo con confianza y eficiencia en una plataforma diseñada para simplificar tu trabajo.</p>
           </div>
 
           <div className="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center items-center">

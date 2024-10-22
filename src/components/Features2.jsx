@@ -19,7 +19,7 @@ export const Features2 = () => (
               Contamos con módulos diseñados para cubrir todas tus necesidades
             </h2>
             <p className="mb-6 text-customNobuColor leading-loose text-justify sm:text-left">
-            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar. Te ofrecemos un servicio de calidad pensado para optimizar tu gestión de manera eficiente.
+            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar.
             </p>
           </div>
         </div>
