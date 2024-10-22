@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';  
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import Carrusel from "../components/Carrusel";
 
 export const Features2 = () => (
@@ -19,33 +18,11 @@ export const Features2 = () => (
             <h2 className="mt-6 mb-8 text-2xl 2xl:text-5xl lg:text-5xl custom-block-big-title sm:w-auto">
               Contamos con módulos diseñados para cubrir todas tus necesidades
             </h2>
-            <p className="mb-6 text-customNobuColor leading-loose">
-            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar. Te ofrecemos un servicio de calidad pensado para optimizar tu gestión de manera eficiente
+            <p className="mb-6 text-customNobuColor leading-loose text-justify sm:text-left">
+            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar. Te ofrecemos un servicio de calidad pensado para optimizar tu gestión de manera eficiente.
             </p>
           </div>
         </div>
-        {/* Lista de características */}
-        <div className="w-full flex justify-center">
-          {/* <ul className="text-customNobuColor grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <li className="flex items-center">
-              <CheckArrowIcon />
-              <span className="ml-2">Con una interfaz amigable</span>
-            </li>
-            <li className="flex items-center">
-              <CheckArrowIcon />
-              <span className="ml-2">Ágil y segura</span>
-            </li>
-            <li className="flex items-center">
-              <CheckArrowIcon />
-              <span className="ml-2">Tus servicios ordenados</span>
-            </li>
-            <li className="flex items-center">
-              <CheckArrowIcon />
-              <span className="ml-2">Intuitiva</span>
-            </li>
-          </ul> */}
-        </div>
-
         <div className="w-full lg:px-16 border-hidden drop-shadow-2xl">
           <Carrusel />
         </div>

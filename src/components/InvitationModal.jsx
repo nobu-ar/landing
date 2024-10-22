@@ -1,10 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from '@emailjs/browser';
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import { CloseIcon } from "../assets/icons/CloseIcon";
-import { TailcastLogo } from "../assets/logos/TailcastLogo";
-import LogoColorVersion2 from '/Logo_Color_Version_1.svg';
+
 
 
 

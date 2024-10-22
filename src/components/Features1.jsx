@@ -1,9 +1,4 @@
 import { motion } from "framer-motion";
-import bio from "../assets/images/bio.jpg";
-import scannerqr from "../assets/images/scannerqr.jpg";
-import feature3 from "../assets/images/feature3.jpg";
-import feature4 from "../assets/images/feature4.jpg";
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import nobuPc from "../assets/images/nobuPc.png";
 
 export const Features1 = () => {
@@ -24,7 +19,7 @@ export const Features1 = () => {
 
             <h2 className="text-customNobuColor mt-4 mb-6 text-3xl sm:text-4xl lg:text-5xl custom-block-big-title text-justify sm:text-center lg:text-left">Gestión Integral de tus espacios con NOBU</h2>
 
-            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">Ofrecemos una solución integral para la gestión de tu sistema, accesible de manera segura con tu usuario y contraseña. Desde un panel intuitivo, podrás organizar y controlar tu espacio de forma sencilla, asignando permisos a otros usuarios según tus necesidades. Gestiona todo con confianza y eficiencia en una plataforma diseñada para facilitar tu día a día.</p>
+            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar. Te ofrecemos un servicio de calidad pensado para optimizar tu gestión de manera eficiente</p>
           </div>
 
           <div className="w-full lg:w-3/5 mt-8 lg:mt-0 flex justify-center items-center">

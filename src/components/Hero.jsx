@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import LogoPrincipal from "/LogoPrincipal.svg";
 import CelularNobu2 from "../assets/images/CelularNobu2.png";
 
 export const Hero = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <section
       className="lg:mb-16 w-full flex flex-wrap bg-customGray" 
@@ -27,7 +29,7 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
           >
-            <div className="text-3xl 2xl:text-6xl lg:text-5xl xl:text-5xl font-bold tracking-wide mb-6 text-customPrimary">
+            <div className="text-3xl 2xl:text-6xl lg:text-5xl xl:text-5xl font-bold tracking-wide mb-6 text-customNobuColor">
               Te presentamos
             </div>
           </motion.div>
@@ -38,7 +40,15 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 1}}
             className="flex justify-center w-full my-6"
           >
-            <img src={LogoPrincipal} alt="LogoPrincipal" className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40"/>
+            <a href="#features" aria-label="Features">
+              <motion.img 
+                src={LogoPrincipal} 
+                alt="LogoPrincipal" 
+                className={`w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40 cursor-pointer transition-all duration-300 ${isHovered ? 'scale-110' : ''}`}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              />
+            </a>
           </motion.div>
           
           <div className="text-customNobuColor font-bold text-2xl sm:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl mt-6">
