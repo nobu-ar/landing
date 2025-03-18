@@ -1,10 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from '@emailjs/browser';
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import { CloseIcon } from "../assets/icons/CloseIcon";
-import { TailcastLogo } from "../assets/logos/TailcastLogo";
-import LogoColorVersion2 from '/Logo_Color_Version_1.svg';
+
 
 
 
@@ -85,7 +83,10 @@ export const InvitationModal = ({ setIsOpen }) => {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="w-full h-screen item-center justify-center text-center sm:h-auto sm:w-3/4 md:w-3/5 lg:w-[500px] xl:w-[500px] rounded bg-customTercery custom-border-gray-darker py-12 px-8 sm:px-16 backdrop-blur-xl fixed sm:mb-8 fixed mx-auto z-50"
+            className="w-full h-screen item-center justify-center text-center sm:h-auto sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 rounded py-12 px-8 sm:px-16 backdrop-blur-xl fixed sm:mb-8 mx-auto z-50"
+            style={{
+              background: 'linear-gradient(135deg, rgb(32, 92, 250), rgb(11, 219, 144))',
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex relative text-center">
@@ -107,7 +108,7 @@ export const InvitationModal = ({ setIsOpen }) => {
                     <form ref={form} onSubmit={handleSubmit} className="flex flex-wrap -m-2">
                       <div className="w-full sm:w-4/5 p-2 mx-auto">
                         <input
-                          className="px-4 py-4 w-full text-customNobuGreen font-medium text-center placeholder-customNobuColor outline-none border bg-customWhite border-gray-300 rounded-lg focus:ring focus:ring-customNobuGreen"
+                          className="px-4 py-4 w-full text-customNobuColor font-medium text-center placeholder-customNobuColor outline-none border bg-customWhite border-gray-300 rounded-lg focus:ring focus:ring-customNobuGreen focus:placeholder-transparent"
                           id="nameInput"
                           type="text"
                           name="user_name"
@@ -118,7 +119,7 @@ export const InvitationModal = ({ setIsOpen }) => {
                       </div>
                       <div className="w-full sm:w-4/5 p-2 mx-auto">
                         <input
-                          className="px-4 py-4 w-full text-customNobuGreen font-medium text-center placeholder-customNobuColor outline-none border bg-customWhite border-gray-300 rounded-lg focus:ring focus:ring-customNobuGreen"
+                          className="px-4 py-4 w-full text-customNobuColor font-medium text-center placeholder-customNobuColor outline-none border bg-customWhite border-gray-300 rounded-lg focus:ring focus:ring-customNobuGreen focus:placeholder-transparent"
                           id="newsletterInput3-1"
                           type="email"
                           name="user_email"

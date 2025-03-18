@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CheckArrowIcon } from "../assets/icons/CheckArrowIcon";
 import { InvitationModal } from "./InvitationModal";
+import inicioNobu from "../assets/images/inicioNobu.png";
 
 
 export const FeaturesDiagonal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="lg:mb-16 flex-col stify-center items-center bg-customGray 2xl:w-full xl:w-auto md:w-auto sm:w-auto mx-auto"
+    <section className="lg:mb-16 flex-col justify-center items-center bg-customGray 2xl:w-full xl:w-auto md:w-auto sm:w-auto mx-auto"
       id="aboutus">
         <div className="custom-shape-divider-bottom-1665696614">
           <svg
@@ -31,49 +31,33 @@ export const FeaturesDiagonal = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          >
-          <div className=" bg-customGray lg:pt-22  lg:pb-12lg:flex-row flex-col  mx-auto p-3">
-            <div className="lg:w-1/2 flex flex-col lg:mx-unset mx-auto">
-              <span className="justify-center items-center text-center custom-block-subtitle ">
-              Nuestros Valores
-              </span>
-              <h2 className="2xl:text-5xl sm:text-2xl mt-10 mb-8 text-2xl lg:text-5xl custom-block-big-title sm:w-auto mx-auto ">En NOBU, nos guiamos por nuestros principios y nos comprometemos a darte un sistema:</h2>
-    
-              <ul className="mb-6 mt-12= text-customNobuColor">
-                <li className="mb-4 flex">
-                  <CheckArrowIcon/>
-                  <span>Transparente: Operaciones claras y accesibles para todos.</span>
-                </li>
-                <li className="mb-4 flex">
-                  <CheckArrowIcon />
-                  <span>Seguridad con  sus Datos: Protegemos tu información con los más altos estándares de seguridad.</span>
-                </li>
-                <li className="mb-4 flex">
-                  <CheckArrowIcon />
-                  <span>Trazable: Seguimiento detallado de cada operación para garantizar la precisión y responsabilidad.</span>
-                </li>
-              </ul>
-
+        >
+          <div className="bg-customGray lg:pt-22 lg:pb-12 lg:flex-row flex flex-col mx-auto mt-20 p-3 px-8">
+            <div className="lg:w-1/2 flex justify-center items-center filter-bottom-shadow">
+              <img src={inicioNobu} alt="Inicio Nobu" className="max-w-full h-auto" />
             </div>
-            <span className="flex bottom-10 p-8 justify-center text-center text-4xl lg:text-5xl custom-block-big-title">¿Queres saber más?</span>
-          </div>
-        </motion.div>
-
-        <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-            >
-              <div className="2xl:w-96 xl:w-96 md:w-auto sm:w-auto mt-1 mb-24 drop-shadow-2xl items-center mx-auto">
-                <div
-                  className=" custom-button-colored rounded text-xl 2xl:w-92 text-center h-16"
+            <div className="lg:w-1/2 flex flex-col lg:mx-unset mx-auto">
+              {/* <span className="justify-center items-center text-center custom-block-subtitle">  
+                Nuestros Valores
+              </span>*/}
+              <h2 className="2xl:text-5xl sm:text-2xl mt-10 mb-8 text-2xl lg:text-5xl custom-block-big-title sm:w-auto mx-auto xs:justify-center">
+                Nos comprometemos a ofrecerte un sistema seguro y fácil de usar. Tu tranquilidad y eficiencia son nuestra prioridad
+              </h2>
+              <span className="flex justify-center text-center text-4xl lg:text-5xl custom-block-big-title mb-8">
+                ¿Queres saber más?
+              </span>
+              <div className="w-full max-w-md mx-auto">
+                <button
+                  className="custom-button-colored rounded w-full py-4 text-base sm:text-lg md:text-xl lg:text-2xl transition-all duration-300 ease-in-out hover:scale-105 shadow-lg shadow-gray-500/50 mb-16"
                   onClick={() => setIsModalOpen(true)}
                 >
                   Comienza a mejorar tu operatoria
-                </div>
+                </button>
               </div>
+            </div>
+          </div>
         </motion.div>
-        
+
       <div className="justify-between flex flex-col tex-center items-center mx-auto">
         {isModalOpen && (
         <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />

@@ -22,10 +22,10 @@
 /* Backgrounds */
 
 .custom-bg-dark1 {
-  @apply bg-customGray fill-customGray;
+  @apply bg-gradient-to-r from-[rgba(32,92,250,0.8)] to-[rgb(11,219,144)] fill-[rgba(32,92,250,0.8)];
 }
 .custom-bg-dark2 {
-  @apply bg-customNobuGreen fill-customNobuGreen;
+  @apply bg-gradient-to-r from-[rgba(32,92,250,0.8)] to-[rgb(11,219,144)] fill-[rgb(11,219,144)];
 }
 .custom-bg-dark3 {
   @apply bg-customGray fill-customDarkBg3;
@@ -60,5 +60,6 @@ html {
 @font-face {
   font-display: var(--fontsource-Inter-font-display, optional);
 }
+
 
 
