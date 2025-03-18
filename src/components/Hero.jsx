@@ -11,7 +11,7 @@ export const Hero = () => {
       className="lg:mb-16 w-full flex flex-wrap bg-customGray" 
       id="home"
     >
-      <div className="relative w-full flex lg:flex-row flex-col justify-between items-center pt-16 pb-32 px-4 lg:px-16 mt-10">
+      <div className="relative w-full flex lg:flex-row flex-col justify-between items-center pt-16 pb-32 px-4 lg:px-16 mt-8">
         {/* Lado izquierdo: Texto e icono */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-center mt-14">
           <motion.div

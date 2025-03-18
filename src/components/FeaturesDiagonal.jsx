@@ -37,9 +37,9 @@ export const FeaturesDiagonal = () => {
               <img src={inicioNobu} alt="Inicio Nobu" className="max-w-full h-auto" />
             </div>
             <div className="lg:w-1/2 flex flex-col lg:mx-unset mx-auto">
-              <span className="justify-center items-center text-center custom-block-subtitle">
+              {/* <span className="justify-center items-center text-center custom-block-subtitle">  
                 Nuestros Valores
-              </span>
+              </span>*/}
               <h2 className="2xl:text-5xl sm:text-2xl mt-10 mb-8 text-2xl lg:text-5xl custom-block-big-title sm:w-auto mx-auto xs:justify-center">
                 Nos comprometemos a ofrecerte un sistema seguro y fácil de usar. Tu tranquilidad y eficiencia son nuestra prioridad
               </h2>

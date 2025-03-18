@@ -18,7 +18,7 @@ export const Features2 = () => (
             <h2 className="mt-6 mb-8 text-2xl 2xl:text-5xl lg:text-5xl custom-block-big-title sm:w-auto">
               Contamos con módulos diseñados para cubrir todas tus necesidades
             </h2>
-            <p className="mb-6 text-customNobuColor leading-loose text-justify sm:text-left">
+            <p className="mb-6 text-customNobuColor leading-relaxed text-justify sm:text-left">
             Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar.
             </p>
           </div>
