@@ -35,7 +35,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="w-full h-20 flex flex-col justify-center items-center fixed bg-customPrimary z-40 lg:backdrop-blur-xl">
+    <nav className="w-full h-20 flex flex-col justify-center items-center absolute top-0 left-0 right-0 bg-customPrimary z-40 lg:backdrop-blur-xl">
       <div className="2xl:w-[1280px] xl:w-10/12 w-11/12 flex justify-between items-center relative">
         <motion.div
           initial={{ opacity: 0 }}

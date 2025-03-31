@@ -5,47 +5,52 @@ export const ScrollUpButton = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", toggleVisible);
+    
+    // Cleanup del event listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener("scroll", toggleVisible);
+    };
   }, []);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
+    if (scrolled > 2000) {
       setIsVisible(true);
-    } else if (scrolled <= 300) {
+    } else if (scrolled <= 3000) {
       setIsVisible(false);
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const scrollToFeatures2 = () => {
+    // Buscar el elemento de Features2 y hacer scroll hacia él
+    const features2Element = document.querySelector('section[id="modulos"]') || 
+                            document.querySelector('section[id="features"]');
+    
+    if (features2Element) {
+      features2Element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Si no encuentra el elemento específico, intentar redirigir a home
+      const homeElement = document.getElementById('home');
+      if (homeElement) {
+        homeElement.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Si todo falla, volver al inicio de la página 
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    }
   };
 
   return (
     <>
       {isVisible && (
         <div
-          className="w-12 h-12 fixed bottom-6 right-6 custom-border-gray rounded bg-customNobuGreen hover:bg-customNobuColor cursor-pointer flex justify-center items-center transition z-50"
-          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center z-50"
+          onClick={scrollToFeatures2}
         >
-          <svg
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            width="35px"
-            height="35px"
-            viewBox="0 0 20 20"
-          >
-          <path
-            d="M4.16732 12.5L10.0007 6.66667L15.834 12.5"
-            stroke="rgb(255, 255, 255)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            >
-          </path>
-          </svg>
+          Visita más módulos
         </div>
       )}
     </>
