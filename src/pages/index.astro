@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Hero } from "../components/Hero.jsx";
 import { Navbar } from "../components/Navbar.jsx";
 import { Features1 } from "../components/Features1.jsx";
-import { Features2 } from "../components/Features2.jsx";
+import { Modulos } from "../components/Modulos.jsx";
 import { Testimonials } from "../components/Testimonials.jsx";
 import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
 import { Pricing } from "../components/Pricing.jsx";
@@ -14,20 +14,40 @@ import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton";
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
+import { PersonalSection} from "../components/sections/PersonalSection.jsx"
+import { MutualSection} from "../components/sections/MutualSection.jsx"
+import { FinanceSection} from "../components/sections/FinanceSection.jsx"
+import { CommerceSection} from "../components/sections/CommerceSection.jsx"
+import { FaltasSection} from "../components/sections/FaltasSection.jsx"
+
+
+
+
+
 
 ---
 
-<Layout title="NOBU">
+<Layout title="Nobu">
   <Navbar client:load />
-  <Hero client:load />
+  <Hero client:load class="mt-20" />
   <Features1 client:load />
-  <Divider />
-  <Features2 client:load />
-  <!-- <Testimonials client:load /> -->
+  <Modulos client:load />
+  <div id="personalSection">
+    <PersonalSection client:load />
+  </div>
+  <div id="mutualSection">
+    <MutualSection client:load />
+  </div>
+  <div id="commerceSection">
+    <CommerceSection client:load />
+  </div>
+  <div id="financeSection">
+    <FinanceSection client:load />
+  </div>
+  <div id="faltasSection">
+    <FaltasSection client:load />
+  </div>
   <FeaturesDiagonal client:load />
-  <!-- <Pricing client:load /> -->
-  <!-- <Brands client:load /> -->
-  <!-- <FAQ client:load /> -->
   <Footer />
   <ScrollUpButton client:load />
 </Layout>
