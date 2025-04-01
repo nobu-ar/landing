@@ -6,8 +6,8 @@ import 'swiper/css/pagination';
 
 import spaces from '../assets/images/spaces.jpg';
 // Importa las imágenes
-import faltas from '../assets/images/Faltas.Png';
-import Legajo from "../assets/images/Legajo.png";
+import faltas from '../assets/images/faltas.png';
+import Legajo from "../assets/images/legajo.png";
 import registry from '../assets/images/registry.png';
 
 export const Carrusel = () => {

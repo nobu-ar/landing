@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import LogoPrincipal from "/LogoPrincipal.svg";
-import CelularNobu2 from "../assets/images/CelularNobu2.png";
+import CelularNobu2 from "../assets/images/celularNobu2.png";
 
 export const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
