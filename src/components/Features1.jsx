@@ -80,7 +80,7 @@ export const Features1 = () => {
 
   return (
     <section
-      className="w-full h-screen bg-customGray py-32 sm:py-32 md:py-32 lg:py-32 px-7 sm:px-0 md:px-12 lg:px-12"
+      className="w-full bg-customGray py-32 sm:py-32 md:py-32 lg:py-32 px-7 sm:px-0 md:px-12 lg:px-12"
       id="features"
     >
       <motion.div
@@ -99,7 +99,7 @@ export const Features1 = () => {
           </div>
 
           {/* Carrusel de imágenes - ajustado a la derecha */}
-          <div className="w-full lg:w-3/5 mt-8 lg:mt-0 lg:pr-0">
+          <div className="w-full lg:w-3/5 md:w-3/5 sm:w-3/5 mt-8 lg:mt-0 ">
             <div className="carousel-container relative h-auto aspect-video lg:mr-0">
               {/* Contenedor de imágenes */}
               <div className="relative w-full h-full flex justify-center items-center">
@@ -124,7 +124,7 @@ export const Features1 = () => {
                 {imagenes.map((_, index) => (
                   <div 
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`w-2 h-2 rounded transition-all duration-300 ${
                       index === activeIndex ? 'bg-customNobuGreen w-4' : 'bg-gray-300'
                     }`}
                     onClick={() => setActiveIndex(index)}
@@ -135,7 +135,7 @@ export const Features1 = () => {
               
               {/* Botones de navegación */}
               <button 
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded-full z-10"
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded z-10"
                 onClick={(e) => {
                   e.stopPropagation();
                   setActiveIndex((prevIndex) => (prevIndex - 1 + imagenes.length) % imagenes.length);
@@ -146,7 +146,7 @@ export const Features1 = () => {
                 </svg>
               </button>
               <button 
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded-full z-10"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded z-10"
                 onClick={(e) => {
                   e.stopPropagation();
                   setActiveIndex((prevIndex) => (prevIndex + 1) % imagenes.length);

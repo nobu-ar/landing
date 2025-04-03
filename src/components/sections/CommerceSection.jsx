@@ -39,18 +39,18 @@ export const CommerceSection = ({ setCurrentSection }) => {
 
   return (
     <section id="commerceSection" className="w-full h-screen bg-customGray relative overflow-hidden">
-      <SlideAnimation 
+        <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
         textColor={slideColors.textColor}
         buttonBackgroundColor={slideColors.buttonBackgroundColor}
         buttonIconColor={slideColors.buttonIconColor}
-        position="right" // Esta sección aparecerá desde la derecha
-        // Usando las nuevas propiedades de texto personalizado
+        position="right"
         title="Módulo de Comercios"
-        description="Crea y ordena todos tus comercios en un solo lugar."
+        description="Crea y ordena todos tus comercios en un solo lugar. Visualiza la ubicación de cada comercio en tu mapa con su ubicación precisa."
         actionText="Haz click para conocer más →"
         onAnimationComplete={handleAnimationComplete}
       >
+      
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

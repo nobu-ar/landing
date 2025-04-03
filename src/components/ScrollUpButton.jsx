@@ -47,7 +47,7 @@ export const ScrollUpButton = () => {
     <>
       {isVisible && (
         <div
-          className="fixed bottom-6 right-6 custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center z-50"
+          className="fixed bottom-6 right-2 custom-button-colored rounded py-2 px-4 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center z-10000000"
           onClick={scrollToFeatures2}
         >
           Visita más módulos
