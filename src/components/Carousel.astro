@@ -91,16 +91,16 @@ const imagesData = [
     };
     
     return (
-      <div className="carousel">
-        <div className="images-container">
+      <div class="carousel">
+        <div class="images-container">
           {imagesData.map((image, index) => (
             <div 
               key={index}
-              className="carousel-image"
+              class="carousel-image"
               style={getImageStyle(index)}
             >
               <img src={image.src} alt={image.alt} />
-              <div className="image-info">
+              <div class="image-info">
                 <h3>{image.title}</h3>
                 <p>{image.description}</p>
               </div>
@@ -108,11 +108,11 @@ const imagesData = [
           ))}
         </div>
         
-        <div className="carousel-controls">
-          <button className="carousel-button prev" onClick={handlePrev}>
+        <div class="carousel-controls">
+          <button class="carousel-button prev" onClick={handlePrev}>
             ← Anterior
           </button>
-          <button className="carousel-button next" onClick={handleNext}>
+          <button class="carousel-button next" onClick={handleNext}>
             Siguiente →
           </button>
         </div>
