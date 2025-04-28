@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Hero } from './components/Hero';
-import { Features1 } from './components/Features1';
+import { Features1 } from './components/Espaces';
 import { Features2 } from './components/Modulos';
 import { FeaturesDiagonal } from './components/FeaturesDiagonal';
 import { PersonalSection } from './components/sections/PersonalSection';

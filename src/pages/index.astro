@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Hero } from "../components/Hero.jsx";
 import { Navbar } from "../components/Navbar.jsx";
-import { Features1 } from "../components/Features1.jsx";
+import { Espacios } from "../components/Espaces.jsx";
 import { Modulos } from "../components/Modulos.jsx";
 import { Testimonials } from "../components/Testimonials.jsx";
 import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
@@ -21,18 +21,12 @@ import { CommerceSection} from "../components/sections/CommerceSection.jsx"
 import { FaltasSection} from "../components/sections/FaltasSection.jsx"
 import { ClubSection} from "../components/sections/ClubSection.jsx"
 
-
-
-
-
-
-
 ---
 
 <Layout title="Nobu">
   <Navbar client:load />
   <Hero client:load class="mt-20" />
-  <Features1 client:load />
+  <Espacios client:load />
   <Modulos client:load />
   <div id="clubSection">
     <ClubSection client:load />

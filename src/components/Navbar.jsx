@@ -5,11 +5,10 @@ import { TailcastLogo } from "../assets/logos/TailcastLogo";
 import { GithubIcon } from "../assets/icons/GithubIcon";
 
 const navbarLinks = [
-  { label: "Inicio", href: "#home", ariaLabel: "Home" },
-  { label: "Servicios", href: "#features", ariaLabel: "Features" },
-  { label: "Contactate", href: "#aboutus", ariaLabel: "Pricing" },
-  // { label: "Feedback", href: "#feedback", ariaLabel: "Feedback" },
-  // { label: "FAQ", href: "#FAQ", ariaLabel: "FAQ" },
+  { label: "Inicio", href: "#inicio", ariaLabel: "Inicio" },
+  { label: "Servicios", href: "#espacios", ariaLabel: "Espacios" },
+  { label: "Módulos", href: "#modulos", ariaLabel: "Modulos" },
+  { label: "Contactanos", href: "#aboutus", ariaLabel: "Pricing" },
 ];
 
 export const Navbar = () => {
@@ -43,7 +42,7 @@ export const Navbar = () => {
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
         >
-          <a className="navbar-link" href="#home" aria-label="Home">
+          <a className="navbar-link" href="#inicio" aria-label="Inicio">
             <div className="flex justify-start items-center grow basis-0">
               <div className="text-white mr-2 text-6xl">
                 <img src={LogoColorVersion2} className="w-10 h-10 navbar-place" />

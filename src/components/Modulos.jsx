@@ -36,12 +36,12 @@ export const Modulos = () => {
         className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="text-center mb-8 md:mb-12 pt-4 md:pt-8">
-          <span className="custom-block-subtitle text-center mb-2 text-customNobuColor text-sm md:text-base">
+          <h2 className="custom-block-subtitle text-center mb-2 text-customNobuColor text-sm md:text-base">
             Módulos Especializados
-          </span>
-          <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-6 text-customNobuColor">
-            Contamos con módulos diseñados para cubrir todas tus necesidades
           </h2>
+          <h1 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-6 text-customNobuColor">
+            Contamos con módulos diseñados para cubrir todas tus necesidades
+          </h1>
           <p className="max-w-2xl mx-auto text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
             Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar.
           </p>

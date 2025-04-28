@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import spaces from '../assets/images/spaces.jpg';
 import nobuPc from "../assets/images/nobuPc.png";
 import userPermission from "../assets/images/userPermission.png";
-export const Features1 = () => {
+export const Espacios = () => {
   // Estado para controlar la imagen activa en el carrusel
   const [activeIndex, setActiveIndex] = useState(0);
   
@@ -81,7 +81,7 @@ export const Features1 = () => {
   return (
     <section
       className="w-full bg-customGray py-32 sm:py-32 md:py-32 lg:py-32 px-7 sm:px-0 md:px-12 lg:px-12"
-      id="features"
+      id="espacios"
     >
       <motion.div
         initial={{ opacity: 0 }}
