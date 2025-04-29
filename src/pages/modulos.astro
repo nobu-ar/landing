@@ -1,0 +1,46 @@
+
+---
+
+import Layout from "../layouts/Layout.astro";
+import { NavbarModulos } from "../components/NavbarModulos.jsx";
+import { Modulos } from "../components/Modulos.jsx";
+import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
+import { Divider } from "../components/Divider";
+import { Footer } from "../components/Footer.jsx";
+import { ScrollUpButton } from "../components/ScrollUpButton";
+import "../styles/Theme.css";
+import "../styles/Diagonals.css";
+import { PersonalSection} from "../components/sections/PersonalSection.jsx"
+import { MutualSection} from "../components/sections/MutualSection.jsx"
+import { FinanceSection} from "../components/sections/FinanceSection.jsx"
+import { CommerceSection} from "../components/sections/CommerceSection.jsx"
+import { FaltasSection} from "../components/sections/FaltasSection.jsx"
+import { ClubSection} from "../components/sections/ClubSection.jsx"
+
+---
+
+<Layout title="Nobu - Modulos, tus negocios en un solo espacio con modulos diseñados segun tus necesidades">
+  <NavbarModulos client:load />
+  <Modulos client:load />
+  <div id="clubSection">
+    <ClubSection client:load />
+  </div>
+  <div id="personalSection">
+    <PersonalSection client:load />
+  </div>
+  <div id="mutualSection">
+    <MutualSection client:load />
+  </div>
+  <div id="commerceSection">
+    <CommerceSection client:load />
+  </div>
+  <div id="financeSection">
+    <FinanceSection client:load />
+  </div>
+  <div id="faltasSection">
+    <FaltasSection client:load />
+  </div>
+  <FeaturesDiagonal client:load />
+  <Footer />
+  <ScrollUpButton client:load />
+</Layout>

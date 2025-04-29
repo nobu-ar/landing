@@ -8,7 +8,7 @@ import EventosClub from "../../assets/images/eventosClub.png";
 import ActivityClub from "../../assets/images/activityClub.png";
 import SlideAnimation from '../SlideAnimation';
 
-export const ClubSection = ({ setCurrentSection }) => {
+export const ClubSection = () => {
   const [showRegistryInfo, setShowRegistryInfo] = useState(false);
   const [showProvidersInfo, setShowProvidersInfo] = useState(false);
   const [showPlansInfo, setShowPlansInfo] = useState(false);
@@ -72,6 +72,9 @@ export const ClubSection = ({ setCurrentSection }) => {
 
   return (
     <section id="clubSection" className="w-full h-screen bg-customGray relative overflow-hidden">
+      {/* Botón para volver a la página principal */}
+      
+
       <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
         textColor={slideColors.textColor}
@@ -87,7 +90,7 @@ export const ClubSection = ({ setCurrentSection }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="container mx-auto px-4"
+          className="container mx-auto px-16"
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-36">
               
@@ -100,16 +103,16 @@ export const ClubSection = ({ setCurrentSection }) => {
                   exit={{ opacity: 0, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                     Clubes
-                  </h2>
+                  </h1>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Nuestro módulo de Clubes te permite administrar de manera eficiente todas las operaciones y membresías de tus clubes en un solo lugar.
+                    <h2>Nuestro módulo de Clubes te permite administrar de manera eficiente todas las operaciones y membresías de tus clubes en un solo lugar.</h2>
                   </p>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Con nuestra interfaz intuitiva, podrás:
+                    Con nuestro modulo de clubes podrás:
                   </p>
                   
                   <ul className="list-disc pl-6 mb-8 text-customNobuColor">
@@ -128,9 +131,9 @@ export const ClubSection = ({ setCurrentSection }) => {
                   {!showProvidersInfo ? (
                     <>
                     
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Registro de Clubes
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         El proceso de registro de clubes es sencillo y eficiente con nuestro sistema.
@@ -153,9 +156,9 @@ export const ClubSection = ({ setCurrentSection }) => {
                     </>
                   ) : !showPlansInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Proveedores del Club
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Gestiona todos los proveedores asociados a tu club de manera eficiente.
@@ -178,9 +181,9 @@ export const ClubSection = ({ setCurrentSection }) => {
                     </>
                   ) : !showEventsInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Planes de Membresía
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Configura diferentes niveles de membresía para tu club.
@@ -203,9 +206,9 @@ export const ClubSection = ({ setCurrentSection }) => {
                     </>
                   ) : !showActivityInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Eventos del Club
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Organiza y promociona eventos exclusivos para miembros.
@@ -228,9 +231,9 @@ export const ClubSection = ({ setCurrentSection }) => {
                     </>
                   ) : (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Actividad del Club
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Supervisa toda la actividad y estadísticas del club.

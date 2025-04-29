@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar.jsx";
+import { PersonalSection } from "../components/sections/PersonalSection.jsx";
+import { Footer } from "../components/Footer.jsx";
+import { ScrollUpButton } from "../components/ScrollUpButton";
+import { NavbarModulos } from "../components/NavbarModulos.jsx";
+import { Modulos } from "../components/Modulos.jsx";
+import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
+
+
+import "../styles/Theme.css";
+import "../styles/Diagonals.css";
+---
+
+<Layout title="Nobu Personal - Un lugar para tener a tu personal ordenado, controla su asistencia y los datos de tus empleados">
+  <NavbarModulos client:load />
+  <PersonalSection client:load />
+  <Modulos client:load />
+  <FeaturesDiagonal client:load />
+  <Footer />
+  <ScrollUpButton client:load />
+</Layout> 

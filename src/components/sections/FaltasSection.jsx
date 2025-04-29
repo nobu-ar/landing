@@ -63,13 +63,13 @@ export const FaltasSection = ({ setCurrentSection }) => {
                   exit={{ opacity: 0, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                     Tribunal de Faltas
-                  </h2>
+                  </h1>
                   
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
+                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Nuestro módulo de Tribunal de Faltas te permite administrar de manera eficiente todas las infracciones y contravenciones, tanto de tránsito como municipales, en un sistema centralizado.
-                  </p>
+                  </h2>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Con nuestra interfaz intuitiva, podrás:
@@ -89,13 +89,13 @@ export const FaltasSection = ({ setCurrentSection }) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                  <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                     Registro Infracción
-                  </h2>
+                  </h3>
                   
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
+                  <h3 className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     El proceso de registro de infracciones es completo y detallado, permitiéndote documentar toda la información necesaria para el seguimiento administrativo.
-                  </p>
+                  </h3>
                   
                   <ul className="list-disc pl-6 mb-8 text-customNobuColor">
                     <li className="mb-2">Identifica al infractor</li>

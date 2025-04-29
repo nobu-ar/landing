@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { NavbarModulos } from "../components/NavbarModulos.jsx";
+import { FaltasSection } from "../components/sections/FaltasSection.jsx";
+import { Footer } from "../components/Footer.jsx";
+import { ScrollUpButton } from "../components/ScrollUpButton";
+import { Modulos } from "../components/Modulos.jsx";
+import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
+
+import "../styles/Theme.css";
+import "../styles/Diagonals.css";
+---
+
+<Layout title="Nobu Faltas - Módulo diseñado para mantener registro de multas de tu municipio ya sean vehiculares o contravenciones">
+  <NavbarModulos client:load />
+  <FaltasSection client:load />
+  <Modulos client:load />
+  <FeaturesDiagonal client:load />
+  <Footer />
+</Layout> 

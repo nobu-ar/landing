@@ -75,13 +75,13 @@ export const FinanceSection = ({ setCurrentSection }) => {
                   exit={{ opacity: 0, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                     Gestión Financiera
-                  </h2>
+                  </h1>
                   
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
+                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Nuestro módulo de Finanzas te permite administrar de manera eficiente todos los aspectos económicos de tu empresa, desde transacciones diarias hasta reportes completos.
-                  </p>
+                  </h2>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Con nuestra interfaz intuitiva, podrás:
@@ -102,9 +102,9 @@ export const FinanceSection = ({ setCurrentSection }) => {
                 >
                   {!showDetailInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Nuevos Créditos
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Administra todos los productos crediticios que ofreces a tus clientes de manera sencilla.
@@ -129,9 +129,9 @@ export const FinanceSection = ({ setCurrentSection }) => {
                     <>
                       {currentDetailView === 'cash' ? (
                         <>
-                          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                          <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                             Registro de Caja
-                          </h2>
+                          </h3>
                           
                           <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                             Mantén un control detallado de todos los movimientos de efectivo diarios en tu empresa.
@@ -145,9 +145,9 @@ export const FinanceSection = ({ setCurrentSection }) => {
                         </>
                       ) : (
                         <>
-                          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                          <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                             Reportes Financieros
-                          </h2>
+                          </h3>
                           
                           <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                             Genera informes detallados sobre todos los aspectos financieros de tu negocio.
@@ -166,7 +166,8 @@ export const FinanceSection = ({ setCurrentSection }) => {
                           className="custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
                           onClick={() => handleViewChange('general')}
                         >
-Volver al Inicio                        </button>
+                          Volver al Inicio                        
+                        </button>
                         {currentDetailView === 'cash' && (
                           <button 
                             className="bg-customNobuColor rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"

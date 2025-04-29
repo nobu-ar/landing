@@ -20,7 +20,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="text-customNobuColor text-sm xl:text-lg 2xl:text-xl sm:text-base mb-4">
-              <h1>Descubre la nueva plataforma para gestionar tu empresa.</h1> 
+              <h1>Descubre la nueva plataforma para gestionar tu empresa con modulos diseñados para tu negocio.</h1> 
             </div>
           </motion.div>
                 
@@ -30,7 +30,7 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.05 }}
           >
             <div className="text-3xl 2xl:text-6xl lg:text-5xl xl:text-5xl font-bold tracking-wide mb-6 text-customNobuColor">
-              Te presentamos
+              <h2>Te presentamos tu nueva Identidad Digital</h2>
             </div>
           </motion.div>
             
