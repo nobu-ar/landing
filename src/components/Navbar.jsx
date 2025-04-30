@@ -45,7 +45,7 @@ export const Navbar = () => {
           <a className="navbar-link" href="#inicio" aria-label="Inicio">
             <div className="flex justify-start items-center grow basis-0">
               <div className="text-white mr-2 text-6xl">
-                <img src={LogoColorVersion2} className="w-10 h-10 navbar-place" />
+                <img src={LogoColorVersion2} alt="Nobu" className="w-10 h-10 navbar-place" />
               </div>
             </div>
           </a>

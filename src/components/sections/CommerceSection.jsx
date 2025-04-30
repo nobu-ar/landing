@@ -69,7 +69,7 @@ export const CommerceSection = ({ setCurrentSection }) => {
                   transition={{ duration: 0.6 }}
                 >
                   <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    Comercios
+                    <strong>Comercios</strong>
                   </h1>
                   
                   <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">

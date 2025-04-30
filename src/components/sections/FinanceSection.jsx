@@ -76,7 +76,7 @@ export const FinanceSection = ({ setCurrentSection }) => {
                   transition={{ duration: 0.6 }}
                 >
                   <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    Gestión Financiera
+                    <strong>Gestión Financiera</strong>
                   </h1>
                   
                   <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">

@@ -91,11 +91,27 @@ export const Espacios = () => {
       >
         <div className="flex flex-col lg:flex-row items-center justify-between max-w-full mx-0">
           <div className="w-full lg:w-2/5 mb-8 lg:mb-0 flex flex-col justify-center items-center lg:items-start lg:pl-16 lg:pr-12">
-            <span className="text-customNobuColor custom-block-subtitle text-justify sm:text-center lg:text-left">Un espacio adaptado a tus necesidades</span>
+            <h2 className="text-customNobuColor custom-block-subtitle text-justify sm:text-center lg:text-left">Tu espacio digital adaptado a tus necesidades</h2>
 
-            <h2 className="text-customNobuColor mt-4 mb-6 text-3xl sm:text-4xl lg:text-5xl custom-block-big-title text-justify sm:text-center lg:text-left">Gestión Integral de tus espacios con NOBU</h2>
+            <h3 className="text-customNobuColor mt-4 mb-6 text-3xl sm:text-4xl lg:text-5xl custom-block-big-title text-justify sm:text-center lg:text-left">Te damos tu propio lugar</h3>
 
-            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">Ofrecemos una solución integral para gestionar tu sistema de forma segura con usuario y contraseña. Desde un panel intuitivo, podrás organizar y controlar tu espacio, asignando permisos a otros usuarios según lo necesites. Gestiona todo con confianza y eficiencia en una plataforma diseñada para simplificar tu trabajo.</p>
+            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">
+              Con <strong>Nobu</strong> contaras con tu <strong>espacio </strong> para gestionar tu sistema de forma segura con usuario y contraseña. 
+              Desde un panel intuitivo, podrás organizar y controlarlo todo, asignando permisos a otros usuarios para que puedan acceder y gestinando que es lo que puede hacer otorgandole un rol determinado. 
+              Gestiona todo de forma segura y eficiente en una plataforma diseñada para simplificar tu trabajo.
+            </p>
+            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">
+              En cada uno de tus espacios podras contar con <strong>modulos diseñados para gestionar tu negocio de la mejor manera</strong>, 
+              desde la gestión de clientes hasta la gestión de inventario, pasando por la gestión de ventas y facturación. Si tu empresa 
+              es de tipo <strong>servicio</strong> podras contar con tu modulo de <strong>gestion de clientes </strong>y asi poder gestionar su información de la mejor manera. 
+              Estos modulos pueden ser <strong>adaptados </strong> segun demandas especificas que tengas, asi como tambien podras contar con tu propio modulo totalmente personalizado si es que necesitas algo
+              totalmente especifico para tu negocio.
+            </p>
+            <p className="text-customNobuColor mb-8 leading-relaxed text-justify sm:text-center lg:text-left max-w-xl">
+              Ademas podras forma parte de otros espacios o invitar a otros usuarios a que formen parte de tu espacio, como tus empleados, proveedores, clientes, etc.
+            </p>
+
+
           </div>
 
           {/* Carrusel de imágenes - ajustado a la derecha */}

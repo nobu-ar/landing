@@ -28,10 +28,10 @@ export const Modulos = () => {
             Módulos Especializados
           </h2>
           <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-6 text-customNobuColor">
-            Contamos con módulos diseñados para cubrir todas tus necesidades
+            <strong>Contamos con módulos diseñados para cubrir todas tus necesidades</strong>
           </h2>
           <strong className="max-w-2xl mx-auto text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
-            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Olvídate de perder tiempo archivando expedientes y comienza a disfrutar de una plataforma fácil de usar.
+            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Es un forma facil de tener todo organizado y accesible para ti y para tus empleados. 
           </strong>
         </div>
         

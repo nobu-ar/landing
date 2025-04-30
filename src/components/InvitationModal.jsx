@@ -85,7 +85,7 @@ export const InvitationModal = ({ setIsOpen }) => {
           <div
             className="w-full h-screen item-center justify-center text-center sm:h-auto sm:w-3/4 md:w-1/2 lg:w-2/5 xl:w-1/3 rounded py-12 px-8 sm:px-16 backdrop-blur-xl fixed sm:mb-8 mx-auto z-50"
             style={{
-              background: 'linear-gradient(135deg, rgb(32, 92, 250), rgb(11, 219, 144))',
+              background: 'rgb(2, 92, 250, 0.6)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
