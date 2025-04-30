@@ -24,7 +24,7 @@ export const ScrollUpButton = () => {
   const scrollToFeatures2 = () => {
     // Buscar el elemento de Features2 y hacer scroll hacia él
     const features2Element = document.querySelector('section[id="modulos"]') || 
-                            document.querySelector('section[id="features"]');
+                            document.querySelector('section[id="espacios"]');
     
     if (features2Element) {
       features2Element.scrollIntoView({ behavior: 'smooth' });

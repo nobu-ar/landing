@@ -74,7 +74,7 @@ export const SlideAnimation = ({
   const slideVariants = {
     // Estado inicial: ocupa la mitad de la pantalla
     initial: {
-      width: "50%",
+      width: "70%",
       height: "screen",
       [position]: 0,
       opacity: 1,

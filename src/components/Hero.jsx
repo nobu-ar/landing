@@ -20,7 +20,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="text-customNobuColor text-sm xl:text-lg 2xl:text-xl sm:text-base mb-4">
-              Descubre la nueva plataforma que viene a simplificar tus trámites.
+              <h2>Descubre la nueva plataforma para gestionar tu empresa.</h2> 
             </div>
           </motion.div>
                 
@@ -29,8 +29,9 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
           >
+            <title>Nobu tu nueva Identidad Digital, tu espacio digital adaptado a tus necesidades, con modulos diseñados para gestionar tu negocio de la mejor manera</title>
             <div className="text-3xl 2xl:text-6xl lg:text-5xl xl:text-5xl font-bold tracking-wide mb-6 text-customNobuColor">
-              Te presentamos
+              <h1>Nobu tu nueva Identidad Digital</h1>
             </div>
           </motion.div>
             
@@ -40,10 +41,10 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 1}}
             className="flex justify-center w-full my-6"
           >
-            <a href="#features" aria-label="Features">
+            <a href="#espacios" aria-label="Espacios">
               <motion.img 
                 src={LogoPrincipal} 
-                alt="LogoPrincipal" 
+                alt="Gestiona tu empresa con Nobu" 
                 className={`w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40 cursor-pointer transition-all duration-300 ${isHovered ? 'scale-110' : ''}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -111,7 +112,7 @@ export const Hero = () => {
         >
           <img 
             src={CelularNobu2} 
-            alt="Inicio Nobu" 
+            alt="Aplicacion mobil nobu" 
             className="w-4/5 md:w-3/4 lg:w-full xl:w-4/5 2xl:w-3/4 object-contain filter-bottom-shadow mt-12"
           />
         </motion.div>

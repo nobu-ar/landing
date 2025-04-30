@@ -68,13 +68,13 @@ export const CommerceSection = ({ setCurrentSection }) => {
                   exit={{ opacity: 0, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    Comercios
-                  </h2>
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                    <strong>Comercios</strong>
+                  </h1>
                   
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
+                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Nuestro módulo de Comercios te permite administrar de manera eficiente todas las transacciones y operaciones de tus comercios en un solo lugar.
-                  </p>
+                  </h2>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Con nuestra interfaz intuitiva, podrás:
@@ -95,9 +95,9 @@ export const CommerceSection = ({ setCurrentSection }) => {
                 >
                   {!showMapInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Registrar Comercio
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         El proceso de registro de personal es sencillo y eficiente con nuestro sistema.
@@ -120,9 +120,9 @@ export const CommerceSection = ({ setCurrentSection }) => {
                     </>
                   ) : (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Mapa
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Localiza y visualiza todos tus comercios desde una interfaz intuitiva.
@@ -142,8 +142,8 @@ export const CommerceSection = ({ setCurrentSection }) => {
                           className="custom-button-colored rounded py-3 px-6 text-white transition-all duration-300 shadow-lg"
                           onClick={() => handleViewChange('general')}
                         >
-Volver al Inicio                        </button>
-                        
+                          Volver al Inicio                        
+                        </button>
                       </div>
                     </>
                   )}

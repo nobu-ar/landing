@@ -67,13 +67,13 @@ export const MutualSection = ({ setCurrentSection }) => {
                   exit={{ opacity: 0, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    Gestión Mutuales
-                  </h2>
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                    <strong>Gestión Mutuales</strong>
+                  </h1>
                   
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
+                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Nuestro módulo de Mutuales te permite administrar de manera eficiente todos tus afiliados, sus coberturas médicas, beneficios de salud, pagos y deudas.
-                  </p>
+                  </h2>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Con nuestra interfaz intuitiva, podrás:
@@ -94,9 +94,9 @@ export const MutualSection = ({ setCurrentSection }) => {
                 >
                   {!showDetailInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Registro de Afiliaciones
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Gestiona las afiliaciones de tus empleados a las mutuales disponibles de manera sencilla y rápida.
@@ -119,9 +119,9 @@ export const MutualSection = ({ setCurrentSection }) => {
                     </>
                   ) : (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Detalles del Afiliado
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         Visualiza toda la información de los afiliados y sus beneficios activos en un solo lugar.
@@ -138,7 +138,8 @@ export const MutualSection = ({ setCurrentSection }) => {
                           className="custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
                           onClick={() => handleViewChange('general')}
                         >
-Volver al Inicio                        </button>
+                          Volver al Inicio                        
+                        </button>
                       </div>
                     </>
                   )}

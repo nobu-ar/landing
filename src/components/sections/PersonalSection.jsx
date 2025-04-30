@@ -7,7 +7,7 @@ import PersonalAttendance from "../../assets/images/personalAttendance.png";
 import EmployeeLicense from "../../assets/images/employeeLicense.png";
 import SlideAnimation from '../SlideAnimation';
 
-export const PersonalSection = ({ setCurrentSection }) => {
+export const PersonalSection = () => {
   const [showRegistryInfo, setShowRegistryInfo] = useState(false);
   const [showDetailInfo, setShowDetailInfo] = useState(false);
   const [currentDetailView, setCurrentDetailView] = useState('detail');
@@ -51,6 +51,8 @@ export const PersonalSection = ({ setCurrentSection }) => {
 
   return (
     <section id="personalSection" className="w-full h-screen bg-customGray relative overflow-hidden">
+      
+
       <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
         textColor={slideColors.textColor}
@@ -79,13 +81,13 @@ export const PersonalSection = ({ setCurrentSection }) => {
                   exit={{ opacity: 0, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                     Gestión Personal
-                  </h2>
+                  </h1>
                   
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
+                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Nuestro módulo de Personal te permite administrar de manera eficiente toda la información de tus empleados. Mantén un registro completo de datos personales, roles y responsabilidades.
-                  </p>
+                  </h2>
                   
                   <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                     Con nuestra interfaz intuitiva, podrás:
@@ -106,9 +108,9 @@ export const PersonalSection = ({ setCurrentSection }) => {
                 >
                   {!showDetailInfo ? (
                     <>
-                      <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                         Registro
-                      </h2>
+                      </h3>
                       
                       <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                         El proceso de registro de personal es sencillo y eficiente con nuestro sistema.
@@ -169,9 +171,9 @@ export const PersonalSection = ({ setCurrentSection }) => {
                       
                       {currentDetailView === 'license' && (
                         <>
-                          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+                          <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
                             Licencias
-                          </h2>
+                          </h3>
                           
                           <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
                             Administra todas las licencias y permisos de tu personal de forma organizada.
