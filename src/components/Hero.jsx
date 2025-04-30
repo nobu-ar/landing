@@ -29,7 +29,6 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
           >
-            <title>Nobu tu nueva Identidad Digital, tu espacio digital adaptado a tus necesidades, con modulos diseñados para gestionar tu negocio de la mejor manera</title>
             <div className="text-3xl 2xl:text-6xl lg:text-5xl xl:text-5xl font-bold tracking-wide mb-6 text-customNobuColor">
               <h1>Nobu tu nueva Identidad Digital</h1>
             </div>

@@ -36,7 +36,7 @@ export const Footer = () => {
             <div className="w-full lg:w-1/3 mb-16 lg:mb-0">
               <div className="flex justify-center lg:justify-start items-center grow basis-0">
                 <div className="text-white text-6xl 2xl:ml-8 md:ml-8">
-                <img src={LogoColorVersion2} className="w-20 h-20 navbar-place" />
+                <img src={LogoColorVersion2} alt="Nobu" className="w-20 h-20 navbar-place" />
 
                 </div>
               </div>

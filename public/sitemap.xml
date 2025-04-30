@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Página principal - Nobu -->
+  <url>
+    <loc>https://nobu.com.ar/</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Módulos - Gestionar y administrar -->
+  <url>
+    <loc>https://nobu.com.ar/modulos</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Clubes - Gestión de Clubes -->
+  <url>
+    <loc>https://nobu.com.ar/club</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Personal - Administración de Personal -->
+  <url>
+    <loc>https://nobu.com.ar/personal</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Mutual - Gestión de Mutual -->
+  <url>
+    <loc>https://nobu.com.ar/mutual</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Comercios - Gestión Comercial -->
+  <url>
+    <loc>https://nobu.com.ar/comercios</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Finanzas - Gestión Financiera -->
+  <url>
+    <loc>https://nobu.com.ar/finanzas</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Faltas - Administración Municipal -->
+  <url>
+    <loc>https://nobu.com.ar/faltas</loc>
+    <lastmod>2024-07-03T10:30:00-03:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

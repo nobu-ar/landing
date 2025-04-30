@@ -11,11 +11,11 @@ export const Espacios = () => {
   const imagenes = [
     { 
       src: spaces, 
-      alt: 'Spaces'
+      alt: 'Espacios'
     },
     {
       src: userPermission, 
-      alt: 'User Permission'
+      alt: 'Permisos de usuario'
     }
   ];
   

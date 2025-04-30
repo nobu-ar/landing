@@ -51,7 +51,7 @@ export const FeaturesDiagonal = () => {
                   className="custom-button-colored rounded w-full py-4 text-base sm:text-lg md:text-xl lg:text-2xl transition-all duration-300 ease-in-out hover:scale-105 shadow-lg shadow-gray-500/50 mb-16"
                   onClick={() => setIsModalOpen(true)}
                 >
-                  Comienza a mejorar tu operatoria
+                  Comienza hoy con Nobu
                 </button>
               </div>
             </div>
