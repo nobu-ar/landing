@@ -13,7 +13,7 @@ export const Modulos = () => {
 
   return (
     <section 
-      className="w-full h-auto sm:h-auto lg:h-screen md:h-auto py-16 md:py-12 bg-customGray relative mt-20" 
+      className="w-full h-auto sm:h-auto lg:h-screen md:h-auto py-16 md:py-12 bg-customGray relative mt-32" 
       id="modulos"
     >
       <motion.div
@@ -30,9 +30,16 @@ export const Modulos = () => {
           <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-6 text-customNobuColor">
             <strong>Contamos con módulos diseñados para cubrir todas tus necesidades</strong>
           </h2>
-          <strong className="max-w-2xl mx-auto text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
-            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Es un forma facil de tener todo organizado y accesible para ti y para tus empleados. 
-          </strong>
+          <span className="max-w-2xl mx-auto text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
+            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Es un forma facil de 
+            tener todo organizado y accesible para ti y para tus empleados. Con ellos en tu espacio, tus empleados podran tener acceso 
+            a uno, algunos o todos los modulos que necesites siempre y cuando los hayas invitado y les des los permisos que requieran. <strong>¿Cuales pueden ser esto permisos? </strong> 
+            Podes darle permisos de solo lectura, o podrias darle permisos para que puedan modificar datos o incluso de administrar el modulo completo.
+          </span>
+
+          <p className="text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
+           Haz click en alguno de nuestros <strong>modulos</strong> para ver mas detalles.
+          </p>
         </div>
         
         {/* Contenedor de módulos adaptable */}
