@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Navbar } from "../components/Navbar.jsx";
-import { FinanceSection } from "../components/sections/FinanceSection.jsx";
+import { MediaSection } from "../components/sections/MediaSection.jsx";
 import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton";
 import { Modulos } from "../components/Modulos.jsx";
@@ -11,8 +11,8 @@ import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 ---
 
-<Layout title="Nobu Finanzas - Módulo diseñado para financieras, otorga creditos, calcula la tasa de interes, lleva al dia los vencimientos de cuotas y mucho mas">
+<Layout title="Nobu Social Media - Módulo diseñado el analisis de datos mediante IA en redes sociales, realizar graficos y evaluar parametros">
   <Navbar client:load />
-  <FinanceSection client:load />
+  <MediaSection client:load />
   <Footer />
 </Layout> 

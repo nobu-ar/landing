@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { NavbarModulos } from "../components/NavbarModulos.jsx";
+import { Navbar } from "../components/Navbar.jsx";
 import { ClubSection } from "../components/sections/ClubSection.jsx";
 import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton";
@@ -12,9 +12,7 @@ import "../styles/Diagonals.css";
 ---
 
 <Layout title="Nobu Clubes - Módulo diseñado para clubes, lleva al gestion de todos tus lugares, actividades y la administracion de tu club">
-  <NavbarModulos client:load />
+  <Navbar client:load />
   <ClubSection client:load />
-  <Modulos client:load />
-  <FeaturesDiagonal client:load />
   <Footer />
 </Layout> 

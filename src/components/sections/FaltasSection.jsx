@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Faltas from "../../assets/images/faltas.png";
@@ -5,8 +6,7 @@ import RegistryFalta from "../../assets/images/registryFalta.png";
 import SlideAnimation from '../SlideAnimation';
 
 export const FaltasSection = ({ setCurrentSection }) => {
-  const [showRegistryInfo, setShowRegistryInfo] = useState(false);
-  const [showDetailInfo, setShowDetailInfo] = useState(false);
+  const [currentSection, setCurrentSectionState] = React.useState('overview');
   const [animationCompleted, setAnimationCompleted] = useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
@@ -22,19 +22,49 @@ export const FaltasSection = ({ setCurrentSection }) => {
     setAnimationCompleted(true);
   };
 
-  // Función para cambiar entre vistas
-  const handleViewChange = (view) => {
-    if (view === 'general') {
-      setShowRegistryInfo(false);
-      setShowDetailInfo(false);
-    } else if (view === 'registry') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(false);
+  // Configuración de las secciones
+  const sections = [
+    {
+      id: 'overview',
+      title: 'Tribunal Faltas',
+      subtitle: 'Gestión de Infracciones',
+      description: 'Gestiona y controla todas las infracciones y contravenciones.',
+      image: Faltas,
+      features: [
+        'Registrar infracciones de personas físicas y jurídicas',
+        'Dar seguimiento a los procesos administrativos',
+        'Gestionar multas y sanciones',
+        'Generar reportes estadísticos de infracciones'
+      ]
+    },
+    {
+      id: 'registry',
+      title: 'Registro Infracción',
+      subtitle: 'Documentación de Faltas',
+      description: 'El proceso de registro de infracciones es completo y detallado.',
+      image: RegistryFalta,
+      features: [
+        'Identifica al infractor',
+        'Registra el tipo de contravención y circunstancias',
+        'Adjunta evidencias fotográficas o documentales',
+        'Establece la sanción correspondiente según normativa',
+        'Genera las notificaciones automáticas'
+      ]
     }
-  };
+  ];
+
+  const currentSectionData = sections.find(section => section.id === currentSection) || sections[0];
 
   return (
-    <section id="faltasSection" className="w-full h-screen bg-customGray relative overflow-hidden">
+    <section 
+      id="faltasSection" 
+      className="w-full h-full bg-customGray relative"
+      style={{ 
+        overflowY: 'hidden',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none'
+      }}
+    >
       <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
         textColor={slideColors.textColor}
@@ -46,123 +76,130 @@ export const FaltasSection = ({ setCurrentSection }) => {
         actionText="Haz click para conocer más →"
         onAnimationComplete={handleAnimationComplete}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto px-4"
-        >
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-36">
-              
-            <div className="w-full lg:w-1/5">
-              {!showRegistryInfo ? (
-                <motion.div
-                  key="initialContent"
-                  initial={{ x: 0 }}
-                  animate={{ x: 0 }}
-                  exit={{ opacity: 0, x: 0 }}
-                  transition={{ duration: 0.6 }}
+        {/* Navigation Tabs */}
+        <div className="bg-white shadow-lg absolute top-0 left-0 right-0 z-20">
+          <div className="container mx-auto px-4">
+            <div className="flex overflow-x-auto py-4 space-x-2">
+              {sections.map((section, index) => (
+                <motion.button
+                  key={section.id}
+                  onClick={() => setCurrentSectionState(section.id)}
+                  className={`flex-shrink-0 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    currentSection === section.id
+                      ? 'bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    <strong>Tribunal de Faltas</strong>
-                  </h1>
-                  
-                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Nuestro módulo de Tribunal de Faltas te permite administrar de manera eficiente todas las infracciones y contravenciones, tanto de tránsito como municipales, en un sistema centralizado.
-                  </h2>
-                  
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Con nuestra interfaz intuitiva, podrás:
-                  </p>
-                  
-                  <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                    <li className="mb-2">Registrar infracciones de personas físicas y jurídicas</li>
-                    <li className="mb-2">Dar seguimiento a los procesos administrativos</li>
-                    <li className="mb-2">Gestionar multas y sanciones</li>
-                    <li className="mb-2">Generar reportes estadísticos de infracciones</li>
-                  </ul>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="registryContent"
-                  initial={{ opacity: 0, x: 0 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0 }}
-                >
-                  <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    Registro Infracción
-                  </h3>
-                  
-                  <h3 className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    El proceso de registro de infracciones es completo y detallado, permitiéndote documentar toda la información necesaria para el seguimiento administrativo.
-                  </h3>
-                  
-                  <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                    <li className="mb-2">Identifica al infractor</li>
-                    <li className="mb-2">Registra el tipo de contravención y circunstancias</li>
-                    <li className="mb-2">Adjunta evidencias fotográficas o documentales</li>
-                    <li className="mb-2">Establece la sanción correspondiente según normativa</li>
-                    <li className="mb-2">Genera las notificaciones automáticas</li>
-                  </ul>
-                  
-                  <div className="flex flex-wrap gap-3">
-                    <button 
-                      className="custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                      onClick={() => handleViewChange('general')}
-                    >
-                      Volver al Inicio
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </div>
-            
-            <div className="w-full lg:w-6/5 hove">
-              {!showRegistryInfo ? (
-                <motion.div
-                  key="faltas"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                    <img 
-                      src={Faltas} 
-                      alt="Tribunal de Faltas" 
-                      className="w-full object-contain transform transition-transform duration-500"
-                      style={{ maxHeight: '85vh', minWidth: '100%' }}
-                    />
-                  </div>
-                  <button 
-                    className="mt-6 bg-customNobuColor text-white py-3 px-4 rounded transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                    onClick={() => setShowRegistryInfo(true)}
-                  >
-                    Ver registro de infracciones
-                  </button>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="registryImage"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                  <img 
-                    src={RegistryFalta} 
-                    alt="Registro de Infracciones" 
-                    className="w-full object-contain transform transition-transform duration-500"
-                    style={{ maxHeight: '85vh', minWidth: '100%' }}
-                  />
-                  </div>
-                </motion.div>
-              )}
+                  {section.title}
+                </motion.button>
+              ))}
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Content Section - Full Screen */}
+        <div className="h-full bg-customGray flex items-center pt-20" style={{ maxHeight: 'calc(100vh - 5rem)' }}>
+          <div className="w-full h-full px-8">
+            <motion.div
+              key={currentSection}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex h-full max-h-full"
+            >
+              {/* Content Panel - 1/4 */}
+              <div className="w-1/4 flex flex-col justify-center pr-8">
+                <div className="bg-white rounded-2xl shadow-2xl p-8">
+                  <div className="mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl flex items-center justify-center mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                      </svg>
+                    </div>
+                    <h2 className="text-2xl font-bold text-customNobuColor mb-3">
+                      {currentSectionData.title}
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      {currentSectionData.description}
+                    </p>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="space-y-3 mb-6">
+                    <h3 className="text-lg font-semibold text-customNobuColor mb-3">
+                      Características principales:
+                    </h3>
+                    {currentSectionData.features.map((feature, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-5 h-5 bg-customNobuGreen rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed">{feature}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap gap-3">
+                    {currentSection !== 'overview' && (
+                      <button
+                        onClick={() => {
+                          const currentIndex = sections.findIndex(s => s.id === currentSection);
+                          if (currentIndex > 0) {
+                            setCurrentSectionState(sections[currentIndex - 1].id);
+                          }
+                        }}
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 font-medium text-sm"
+                      >
+                        ← Anterior
+                      </button>
+                    )}
+                    {currentSection !== 'registry' && (
+                      <button
+                        onClick={() => {
+                          const currentIndex = sections.findIndex(s => s.id === currentSection);
+                          if (currentIndex < sections.length - 1) {
+                            setCurrentSectionState(sections[currentIndex + 1].id);
+                          }
+                        }}
+                        className="px-4 py-2 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium text-sm"
+                      >
+                        Siguiente →
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Panel - 3/4 */}
+              <div className="w-3/4 flex items-center justify-center">
+                <motion.div
+                  key={currentSectionData.image}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <img 
+                    src={currentSectionData.image} 
+                    alt={currentSectionData.title} 
+                    className="w-full h-auto max-h-full object-contain"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </SlideAnimation>
     </section>
   );

@@ -1,19 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Commerce from "../../assets/images/commerce.webp";
-import RegistryCommerce from "../../assets/images/registryCommerce.png";
-import MapCommerce from "../../assets/images/mapCommerce.png";
+import Analitic from "../../assets/images/analitic.png";
+import Analitic2 from "../../assets/images/analitic2.png";
 import SlideAnimation from '../SlideAnimation';
 
-export const CommerceSection = ({ setCurrentSection }) => {
+export const MediaSection = ({ setCurrentSection }) => {
   const [currentSection, setCurrentSectionState] = React.useState('overview');
   const [animationCompleted, setAnimationCompleted] = useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
   const slideColors = {
-    backgroundColor: "#2196F3", // Azul Nobu (customNobuColor)
-    textColor: "#FFFFFF", // Texto blanco para contraste con fondo azul
+    backgroundColor: "#1464A3", // Púrpura para faltas
+    textColor: "#FFFFFF", // Texto blanco para contraste con fondo
     buttonBackgroundColor: "#FFFFFF", // Botón blanco
     buttonIconColor: "#4A55A2" // Ícono azul
   };
@@ -27,50 +26,37 @@ export const CommerceSection = ({ setCurrentSection }) => {
   const sections = [
     {
       id: 'overview',
-      title: 'Módulo Comercios',
-      subtitle: 'Visión General',
-      description: 'Crea y ordena todos tus comercios en un solo lugar.',
-      image: Commerce,
+      title: 'Redes Sociales',
+      subtitle: 'Analisis de datos Redes Sociales',
+      description: 'Evalua mediante IA para generar graficos y evaluar parametros.',
+      image: Analitic,
       features: [
-        'Crear perfiles detallados para cada comercio',
-        'Tener una lista ordenada de todos tus negocios',
-        'Visualizar la ubicación de cada comercio',
-        'Interface intuitiva y fácil de usar'
+        'Generar graficos y evaluar parametros',
+        'Evaluar el comportamiento de los usuarios',
+        'Evaluar el comportamiento de los servicios',
+        'Evaluar parametros en redes sociales'
       ]
     },
     {
       id: 'registry',
-      title: 'Registro Comercios',
-      subtitle: 'Gestión de Datos',
-      description: 'El proceso de registro de comercios es sencillo y eficiente.',
-      image: RegistryCommerce,
+      title: 'Registro de datos mediante graficas',
+      subtitle: 'Documentación de datos',
+      description: 'El proceso de registro de datos es completo y detallado.',
+      image: Analitic2,
       features: [
-        'Accede a la sección "Registrar Comercio"',
-        'Completa los datos requeridos',
-        'Guarda los cambios para finalizar el registro',
-        'Validación automática de datos'
-      ]
-    },
-    {
-      id: 'map',
-      title: 'Mapa Ubicaciones',
-      subtitle: 'Visualización Geográfica',
-      description: 'Localiza y visualiza todos tus comercios desde una interfaz intuitiva.',
-      image: MapCommerce,
-      features: [
-        'Ubicar geográficamente todos tus comercios',
-        'Ver información detallada con un solo clic',
-        'Navegación interactiva del mapa',
-        'Filtros de búsqueda avanzados'
+        'Identifica al usuario',
+        'Evalua comentarios sobre el usuario segun emociones',
+        'Establece la clasificacion de los datos',
+        'Genera automaticamente las graficas y evalua parametros'
       ]
     }
   ];
 
   const currentSectionData = sections.find(section => section.id === currentSection) || sections[0];
 
-    return (
+  return (
     <section 
-      id="commerceSection" 
+      id="mediaSection" 
       className="w-full h-full bg-customGray relative"
       style={{ 
         overflowY: 'hidden',
@@ -84,8 +70,8 @@ export const CommerceSection = ({ setCurrentSection }) => {
         buttonBackgroundColor={slideColors.buttonBackgroundColor}
         buttonIconColor={slideColors.buttonIconColor}
         position="right"
-        title="Módulo Comercios"
-        description="Crea y ordena todos tus comercios en un solo lugar. Visualiza la ubicación de cada comercio en tu mapa con su ubicación precisa."
+        title="Módulo Social Media"
+        description="Evalua mediante IA las redes sociales para generar graficos y evaluar parametros."
         actionText="Haz click para conocer más →"
         onAnimationComplete={handleAnimationComplete}
       >
@@ -105,7 +91,7 @@ export const CommerceSection = ({ setCurrentSection }) => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {section.title.replace('Módulo ', '')}
+                  {section.title}
                 </motion.button>
               ))}
             </div>
@@ -128,7 +114,7 @@ export const CommerceSection = ({ setCurrentSection }) => {
                   <div className="mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl flex items-center justify-center mb-6">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                       </svg>
                     </div>
                     <h2 className="text-2xl font-bold text-customNobuColor mb-3">
@@ -177,7 +163,7 @@ export const CommerceSection = ({ setCurrentSection }) => {
                         ← Anterior
                       </button>
                     )}
-                    {currentSection !== 'map' && (
+                    {currentSection !== 'registry' && (
                       <button
                         onClick={() => {
                           const currentIndex = sections.findIndex(s => s.id === currentSection);
