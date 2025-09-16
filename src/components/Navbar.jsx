@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoColorVersion2 from '/Logo_Color_Version_1.svg';
 import { TailcastLogo } from "../assets/logos/TailcastLogo";
@@ -34,10 +34,10 @@ const dropdownItems = [
 ];
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleClickOutside = () => {
       if (isOpen) {
         setIsOpen(false);
@@ -58,7 +58,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full h-16 flex flex-col justify-center items-center sticky top-0  bg-customPrimary z-[9999] lg:backdrop-blur-xl shadow-lg">
+      <nav className="w-full h-16 flex flex-col justify-center items-center fixed top-0 left-0 bg-customPrimary z-[9999] lg:backdrop-blur-xl shadow-lg">
         <div className="2xl:w-[1280px] xl:w-10/12 w-11/12 flex justify-between items-center relative">
           <motion.div
             initial={{ opacity: 0 }}
@@ -158,7 +158,7 @@ export const Navbar = () => {
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
-            <div className="max-w-7xl mx-auto py-6 sticky top-0 z-[9999]">
+            <div className="max-w-7xl mx-auto py-6  top-0 z-[9999]">
               <div className="flex justify-end space-x-16 z-[9999]">
                 {dropdownItems.map((category) => (
                   <div key={category.category} className="flex flex-col items-left">

@@ -3,7 +3,7 @@ import { Hero } from './components/Hero';
 import { Espacios } from './components/Espaces';
 import { Modulos } from './components/Modulos';
 import { FeaturesDiagonal } from './components/FeaturesDiagonal';
-import { ClubSection } from './components/sections/ClubSection';
+import { ClubSection } from './components/sections/Club/ClubSection';
 import { PersonalSection } from './components/sections/PersonalSection';
 // Importa otros componentes de secciones según sea necesario
 

@@ -13,7 +13,7 @@ export const Hero = () => {
     >
       <div className="relative w-full flex lg:flex-row flex-col justify-between items-center pt-16 pb-32 px-4 lg:px-16 mt-8">
       {/* Decorative shapes */}
-    <div class="absolute top-0 left-0 w-64 h-64 bg-customNobuGreen opacity-50  -translate-x-32 -translate-y-32"></div>
+    <div class="absolute top-0 left-0 w-64 h-64 bg-customNobuGreen opacity-50  -translate-x-32 -translate-y-32 rotate-45"></div>
         {/* Lado izquierdo: Texto e icono */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center mt-14">
           <motion.div
@@ -21,11 +21,6 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-2xl lg:text-3xl xl:text-4xl mb-6 font-semibold">
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                La nueva forma de manejar tus datos.
-              </span>
-            </h2>
           </motion.div>
                 
           <motion.div
@@ -35,7 +30,7 @@ export const Hero = () => {
           >
             <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-wide mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                El futuro de tu empresa:
+                El futuro de tu <h2 className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">empresa:</h2>
               </span>
             </h1>
           </motion.div>
@@ -111,9 +106,12 @@ export const Hero = () => {
             className="w-4/5 md:w-3/4 lg:w-full xl:w-4/5 2xl:w-3/4 object-contain filter-bottom-shadow mt-12"
           />
         </motion.div>
-      </div>
 
-      <div className="custom-shape-divider-top-1665696661 w-full">
+      </div>
+      <div class="absolute bottom-0 w-96 h-96 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-50 translate-y-36 rotate-45 z-1"></div>
+
+
+      <div className="custom-shape-divider-top-1665696661 w-full  z-[9999]">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -123,8 +121,8 @@ export const Hero = () => {
         >
           <defs>
             <linearGradient id="gradiente" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 0.5 }} />
+              <stop offset="0%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 5 }} />
+              <stop offset="100%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 1 }} />
             </linearGradient>
           </defs>
           <path
