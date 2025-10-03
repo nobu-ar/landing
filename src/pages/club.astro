@@ -11,11 +11,24 @@ import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 ---
 
-<Layout title="Nobu Clubes - Módulo diseñado para clubes, lleva al gestion de todos tus lugares, actividades y la administracion de tu club">
+<Layout title="Nobu Clubes - Gestión integral para tu club, actividades y administración completa">
   <Navbar client:load />
-  <ClubSectionMain client:load />
-  <ClubSectionMiddle client:load />
-  <ClubSectionServices client:load />
+  
+  <!-- Sección Principal - Hero del Club -->
+  <section id="club-main" class="min-h-screen">
+    <ClubSectionMain client:load />
+  </section>
+  
+  <!-- Sección de Características y Funcionalidades -->
+  <section id="club-features" class="min-h-screen bg-gray-50">
+    <ClubSectionMiddle client:load />
+  </section>
+  
+  <!-- Sección del Sistema de Gestión -->
+  <section id="club-sistem" class="min-h-screen">
+    <ClubSectionServices client:load />
+  </section>
+  
   <ScrollUpButton client:load />
   <Footer />
 </Layout> 

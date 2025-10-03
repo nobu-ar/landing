@@ -16,7 +16,11 @@ const dropdownItems = [
   {
     category: "Gestion administrativa",
     items: [
-      { label: "Clubes", href: "/club" },
+      { 
+        label: "Clubes", 
+        href: "/club",
+
+      },
       { label: "Personal", href: "/personal" },
       //{ label: "Cupones", href: "/cupones" },
       { label: "Comercios", href: "/comercios" },
@@ -169,14 +173,38 @@ export const Navbar = () => {
                       // Para módulos, organizar en 2 columnas
                       <div className="grid grid-cols-3 gap-x-2 gap-y-5">
                         {category.items.map((item) => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            className="text-sm text-gray-600 hover:text-customNobuGreen transition-colors duration-200 whitespace-nowrap flex items-center"
-                          >
-                            <span className="w-1.5 h-1.5 bg-customNobuGreen rounded-full mr-2 flex-shrink-0"></span>
-                            {item.label}
-                          </a>
+                          <div key={item.label} className="flex flex-col">
+                            {item.hasSubmenu ? (
+                              <div className="group relative">
+                                <a
+                                  href={item.href}
+                                  className="text-sm text-gray-600 hover:text-customNobuGreen transition-colors duration-200 whitespace-nowrap flex items-center"
+                                >
+                                  <span className="w-1.5 h-1.5 bg-customNobuGreen rounded-full mr-2 flex-shrink-0"></span>
+                                  {item.label}
+                                </a>
+                                <div className="absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-[150px]">
+                                  {item.submenu.map((subItem) => (
+                                    <a
+                                      key={subItem.label}
+                                      href={subItem.href}
+                                      className="block px-3 py-2 text-sm text-gray-600 hover:text-customNobuGreen hover:bg-gray-50 transition-colors duration-200"
+                                    >
+                                      {subItem.label}
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            ) : (
+                              <a
+                                href={item.href}
+                                className="text-sm text-gray-600 hover:text-customNobuGreen transition-colors duration-200 whitespace-nowrap flex items-center"
+                              >
+                                <span className="w-1.5 h-1.5 bg-customNobuGreen rounded-full mr-2 flex-shrink-0"></span>
+                                {item.label}
+                              </a>
+                            )}
+                          </div>
                         ))}
                       </div>
                     ) : (

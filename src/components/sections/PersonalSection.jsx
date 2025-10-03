@@ -7,10 +7,12 @@ import EmployeeDetail from "../../assets/images/employeeDetail.png";
 import PersonalAttendance from "../../assets/images/personalAttendance.png";
 import EmployeeLicense from "../../assets/images/employeeLicense.png";
 import SlideAnimation from '../SlideAnimation';
+import { CalendarModal } from '../CalendarModal';
 
 export const PersonalSection = () => {
   const [currentSection, setCurrentSection] = React.useState('overview');
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
   const slideColors = {
@@ -219,6 +221,28 @@ export const PersonalSection = () => {
                       </button>
                     )}
                   </div>
+
+                  {/* Demo and Contact Buttons */}
+                  <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-gray-200">
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="px-6 py-3 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium text-sm flex items-center space-x-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                      </svg>
+                      <span>Agendar demo</span>
+                    </button>
+                    <button
+                      onClick={() => window.location.href = '/contact'}
+                      className="px-6 py-3 bg-white border-2 border-customNobuColor text-customNobuColor rounded-xl hover:bg-customNobuColor hover:text-white transition-all duration-300 font-medium text-sm flex items-center space-x-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <span>Contáctanos</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -242,6 +266,12 @@ export const PersonalSection = () => {
           </div>
         </div>
       </SlideAnimation>
+      
+      {/* Calendar Modal */}
+      <CalendarModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }; 
