@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Finance from "../../assets/images/finance.png";
@@ -5,12 +6,12 @@ import NewCreditFinance from "../../assets/images/newCreditFinance.png";
 import CashRegistryFinance from "../../assets/images/cashRegistryFinance.png";
 import ReportFinance from "../../assets/images/reportFinance.png";
 import SlideAnimation from '../SlideAnimation';
+import { CalendarModal } from '../CalendarModal';
 
 export const FinanceSection = ({ setCurrentSection }) => {
-  const [showRegistryInfo, setShowRegistryInfo] = useState(false);
-  const [showDetailInfo, setShowDetailInfo] = useState(false);
-  const [currentDetailView, setCurrentDetailView] = useState('credit');
+  const [currentSection, setCurrentSectionState] = React.useState('overview');
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
   const slideColors = {
@@ -25,28 +26,74 @@ export const FinanceSection = ({ setCurrentSection }) => {
     setAnimationCompleted(true);
   };
 
-  // Función para cambiar entre vistas
-  const handleViewChange = (view) => {
-    if (view === 'general') {
-      setShowRegistryInfo(false);
-      setShowDetailInfo(false);
-    } else if (view === 'credit') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(false);
-      setCurrentDetailView('credit');
-    } else if (view === 'cash') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(true);
-      setCurrentDetailView('cash');
-    } else if (view === 'report') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(true);
-      setCurrentDetailView('report');
+  // Configuración de las secciones
+  const sections = [
+    {
+      id: 'overview',
+      title: 'Módulo Finanzas',
+      subtitle: 'Gestión Financiera',
+      description: 'Controla y gestiona todas las transacciones financieras.',
+      image: Finance,
+      features: [
+        'Gestionar créditos y préstamos',
+        'Controlar cajas y movimientos diarios',
+        'Generar reportes financieros detallados',
+        'Interface intuitiva y fácil de usar'
+      ]
+    },
+    {
+      id: 'credit',
+      title: 'Nuevos Créditos',
+      subtitle: 'Gestión de Créditos',
+      description: 'Administra todos los productos crediticios de manera sencilla.',
+      image: NewCreditFinance,
+      features: [
+        'Configuración de líneas de crédito',
+        'Gestión de solicitudes y aprobaciones',
+        'Control de tasas de interés y plazos',
+        'Seguimiento de pagos automático'
+      ]
+    },
+    {
+      id: 'cash',
+      title: 'Registro de Caja',
+      subtitle: 'Control de Efectivo',
+      description: 'Mantén un control detallado de todos los movimientos de efectivo.',
+      image: CashRegistryFinance,
+      features: [
+        'Apertura y cierre de cajas',
+        'Registro de ingresos y egresos',
+        'Conciliación diaria de efectivo',
+        'Control de diferencias'
+      ]
+    },
+    {
+      id: 'report',
+      title: 'Reportes Financieros',
+      subtitle: 'Análisis y Reportes',
+      description: 'Genera informes detallados sobre todos los aspectos financieros.',
+      image: ReportFinance,
+      features: [
+        'Balance general y estado de resultados',
+        'Análisis de flujo de efectivo',
+        'Estadísticas de créditos y cobranzas',
+        'Exportación a diferentes formatos'
+      ]
     }
-  };
+  ];
+
+  const currentSectionData = sections.find(section => section.id === currentSection) || sections[0];
 
   return (
-    <section id="financeSection" className="w-full h-screen bg-customGray relative overflow-hidden">
+    <section 
+      id="financeSection" 
+      className="w-full h-full bg-customGray relative"
+      style={{ 
+        overflowY: 'hidden',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none'
+      }}
+    >
       <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
         textColor={slideColors.textColor}
@@ -58,195 +105,159 @@ export const FinanceSection = ({ setCurrentSection }) => {
         actionText="Haz click para conocer más →"
         onAnimationComplete={handleAnimationComplete}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto px-4"
-        >
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-36">
-              
-            <div className="w-full lg:w-1/5">
-              {!showRegistryInfo ? (
-                <motion.div
-                  key="initialContent"
-                  initial={{ x: 0 }}
-                  animate={{ x: 0 }}
-                  exit={{ opacity: 0, x: 0 }}
-                  transition={{ duration: 0.6 }}
+        {/* Navigation Tabs */}
+        <div className="bg-white shadow-lg absolute top-0 left-0 right-0 z-20">
+          <div className="container mx-auto px-4">
+            <div className="flex overflow-x-auto py-4 space-x-2">
+              {sections.map((section, index) => (
+                <motion.button
+                  key={section.id}
+                  onClick={() => setCurrentSectionState(section.id)}
+                  className={`flex-shrink-0 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    currentSection === section.id
+                      ? 'bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    <strong>Gestión Financiera</strong>
-                  </h1>
-                  
-                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Nuestro módulo de Finanzas te permite administrar de manera eficiente todos los aspectos económicos de tu empresa, desde transacciones diarias hasta reportes completos.
-                  </h2>
-                  
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Con nuestra interfaz intuitiva, podrás:
-                  </p>
-                  
-                  <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                    <li className="mb-2">Gestionar créditos y préstamos</li>
-                    <li className="mb-2">Controlar cajas y movimientos diarios</li>
-                    <li className="mb-2">Generar reportes financieros detallados</li>
-                  </ul>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="registryContent"
-                  initial={{ opacity: 0, x: 0 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0 }}
-                >
-                  {!showDetailInfo ? (
-                    <>
-                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                        Nuevos Créditos
-                      </h3>
-                      
-                      <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                        Administra todos los productos crediticios que ofreces a tus clientes de manera sencilla.
-                      </p>
-                      
-                      <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                        <li className="mb-2">Configuración de líneas de crédito</li>
-                        <li className="mb-2">Gestión de solicitudes y aprobaciones</li>
-                        <li className="mb-2">Control de tasas de interés y plazos</li>
-                      </ul>
-                      
-                      <div className="flex flex-wrap gap-3">
-                        <button 
-                          className="bg-customNobuColor rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                          onClick={() => handleViewChange('cash')}
-                        >
-                          Ver Registro de Caja
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {currentDetailView === 'cash' ? (
-                        <>
-                          <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                            Registro de Caja
-                          </h3>
-                          
-                          <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                            Mantén un control detallado de todos los movimientos de efectivo diarios en tu empresa.
-                          </p>
-                          
-                          <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                            <li className="mb-2">Apertura y cierre de cajas</li>
-                            <li className="mb-2">Registro de ingresos y egresos</li>
-                            <li className="mb-2">Conciliación diaria de efectivo</li>
-                          </ul>
-                        </>
-                      ) : (
-                        <>
-                          <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                            Reportes Financieros
-                          </h3>
-                          
-                          <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                            Genera informes detallados sobre todos los aspectos financieros de tu negocio.
-                          </p>
-                          
-                          <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                            <li className="mb-2">Balance general y estado de resultados</li>
-                            <li className="mb-2">Análisis de flujo de efectivo</li>
-                            <li className="mb-2">Estadísticas de créditos y cobranzas</li>
-                          </ul>
-                        </>
-                      )}
-                      
-                      <div className="flex flex-wrap gap-3">
-                        <button 
-                          className="custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                          onClick={() => handleViewChange('general')}
-                        >
-                          Volver al Inicio                        
-                        </button>
-                        {currentDetailView === 'cash' && (
-                          <button 
-                            className="bg-customNobuColor rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                            onClick={() => handleViewChange('report')}
-                          >
-                            Ver Reportes
-                          </button>
-                        )}
-                      </div>
-                    </>
-                  )}
-                </motion.div>
-              )}
-            </div>
-            
-            <div className="w-full lg:w-6/5 hove">
-              {!showRegistryInfo ? (
-                <motion.div
-                  key="finance"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                    <img 
-                      src={Finance} 
-                      alt="Gestión Financiera" 
-                      className="w-full object-contain transform transition-transform duration-500"
-                      style={{ maxHeight: '85vh', minWidth: '100%' }}
-                    />
-                  </div>
-                  <button 
-                    className="mt-6 bg-customNobuColor text-white py-3 px-4 rounded transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                    onClick={() => setShowRegistryInfo(true)}
-                  >
-                    Ver gestión de créditos
-                  </button>
-                </motion.div>
-              ) : !showDetailInfo ? (
-                <motion.div
-                  key="creditImage"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                  <img 
-                    src={NewCreditFinance} 
-                    alt="Nuevos Créditos" 
-                    className="w-full object-contain transform transition-transform duration-500"
-                    style={{ maxHeight: '85vh', minWidth: '100%' }}
-                  />
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="detailImage"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                  <img 
-                    src={currentDetailView === 'cash' ? CashRegistryFinance : ReportFinance} 
-                    alt={currentDetailView === 'cash' ? "Registro de Caja" : "Reportes Financieros"} 
-                    className="w-full object-contain transform transition-transform duration-500"
-                    style={{ maxHeight: '85vh', minWidth: '100%' }}
-                  />
-                  </div>
-                </motion.div>
-              )}
+                  {section.title.replace('Módulo ', '')}
+                </motion.button>
+              ))}
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Content Section - Full Screen */}
+        <div className="h-full bg-customGray flex items-center pt-20" style={{ maxHeight: 'calc(100vh - 5rem)' }}>
+          <div className="w-full h-full px-8">
+            <motion.div
+              key={currentSection}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex h-full max-h-full"
+            >
+              {/* Content Panel - 1/4 */}
+              <div className="w-1/4 flex flex-col justify-center pr-8">
+                <div className="bg-white rounded-2xl shadow-2xl p-8">
+                  <div className="mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl flex items-center justify-center mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <h2 className="text-2xl font-bold text-customNobuColor mb-3">
+                      {currentSectionData.title}
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      {currentSectionData.description}
+                    </p>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="space-y-3 mb-6">
+                    <h3 className="text-lg font-semibold text-customNobuColor mb-3">
+                      Características principales:
+                    </h3>
+                    {currentSectionData.features.map((feature, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-5 h-5 bg-customNobuGreen rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed">{feature}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap gap-3">
+                    {currentSection !== 'overview' && (
+                      <button
+                        onClick={() => {
+                          const currentIndex = sections.findIndex(s => s.id === currentSection);
+                          if (currentIndex > 0) {
+                            setCurrentSectionState(sections[currentIndex - 1].id);
+                          }
+                        }}
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 font-medium text-sm"
+                      >
+                        ← Anterior
+                      </button>
+                    )}
+                    {currentSection !== 'report' && (
+                      <button
+                        onClick={() => {
+                          const currentIndex = sections.findIndex(s => s.id === currentSection);
+                          if (currentIndex < sections.length - 1) {
+                            setCurrentSectionState(sections[currentIndex + 1].id);
+                          }
+                        }}
+                        className="px-4 py-2 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium text-sm"
+                      >
+                        Siguiente →
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Demo and Contact Buttons */}
+                  <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-gray-200">
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="px-6 py-3 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium text-sm flex items-center space-x-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                      </svg>
+                      <span>Agendar demo</span>
+                    </button>
+                    <button
+                      onClick={() => window.location.href = '/contact'}
+                      className="px-6 py-3 bg-white border-2 border-customNobuColor text-customNobuColor rounded-xl hover:bg-customNobuColor hover:text-white transition-all duration-300 font-medium text-sm flex items-center space-x-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <span>Contáctanos</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Panel - 3/4 */}
+              <div className="w-3/4 flex items-center justify-center">
+                <motion.div
+                  key={currentSectionData.image}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <img 
+                    src={currentSectionData.image} 
+                    alt={currentSectionData.title} 
+                    className="w-full h-auto max-h-full object-contain"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </SlideAnimation>
+      
+      {/* Calendar Modal */}
+      <CalendarModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }; 

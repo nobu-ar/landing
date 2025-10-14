@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { NavbarModulos } from "../components/NavbarModulos.jsx";
+import { Navbar } from "../components/Navbar.jsx";
 import { FaltasSection } from "../components/sections/FaltasSection.jsx";
 import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton";
@@ -12,9 +12,7 @@ import "../styles/Diagonals.css";
 ---
 
 <Layout title="Nobu Faltas - Módulo diseñado para mantener registro de multas de tu municipio ya sean vehiculares o contravenciones">
-  <NavbarModulos client:load />
+  <Navbar client:load />
   <FaltasSection client:load />
-  <Modulos client:load />
-  <FeaturesDiagonal client:load />
   <Footer />
 </Layout> 

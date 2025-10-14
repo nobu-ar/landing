@@ -9,61 +9,55 @@ export const Hero = () => {
   return (
     <section
       className="lg:mb-16 w-full flex flex-wrap bg-customGray" 
-      id="home"
+      id="inicio"
     >
       <div className="relative w-full flex lg:flex-row flex-col justify-between items-center pt-16 pb-32 px-4 lg:px-16 mt-8">
+      {/* Decorative shapes */}
+    <div class="absolute top-0 left-0 w-64 h-64 bg-customNobuGreen opacity-50  -translate-x-32 -translate-y-32 rotate-45"></div>
         {/* Lado izquierdo: Texto e icono */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-center mt-14">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center mt-14">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="text-customNobuColor text-sm xl:text-lg 2xl:text-xl sm:text-base mb-4">
-              <h2>Descubre la nueva plataforma para gestionar tu empresa.</h2> 
-            </div>
           </motion.div>
                 
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
           >
-            <div className="text-3xl 2xl:text-6xl lg:text-5xl xl:text-5xl font-bold tracking-wide mb-6 text-customNobuColor">
-              <h1>Nobu tu nueva Identidad Digital</h1>
-            </div>
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-wide mb-4">
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                El futuro de tu <h2 className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">empresa:</h2>
+              </span>
+            </h1>
           </motion.div>
-            
+
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1}}
-            className="flex justify-center w-full my-6"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex justify-center w-full"
           >
-            <a href="#espacios" aria-label="Espacios">
-              <motion.img 
-                src={LogoPrincipal} 
-                alt="Gestiona tu empresa con Nobu" 
-                className={`w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40 cursor-pointer transition-all duration-300 ${isHovered ? 'scale-110' : ''}`}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              />
-            </a>
           </motion.div>
           
-          <div className="text-customNobuColor font-bold text-2xl sm:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl mt-6">
+          <div className="text-5xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mt-4">
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 3.0 }}
+              transition={{ duration: 0.5, delay: 1.0 }}
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent"
             >
               Me
             </motion.span>
 
-            <motion.span className="text-customNobuGreen"
+            <motion.span 
+              className="text-customNobuGreen"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 2.0 }}
+              transition={{ duration: 0.5, delay: 1.2, repeat: Infinity, repeatType: "reverse" }}
             >
               no
             </motion.span>
@@ -71,33 +65,30 @@ export const Hero = () => {
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 3.0 }}
+              transition={{ duration: 0.5, delay: 1.4 }}
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent"
             >
               s
             </motion.span>
 
             <span>&nbsp;</span>
 
-            <motion.span className="text-customNobuGreen"
+            <motion.span 
+              className="text-customNobuGreen"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 2.0 }}
+              transition={{ duration: 0.5, delay: 1.6, repeat: Infinity, repeatType: "reverse" }}
             >
               bu
             </motion.span>
+            
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 3.0 }}
+              transition={{ duration: 0.5, delay: 1.8 }}
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent"
             >
               rocracia 
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 4 }}
-            >
-              ... menos vueltas.
             </motion.span>
           </div>
         </div>
@@ -115,9 +106,12 @@ export const Hero = () => {
             className="w-4/5 md:w-3/4 lg:w-full xl:w-4/5 2xl:w-3/4 object-contain filter-bottom-shadow mt-12"
           />
         </motion.div>
-      </div>
 
-      <div className="custom-shape-divider-top-1665696661 w-full">
+      </div>
+      <div class="absolute bottom-0 w-96 h-96 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-50 translate-y-36 rotate-45 z-1"></div>
+
+
+      <div className="custom-shape-divider-top-1665696661 w-full  z-[9999]">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +121,8 @@ export const Hero = () => {
         >
           <defs>
             <linearGradient id="gradiente" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 0.5 }} />
+              <stop offset="0%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 5 }} />
+              <stop offset="100%" style={{ stopColor: "rgb(32, 92, 250)", stopOpacity: 1 }} />
             </linearGradient>
           </defs>
           <path

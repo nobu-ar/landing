@@ -1,19 +1,11 @@
+import React from 'react';
 import { motion } from 'framer-motion';
+import iaImage from '../assets/images/ia.png';
 
 export const Modulos = () => {
-  // Módulos para mostrar 
-  const modules = [
-    { id: 'club', name: 'Club', color: '#16005B', path: '/club' },
-    { id: 'personal', name: 'Personal', color: '#4CAF50', path: '/personal' },
-    { id: 'mutual', name: 'Mutual', color: '#FF9800', path: '/mutual' },
-    { id: 'comercios', name: 'Comercios', color: '#2196F3', path: '/comercios' },
-    { id: 'finanzas', name: 'Finanzas', color: '#3146F3', path: '/finanzas' },
-    { id: 'faltas', name: 'Faltas', color: '#7441A3', path: '/faltas' },
-  ];
-
   return (
     <section 
-      className="w-full h-auto sm:h-auto lg:h-screen md:h-auto py-16 md:py-12 bg-customGray relative mt-32" 
+      className="w-full h-auto sm:h-auto lg:h-auto py-16 md:py-12 bg-customGray relative mt-52" 
       id="modulos"
     >
       <motion.div
@@ -23,55 +15,83 @@ export const Modulos = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="text-center mb-8 md:mb-12 pt-4 md:pt-8">
-          <h2 className="custom-block-subtitle text-center mb-2 text-customNobuColor text-sm md:text-base">
-            Módulos Especializados
-          </h2>
-          <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 md:mb-6 text-customNobuColor">
-            <strong>Contamos con módulos diseñados para cubrir todas tus necesidades</strong>
-          </h2>
-          <span className="max-w-2xl mx-auto text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
-            Estamos aquí para ayudarte a mantener todo en orden con un sistema modular que simplifica tu trabajo. Es un forma facil de 
-            tener todo organizado y accesible para ti y para tus empleados. Con ellos en tu espacio, tus empleados podran tener acceso 
-            a uno, algunos o todos los modulos que necesites siempre y cuando los hayas invitado y les des los permisos que requieran. <strong>¿Cuales pueden ser esto permisos? </strong> 
-            Podes darle permisos de solo lectura, o podrias darle permisos para que puedan modificar datos o incluso de administrar el modulo completo.
-          </span>
+        {/* Sección de IA */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mb-16 md:mb-20"
+        >
+          <div className="text-center mb-12">
+    <div class="absolute  w-64 h-64 bg-customNobuGreen opacity-50  -translate-x-32 -translate-y-42"></div>
 
-          <p className="text-center mb-8 md:mb-12 text-sm md:text-base text-customNobuColor px-2">
-           Haz click en alguno de nuestros <strong>modulos</strong> para ver mas detalles.
-          </p>
-        </div>
-        
-        {/* Contenedor de módulos adaptable */}
-        <div className="w-full mb-8 md:mb-12">
-          {/* Grid responsivo mejorado */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 lg:gap-6">
-            {modules.map((module) => (
-              <a href={module.path} key={module.id} style={{ textDecoration: 'none' }}>
-                <motion.div
-                  style={{ 
-                    backgroundColor: module.color
-                  }}
-                  className="aspect-square w-full p-2 sm:p-3 md:p-4 text-white text-center cursor-pointer shadow-lg flex flex-col justify-center items-center rounded"
-                  whileHover={{ 
-                    scale: 1.05,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  {module.id === 'personal' ? (
-                    <div className="text-white">
-                      <h3 className="text-sm sm:text-base md:text-lg font-bold">{module.name}</h3>
-                    </div>
-                  ) : (
-                    <>
-                      <h3 className="text-sm sm:text-base md:text-lg font-bold">{module.name}</h3>
-                    </>
-                  )}
-                </motion.div>
-              </a>
-            ))}
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 text-customNobuColor">
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                El Futuro es Inteligente
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-customNobuColor max-w-4xl mx-auto leading-relaxed">
+              En Nobu, la inteligencia artificial no es solo una característica, es el corazón de nuestro sistema. 
+              Transformamos datos en decisiones inteligentes que impulsan tu negocio hacia el futuro.
+            </p>
           </div>
-        </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Imagen de IA */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex justify-center lg:justify-start"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-xl"></div>
+                <img 
+                  src={iaImage} 
+                  alt="Inteligencia Artificial Nobu" 
+                  className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white/10"
+                />
+              </div>
+            </motion.div>
+
+            {/* Contenido de IA */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="space-y-6"
+            >
+              <div className="space-y-4">
+                <h3 className="text-xl md:text-2xl font-bold text-customNobuColor">
+                  IA que Aprende y Evoluciona
+                </h3>
+                <p className="text-customNobuColor leading-relaxed">
+                  Nuestro sistema de IA analiza patrones y optimiza 
+                  cada aspecto de tu operación. Desde la gestión de inventario hasta el analisis de tus clientes, 
+                  crea esquemas, filtros y analisis de datos para tomar decisiones inteligentes.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                  <h4 className="font-semibold text-customNobuColor mb-2">Predicción Inteligente</h4>
+                  <p className="text-sm text-customNobuColor/80">
+                    Anticipa demandas y optimiza recursos con algoritmos avanzados
+                  </p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                  <h4 className="font-semibold text-customNobuColor mb-2">Automatización Total</h4>
+                  <p className="text-sm text-customNobuColor/80">
+                    Reduce tareas manuales y enfócate en lo que realmente importa
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -1,20 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Mutual from "../../assets/images/mutual.png";
-import AffiliateDetail from "../../assets/images/affiliateDetail.png";
-import RegistryMutual from "../../assets/images/registryMutual.png";
+import Analitic from "../../assets/images/analitic.png";
+import Analitic2 from "../../assets/images/analitic2.png";
 import SlideAnimation from '../SlideAnimation';
 import { CalendarModal } from '../CalendarModal';
 
-export const MutualSection = ({ setCurrentSection }) => {
+export const MediaSection = ({ setCurrentSection }) => {
   const [currentSection, setCurrentSectionState] = React.useState('overview');
   const [animationCompleted, setAnimationCompleted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
   const slideColors = {
-    backgroundColor: "#FF9800", // Naranjo para mutuales
+    backgroundColor: "#1464A3", // Púrpura para faltas
     textColor: "#FFFFFF", // Texto blanco para contraste con fondo
     buttonBackgroundColor: "#FFFFFF", // Botón blanco
     buttonIconColor: "#4A55A2" // Ícono azul
@@ -29,41 +28,28 @@ export const MutualSection = ({ setCurrentSection }) => {
   const sections = [
     {
       id: 'overview',
-      title: 'Módulo Mutuales',
-      subtitle: 'Gestión de Mutuales',
-      description: 'Gestiona todos los beneficios y coberturas de salud para tus afiliados.',
-      image: Mutual,
+      title: 'Redes Sociales',
+      subtitle: 'Analisis de datos Redes Sociales',
+      description: 'Evalua mediante IA para generar graficos y evaluar parametros.',
+      image: Analitic,
       features: [
-        'Gestionar planes de cobertura médica',
-        'Administrar afiliaciones de empleados',
-        'Controlar prestaciones y reintegros',
-        'Interface intuitiva y fácil de usar'
+        'Generar graficos y evaluar parametros',
+        'Evaluar el comportamiento de los usuarios',
+        'Evaluar el comportamiento de los servicios',
+        'Evaluar parametros en redes sociales'
       ]
     },
     {
       id: 'registry',
-      title: 'Registro Afiliaciones',
-      subtitle: 'Gestión de Afiliados',
-      description: 'Gestiona las afiliaciones de tus empleados de manera sencilla.',
-      image: RegistryMutual,
+      title: 'Registro de datos mediante graficas',
+      subtitle: 'Documentación de datos',
+      description: 'El proceso de registro de datos es completo y detallado.',
+      image: Analitic2,
       features: [
-        'Registro de nuevos afiliados',
-        'Actualización de datos de los beneficiarios',
-        'Gestión documental médica',
-        'Control de estados de afiliación'
-      ]
-    },
-    {
-      id: 'affiliate',
-      title: 'Detalles Afiliado',
-      subtitle: 'Información Detallada',
-      description: 'Visualiza toda la información de los afiliados y sus beneficios.',
-      image: AffiliateDetail,
-      features: [
-        'Historial médico completo',
-        'Reintegros y prestaciones',
-        'Coberturas disponibles',
-        'Estado de cuenta detallado'
+        'Identifica al usuario',
+        'Evalua comentarios sobre el usuario segun emociones',
+        'Establece la clasificacion de los datos',
+        'Genera automaticamente las graficas y evalua parametros'
       ]
     }
   ];
@@ -72,7 +58,7 @@ export const MutualSection = ({ setCurrentSection }) => {
 
   return (
     <section 
-      id="mutualSection" 
+      id="mediaSection" 
       className="w-full h-full bg-customGray relative"
       style={{ 
         overflowY: 'hidden',
@@ -85,9 +71,9 @@ export const MutualSection = ({ setCurrentSection }) => {
         textColor={slideColors.textColor}
         buttonBackgroundColor={slideColors.buttonBackgroundColor}
         buttonIconColor={slideColors.buttonIconColor}
-        position="right" 
-        title="Módulo de Mutuales"
-        description="Gestiona todos los beneficios, coberturas de salud, pagos y deudas para tus afiliados con nuestro sistema integrado de mutuales."
+        position="right"
+        title="Módulo Social Media"
+        description="Evalua mediante IA las redes sociales para generar graficos y evaluar parametros."
         actionText="Haz click para conocer más →"
         onAnimationComplete={handleAnimationComplete}
       >
@@ -107,7 +93,7 @@ export const MutualSection = ({ setCurrentSection }) => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {section.title.replace('Módulo ', '')}
+                  {section.title}
                 </motion.button>
               ))}
             </div>
@@ -130,7 +116,7 @@ export const MutualSection = ({ setCurrentSection }) => {
                   <div className="mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl flex items-center justify-center mb-6">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                       </svg>
                     </div>
                     <h2 className="text-2xl font-bold text-customNobuColor mb-3">
@@ -179,7 +165,7 @@ export const MutualSection = ({ setCurrentSection }) => {
                         ← Anterior
                       </button>
                     )}
-                    {currentSection !== 'affiliate' && (
+                    {currentSection !== 'registry' && (
                       <button
                         onClick={() => {
                           const currentIndex = sections.findIndex(s => s.id === currentSection);

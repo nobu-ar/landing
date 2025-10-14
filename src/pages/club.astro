@@ -1,20 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { NavbarModulos } from "../components/NavbarModulos.jsx";
-import { ClubSection } from "../components/sections/ClubSection.jsx";
+import { Navbar } from "../components/Navbar.jsx";
+import { ClubSectionMain } from "../components/sections/Club/ClubSectionMain.jsx";
+import { ClubSectionMiddle } from "../components/sections/Club/ClubSectionMiddle.jsx";
+import { ClubSectionServices } from "../components/sections/Club/ClubSectionServices.jsx";
 import { Footer } from "../components/Footer.jsx";
 import { ScrollUpButton } from "../components/ScrollUpButton";
-import { Modulos } from "../components/Modulos.jsx";
-import { FeaturesDiagonal } from "../components/FeaturesDiagonal.jsx";
 
 import "../styles/Theme.css";
 import "../styles/Diagonals.css";
 ---
 
-<Layout title="Nobu Clubes - Módulo diseñado para clubes, lleva al gestion de todos tus lugares, actividades y la administracion de tu club">
-  <NavbarModulos client:load />
-  <ClubSection client:load />
-  <Modulos client:load />
-  <FeaturesDiagonal client:load />
+<Layout title="Nobu Clubes - Gestión integral para tu club, actividades y administración completa">
+  <Navbar client:load />
+  
+  <!-- Sección Principal - Hero del Club -->
+  <section id="club-main" class="min-h-screen">
+    <ClubSectionMain client:load />
+  </section>
+  
+  <!-- Sección de Características y Funcionalidades -->
+  <section id="club-features" class="min-h-screen bg-gray-50">
+    <ClubSectionMiddle client:load />
+  </section>
+  
+  <!-- Sección del Sistema de Gestión -->
+  <section id="club-sistem" class="min-h-screen">
+    <ClubSectionServices client:load />
+  </section>
+  
+  <ScrollUpButton client:load />
   <Footer />
 </Layout> 

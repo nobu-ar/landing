@@ -1,0 +1,485 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar.jsx";
+import { Footer } from "../components/Footer.jsx";
+import "../styles/Theme.css";
+import "../styles/Diagonals.css";
+---
+
+<Layout title="Contact">
+  <!-- EmailJS CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <Navbar client:load/>
+
+  <!-- Hero Section -->
+  <section class="relative pt-10 pb-16 bg-gradient-to-br from-customPrimary via-customTercery to-customNobuGreen overflow-hidden">
+    <div class="absolute top-0 left-0 w-64 h-64 bg-customNobuGreen opacity-10  -translate-x-32 -translate-y-32"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-customNobuColor opacity-10  translate-x-48 translate-y-48"></div>
+    <div class="relative z-10 container mx-auto px-4 text-center mt-16">
+      <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-pulse">¡Comencemos!</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+        Estamos aquí para ayudarte. Contáctanos y descubre cómo podemos impulsar tu negocio.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 bg-customGray">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+
+        <!-- Contact Form -->
+        <div class="lg:w-3/5">
+          <div class="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 transform hover:scale-105 transition-transform duration-300">
+            <h2 class="text-3xl font-bold text-customNobuColor mb-2">Envíanos tu consulta</h2>
+            <p class="text-gray-600 mb-8">Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
+
+            <!-- IMPORTANTE: id + name para EmailJS -->
+            <form id="contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="group">
+                  <input
+                    class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:border-customNobuColor focus:bg-white transition-all duration-300 group-hover:border-customNobuGreen"
+                    id="user_name"
+                    name="user_name"
+                    type="text"
+                    placeholder="Nombre"
+                    maxlength="50"
+                    minlength="2"
+                    pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+"
+                    title="Solo se permiten letras y espacios"
+                    required
+                  />
+                </div>
+                <div class="group">
+                  <input
+                    class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:border-customNobuColor focus:bg-white transition-all duration-300 group-hover:border-customNobuGreen"
+                    id="user_surname"
+                    name="user_surname"
+                    type="text"
+                    placeholder="Apellido"
+                    maxlength="50"
+                    minlength="2"
+                    pattern="[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+"
+                    title="Solo se permiten letras y espacios"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="group">
+                  <input
+                    class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:border-customNobuColor focus:bg-white transition-all duration-300 group-hover:border-customNobuGreen"
+                    id="user_email"
+                    name="user_email"
+                    type="email"
+                    placeholder="Email"
+                    maxlength="254"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    title="Ingrese un email válido"
+                    required
+                  />
+                </div>
+                <div class="group">
+                  <input
+                    class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:border-customNobuColor focus:bg-white transition-all duration-300 group-hover:border-customNobuGreen"
+                    id="user_phone"
+                    name="user_phone"
+                    type="tel"
+                    placeholder="Teléfono"
+                    maxlength="20"
+                    pattern="[\+]?[0-9\s\-\(\)]+"
+                    title="Solo números, espacios, guiones y paréntesis"
+                  />
+                </div>
+              </div>
+
+              <div class="group">
+                <input
+                  class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:border-customNobuColor focus:bg-white transition-all duration-300 group-hover:border-customNobuGreen"
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="Asunto"
+                  maxlength="150"
+                  minlength="3"
+                  required
+                />
+              </div>
+
+              <div class="group">
+                <textarea
+                  class="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:border-customNobuColor focus:bg-white transition-all duration-300 group-hover:border-customNobuGreen resize-none"
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                  maxlength="2000"
+                  minlength="10"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- honeypot opcional (anti-spam) -->
+              <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" />
+
+              <div class="text-center">
+                <button
+                  id="send-btn"
+                  class="px-8 py-4 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white font-bold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-customNobuGreen/30"
+                  type="submit"
+                >
+                  Enviar mensaje
+                </button>
+                <p id="form-status" class="mt-3 text-sm text-gray-600"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="lg:w-2/5">
+          <div class="bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl shadow-2xl p-8 lg:p-12 text-white">
+            <h3 class="text-3xl font-bold mb-8">Información de contacto</h3>
+            <div class="space-y-8">
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-lg mb-1">Email</h4>
+                  <p class="text-white/90">info@nobu.com.ar</p>
+                </div>
+              </div>
+
+              <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                  <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Tucuman, Argentina</h4>
+                    <p class="text-white/90">+54 9 3815 09-1406</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 m-4 max-w-md w-full transform scale-95 transition-transform duration-300">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-customNobuColor mb-4">¡Mensaje enviado!</h3>
+        <p class="text-gray-600 mb-6">Nos estaremos comunicando, gracias por contactarnos!</p>
+        <button 
+          id="close-modal" 
+          class="px-6 py-3 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white font-bold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+
+  <!-- Script de envío con EmailJS -->
+  <script is:inline>
+    const SERVICE_ID = 'service_2m9s84d';
+    const TEMPLATE_ID = 'template_bphuiwl';
+    const PUBLIC_KEY = 'IHu5ZgpQHTOJPtnP_';
+
+    // Función para inicializar cuando EmailJS esté disponible
+    function initializeEmailJS() {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init(PUBLIC_KEY);
+        return true;
+      }
+      return false;
+    }
+
+    // Función para sanitizar inputs
+    function sanitizeInput(input) {
+      if (typeof input !== 'string') return '';
+      
+      // Remover caracteres potencialmente peligrosos
+      return input
+        .replace(/[<>&"']/g, '') // Remover caracteres HTML peligrosos
+        .replace(/javascript:/gi, '') // Remover javascript:
+        .replace(/on\w+\s*=/gi, '') // Remover event handlers
+        .replace(/script/gi, '') // Remover la palabra script
+        .replace(/\x00/g, '') // Remover null bytes
+        .trim()
+        .substring(0, 5000); // Límite máximo absoluto
+    }
+
+    // Función para validar email
+    function validateEmail(email) {
+      const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return re.test(email) && email.length <= 254;
+    }
+
+    // Función para validar teléfono
+    function validatePhone(phone) {
+      if (!phone) return true; // Es opcional
+      const re = /^[\+]?[0-9\s\-\(\)]{7,20}$/;
+      return re.test(phone);
+    }
+
+    // Función para validar nombre
+    function validateName(name) {
+      const re = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]{2,50}$/;
+      return re.test(name);
+    }
+
+    // Funciones para el sistema de estrangulamiento con localStorage
+    const THROTTLE_KEY = 'nobu_contact_throttle';
+    const THROTTLE_TIME = 60000; // 1 minuto en milisegundos
+
+    function getLastSubmissionTime() {
+      try {
+        const stored = localStorage.getItem(THROTTLE_KEY);
+        return stored ? parseInt(stored) : 0;
+      } catch (e) {
+        return 0;
+      }
+    }
+
+    function setLastSubmissionTime(timestamp) {
+      try {
+        localStorage.setItem(THROTTLE_KEY, timestamp.toString());
+      } catch (e) {
+        // Si localStorage no está disponible, continuar sin throttling
+      }
+    }
+
+    function isThrottled() {
+      const lastSubmission = getLastSubmissionTime();
+      const now = Date.now();
+      return (now - lastSubmission) < THROTTLE_TIME;
+    }
+
+    function cleanOldThrottleData() {
+      try {
+        const lastSubmission = getLastSubmissionTime();
+        const now = Date.now();
+        if (now - lastSubmission > THROTTLE_TIME * 2) {
+          localStorage.removeItem(THROTTLE_KEY);
+        }
+      } catch (e) {
+        // Ignorar errores de localStorage
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Inicializar EmailJS cuando esté disponible
+      const initRetries = 10;
+      let retryCount = 0;
+      
+      function tryInit() {
+        if (initializeEmailJS() || retryCount >= initRetries) {
+          console.log('EmailJS inicializado correctamente');
+        } else {
+          retryCount++;
+          setTimeout(tryInit, 100);
+        }
+      }
+      
+      tryInit();
+
+      // Limpiar datos antiguos de throttling al cargar la página
+      cleanOldThrottleData();
+
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('send-btn');
+      const status = document.getElementById('form-status');
+      const modal = document.getElementById('success-modal');
+      const closeModalBtn = document.getElementById('close-modal');
+      const defaultText = btn.innerText;
+
+      console.log('Elementos encontrados:', { form, btn, status, modal, closeModalBtn });
+
+      // Event listener para cerrar modal
+      closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.querySelector('div').classList.remove('scale-100');
+        modal.querySelector('div').classList.add('scale-95');
+      });
+
+      // Cerrar modal al hacer clic fuera
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModalBtn.click();
+        }
+      });
+
+      // Función para mostrar modal
+      function showSuccessModal() {
+        console.log('Mostrando modal de éxito');
+        if (modal) {
+          modal.classList.remove('hidden');
+          setTimeout(() => {
+            const modalContent = modal.querySelector('div');
+            if (modalContent) {
+              modalContent.classList.remove('scale-95');
+              modalContent.classList.add('scale-100');
+            }
+          }, 10);
+        } else {
+          console.error('Modal no encontrado');
+        }
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const now = Date.now();
+
+        // honeypot simple
+        if (form.website && form.website.value) return;
+
+        // Obtener y sanitizar valores
+        const formData = new FormData(form);
+        const userName = sanitizeInput(formData.get('user_name'));
+        const userSurname = sanitizeInput(formData.get('user_surname'));
+        const userEmail = sanitizeInput(formData.get('user_email'));
+        const userPhone = sanitizeInput(formData.get('user_phone'));
+        const subject = sanitizeInput(formData.get('subject'));
+        const message = sanitizeInput(formData.get('message'));
+
+        // Validaciones adicionales
+        if (!validateName(userName)) {
+          status.textContent = 'El nombre solo puede contener letras y espacios (2-50 caracteres).';
+          return;
+        }
+
+        if (!validateName(userSurname)) {
+          status.textContent = 'El apellido solo puede contener letras y espacios (2-50 caracteres).';
+          return;
+        }
+
+        if (!validateEmail(userEmail)) {
+          status.textContent = 'Por favor ingresa un email válido.';
+          return;
+        }
+
+        if (userPhone && !validatePhone(userPhone)) {
+          status.textContent = 'El teléfono contiene caracteres no válidos.';
+          return;
+        }
+
+        if (subject.length < 3 || subject.length > 150) {
+          status.textContent = 'El asunto debe tener entre 3 y 150 caracteres.';
+          return;
+        }
+
+        if (message.length < 10 || message.length > 2000) {
+          status.textContent = 'El mensaje debe tener entre 10 y 2000 caracteres.';
+          return;
+        }
+
+        // Verificar contenido sospechoso
+        const suspiciousPatterns = [
+          /(?:union|select|insert|delete|update|drop|create|alter|exec|script)/gi,
+          /(?:javascript|vbscript|onload|onerror|onclick)/gi,
+          /<(?:script|iframe|object|embed|link|meta)/gi
+        ];
+
+        const allText = [userName, userSurname, userEmail, userPhone, subject, message].join(' ');
+        if (suspiciousPatterns.some(pattern => pattern.test(allText))) {
+          status.textContent = 'Se detectó contenido no permitido en el formulario.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.innerText = 'Enviando...';
+        status.textContent = '';
+
+        // Verificar throttling con localStorage
+        const throttled = isThrottled();
+        
+        if (throttled) {
+          // Si está siendo throttled, simular envío exitoso sin enviar realmente
+          console.log('Envío throttled - simulando éxito para UX');
+          
+          // Simular tiempo de envío
+          setTimeout(() => {
+            form.reset();
+            btn.innerText = '¡Enviado!';
+            showSuccessModal();
+            
+            setTimeout(() => {
+              btn.disabled = false;
+              btn.innerText = defaultText;
+              status.textContent = '';
+            }, 3000);
+          }, Math.random() * 1000 + 1000); // Entre 1-2 segundos para parecer real
+          
+          return;
+        }
+
+        try {
+          // Verificar que EmailJS esté disponible
+          if (typeof emailjs === 'undefined') {
+            throw new Error('EmailJS no está disponible');
+          }
+
+          // Crear objeto con datos sanitizados que coincidan con el template de EmailJS
+          const templateParams = {
+            user_name: userName,
+            user_surname: userSurname,
+            user_email: userEmail,
+            user_phone: userPhone || 'No proporcionado',
+            subject: subject,
+            message: message
+          };
+
+          console.log('Enviando email con parámetros:', templateParams);
+
+          await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+          
+          console.log('Email enviado exitosamente');
+          
+          // Guardar timestamp del envío exitoso
+          setLastSubmissionTime(now);
+          
+          form.reset();
+          btn.innerText = '¡Enviado!';
+          
+          // Mostrar modal en lugar del texto
+          showSuccessModal();
+          
+        } catch (err) {
+          console.error('Error al enviar:', err);
+          btn.innerText = 'Reintentar';
+          status.textContent = 'No pudimos enviar el mensaje. Intenta nuevamente.';
+        } finally {
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.innerText = defaultText;
+            status.textContent = '';
+          }, 3000);
+        }
+      });
+    });
+  </script>
+</Layout>

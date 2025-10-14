@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Personal from "../../assets/images/personal.png";
@@ -6,12 +7,12 @@ import EmployeeDetail from "../../assets/images/employeeDetail.png";
 import PersonalAttendance from "../../assets/images/personalAttendance.png";
 import EmployeeLicense from "../../assets/images/employeeLicense.png";
 import SlideAnimation from '../SlideAnimation';
+import { CalendarModal } from '../CalendarModal';
 
 export const PersonalSection = () => {
-  const [showRegistryInfo, setShowRegistryInfo] = useState(false);
-  const [showDetailInfo, setShowDetailInfo] = useState(false);
-  const [currentDetailView, setCurrentDetailView] = useState('detail');
+  const [currentSection, setCurrentSection] = React.useState('overview');
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
   const slideColors = {
@@ -26,33 +27,87 @@ export const PersonalSection = () => {
     setAnimationCompleted(true);
   };
 
-  // Función para cambiar entre vistas
-  const handleViewChange = (view) => {
-    if (view === 'general') {
-      setShowRegistryInfo(false);
-      setShowDetailInfo(false);
-    } else if (view === 'registry') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(false);
-    } else if (view === 'detail') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(true);
-      setCurrentDetailView('detail');
-    } else if (view === 'attendance') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(true);
-      setCurrentDetailView('attendance');
-    } else if (view === 'license') {
-      setShowRegistryInfo(true);
-      setShowDetailInfo(true);
-      setCurrentDetailView('license');
+  // Configuración de las secciones
+  const sections = [
+    {
+      id: 'overview',
+      title: 'Módulo Personal',
+      subtitle: 'Gestión de Personal',
+      description: 'Gestiona toda la información de tus empleados en un solo lugar.',
+      image: Personal,
+      features: [
+        'Crear perfiles detallados para cada empleado',
+        'Asignar permisos y roles específicos',
+        'Mantener actualizada toda la documentación necesaria',
+        'Interface intuitiva y fácil de usar'
+      ]
+    },
+    {
+      id: 'registry',
+      title: 'Registro Personal',
+      subtitle: 'Registro de Empleados',
+      description: 'El proceso de registro de personal es sencillo y eficiente.',
+      image: RegistryPersonal,
+      features: [
+        'Accede a la sección "Nuevo Empleado" en el panel principal',
+        'Completa los datos personales y de contacto requeridos',
+        'Adjunta la documentación necesaria (DNI, CV, etc.)',
+        'Validación automática de datos'
+      ]
+    },
+    {
+      id: 'detail',
+      title: 'Detalles Empleado',
+      subtitle: 'Información Personal',
+      description: 'Visualiza toda la información relevante de tus empleados.',
+      image: EmployeeDetail,
+      features: [
+        'Datos personales y contacto',
+        'Historial laboral completo',
+        'Capacitaciones y certificaciones',
+        'Documentación digitalizada'
+      ]
+    },
+    {
+      id: 'attendance',
+      title: 'Control Asistencia',
+      subtitle: 'Seguimiento de Horarios',
+      description: 'Gestiona eficientemente la asistencia de todo tu personal.',
+      image: PersonalAttendance,
+      features: [
+        'Registro de entradas y salidas',
+        'Justificación de ausencias',
+        'Reportes de puntualidad',
+        'Control de horas trabajadas'
+      ]
+    },
+    {
+      id: 'license',
+      title: 'Licencias',
+      subtitle: 'Gestión de Permisos',
+      description: 'Administra todas las licencias y permisos de tu personal.',
+      image: EmployeeLicense,
+      features: [
+        'Solicitud y aprobación de vacaciones',
+        'Licencias médicas y especiales',
+        'Historial de ausencias justificadas',
+        'Calendario de disponibilidad'
+      ]
     }
-  };
+  ];
+
+  const currentSectionData = sections.find(section => section.id === currentSection) || sections[0];
 
   return (
-    <section id="personalSection" className="w-full h-screen bg-customGray relative overflow-hidden">
-      
-
+    <section 
+      id="personalSection" 
+      className="w-full h-full bg-customGray relative"
+      style={{ 
+        overflowY: 'hidden',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none'
+      }}
+    >
       <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
         textColor={slideColors.textColor}
@@ -64,237 +119,159 @@ export const PersonalSection = () => {
         actionText="Haz click para conocer más →"
         onAnimationComplete={handleAnimationComplete}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="container mx-auto px-4"
-        >
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-36">
-              
-            <div className="w-full lg:w-1/5">
-              {!showRegistryInfo ? (
-                <motion.div
-                  key="initialContent"
-                  initial={{ x: 0 }}
-                  animate={{ x: 0 }}
-                  exit={{ opacity: 0, x: 0 }}
-                  transition={{ duration: 0.6 }}
+        {/* Navigation Tabs */}
+        <div className="bg-white shadow-lg absolute top-0 left-0 right-0 z-20">
+          <div className="container mx-auto px-4">
+            <div className="flex overflow-x-auto py-4 space-x-2">
+              {sections.map((section, index) => (
+                <motion.button
+                  key={section.id}
+                  onClick={() => setCurrentSection(section.id)}
+                  className={`flex-shrink-0 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    currentSection === section.id
+                      ? 'bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <h1 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                    Gestión Personal
-                  </h1>
-                  
-                  <h2 className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Nuestro módulo de Personal te permite administrar de manera eficiente toda la información de tus empleados. Mantén un registro completo de datos personales, roles y responsabilidades.
-                  </h2>
-                  
-                  <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                    Con nuestra interfaz intuitiva, podrás:
-                  </p>
-                  
-                  <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                    <li className="mb-2">Crear perfiles detallados para cada empleado</li>
-                    <li className="mb-2">Asignar permisos y roles específicos</li>
-                    <li className="mb-2">Mantener actualizada toda la documentación necesaria</li>
-                  </ul>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="registryContent"
-                  initial={{ opacity: 0, x: 0 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0 }}
-                >
-                  {!showDetailInfo ? (
-                    <>
-                      <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                        Registro
-                      </h3>
-                      
-                      <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                        El proceso de registro de personal es sencillo y eficiente con nuestro sistema.
-                      </p>
-                      
-                      <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                        <li className="mb-2">Accede a la sección "Nuevo Empleado" en el panel principal</li>
-                        <li className="mb-2">Completa los datos personales y de contacto requeridos</li>
-                        <li className="mb-2">Adjunta la documentación necesaria (DNI, CV, etc.)</li>
-                      </ul>
-                      
-                      <div className="flex flex-wrap gap-3">
-                        <button 
-                          className="bg-customNobuColor rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                          onClick={() => handleViewChange('detail')}
-                        >
-                          Ver Detalles
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      {currentDetailView === 'detail' && (
-                        <>
-                          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                            Detalles del Empleado
-                          </h2>
-                          
-                          <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                            Visualiza toda la información relevante de tus empleados en un solo lugar.
-                          </p>
-                          
-                          <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                            <li className="mb-2">Datos personales y contacto</li>
-                            <li className="mb-2">Historial laboral completo</li>
-                            <li className="mb-2">Capacitaciones y certificaciones</li>
-                          </ul>
-                        </>
-                      )}
-                      
-                      {currentDetailView === 'attendance' && (
-                        <>
-                          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                            Control de Asistencia
-                          </h2>
-                          
-                          <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                            Gestiona eficientemente la asistencia de todo tu personal.
-                          </p>
-                          
-                          <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                            <li className="mb-2">Registro de entradas y salidas</li>
-                            <li className="mb-2">Justificación de ausencias</li>
-                            <li className="mb-2">Reportes de puntualidad</li>
-                          </ul>
-                        </>
-                      )}
-                      
-                      {currentDetailView === 'license' && (
-                        <>
-                          <h3 className="text-3xl lg:text-5xl font-bold mb-6 text-customNobuColor">
-                            Licencias
-                          </h3>
-                          
-                          <p className="text-lg mb-6 text-customNobuColor leading-relaxed">
-                            Administra todas las licencias y permisos de tu personal de forma organizada.
-                          </p>
-                          
-                          <ul className="list-disc pl-6 mb-8 text-customNobuColor">
-                            <li className="mb-2">Solicitud y aprobación de vacaciones</li>
-                            <li className="mb-2">Licencias médicas y especiales</li>
-                            <li className="mb-2">Historial de ausencias justificadas</li>
-                          </ul>
-                        </>
-                      )}
-                      
-                      <div className="flex flex-wrap gap-3">
-                        {currentDetailView === 'license' && (
-                          <button 
-                            className="custom-button-colored rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                            onClick={() => handleViewChange('general')}
-                          >
-                            Volver al Inicio
-                          </button>
-                        )}
-                        {currentDetailView === 'detail' && (
-                          <button 
-                            className="bg-customNobuColor rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                            onClick={() => handleViewChange('attendance')}
-                          >
-                            Ver Asistencia
-                          </button>
-                        )}
-                        {currentDetailView === 'attendance' && (
-                          <button 
-                            className="bg-customNobuColor rounded py-2 px-5 text-white transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                            onClick={() => handleViewChange('license')}
-                          >
-                            Ver Licencias
-                          </button>
-                        )}
-                      </div>
-                    </>
-                  )}
-                </motion.div>
-              )}
-            </div>
-            
-            <div className="w-full lg:w-6/5 hove">
-              {!showRegistryInfo ? (
-                <motion.div
-                  key="personal"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                    <img 
-                      src={Personal} 
-                      alt="Gestión de Personal" 
-                      className="w-full object-contain transform transition-transform duration-500"
-                      style={{ maxHeight: '85vh', minWidth: '100%' }}
-                    />
-                  </div>
-                  <button 
-                    className="mt-6 bg-customNobuColor text-white py-3 px-4 rounded transition-all duration-300 shadow-lg hover:scale-105 cursor-pointer flex justify-center items-center"
-                    onClick={() => setShowRegistryInfo(true)}
-                  >
-                    Ver proceso de registro
-                  </button>
-                </motion.div>
-              ) : !showDetailInfo ? (
-                <motion.div
-                  key="registryImage"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                  <img 
-                    src={RegistryPersonal} 
-                    alt="Registro de Personal" 
-                    className="w-full object-contain transform transition-transform duration-500"
-                    style={{ maxHeight: '85vh', minWidth: '100%' }}
-                  />
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="detailImage"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0 }}
-                  className="border-hidden drop-shadow-2xl overflow-hidden rounded-lg w-full"
-                >
-                  <div className="overflow-hidden rounded-lg w-full">
-                  <img 
-                    src={
-                      currentDetailView === 'detail' 
-                        ? EmployeeDetail 
-                        : currentDetailView === 'attendance'
-                          ? PersonalAttendance
-                          : EmployeeLicense
-                    } 
-                    alt={
-                      currentDetailView === 'detail'
-                        ? "Detalles del Empleado"
-                        : currentDetailView === 'attendance'
-                          ? "Control de Asistencia"
-                          : "Licencias y Permisos"
-                    } 
-                    className="w-full object-contain transform transition-transform duration-500"
-                    style={{ maxHeight: '85vh', minWidth: '100%' }}
-                  />
-                  </div>
-                </motion.div>
-              )}
+                  {section.title.replace('Módulo ', '')}
+                </motion.button>
+              ))}
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Content Section - Full Screen */}
+        <div className="h-full bg-customGray flex items-center pt-20" style={{ maxHeight: 'calc(100vh - 5rem)' }}>
+          <div className="w-full h-full px-8">
+            <motion.div
+              key={currentSection}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex h-full max-h-full"
+            >
+              {/* Content Panel - 1/4 */}
+              <div className="w-1/4 flex flex-col justify-center pr-8">
+                <div className="bg-white rounded-2xl shadow-2xl p-8">
+                  <div className="mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl flex items-center justify-center mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                      </svg>
+                    </div>
+                    <h2 className="text-2xl font-bold text-customNobuColor mb-3">
+                      {currentSectionData.title}
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      {currentSectionData.description}
+                    </p>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="space-y-3 mb-6">
+                    <h3 className="text-lg font-semibold text-customNobuColor mb-3">
+                      Características principales:
+                    </h3>
+                    {currentSectionData.features.map((feature, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-5 h-5 bg-customNobuGreen rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                        <p className="text-gray-700 text-sm leading-relaxed">{feature}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap gap-3">
+                    {currentSection !== 'overview' && (
+                      <button
+                        onClick={() => {
+                          const currentIndex = sections.findIndex(s => s.id === currentSection);
+                          if (currentIndex > 0) {
+                            setCurrentSection(sections[currentIndex - 1].id);
+                          }
+                        }}
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all duration-300 font-medium text-sm"
+                      >
+                        ← Anterior
+                      </button>
+                    )}
+                    {currentSection !== 'license' && (
+                      <button
+                        onClick={() => {
+                          const currentIndex = sections.findIndex(s => s.id === currentSection);
+                          if (currentIndex < sections.length - 1) {
+                            setCurrentSection(sections[currentIndex + 1].id);
+                          }
+                        }}
+                        className="px-4 py-2 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium text-sm"
+                      >
+                        Siguiente →
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Demo and Contact Buttons */}
+                  <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-gray-200">
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="px-6 py-3 bg-gradient-to-r from-customNobuGreen to-customNobuColor text-white rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 font-medium text-sm flex items-center space-x-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                      </svg>
+                      <span>Agendar demo</span>
+                    </button>
+                    <button
+                      onClick={() => window.location.href = '/contact'}
+                      className="px-6 py-3 bg-white border-2 border-customNobuColor text-customNobuColor rounded-xl hover:bg-customNobuColor hover:text-white transition-all duration-300 font-medium text-sm flex items-center space-x-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      <span>Contáctanos</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image Panel - 3/4 */}
+              <div className="w-3/4 flex items-center justify-center">
+                <motion.div
+                  key={currentSectionData.image}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <img 
+                    src={currentSectionData.image} 
+                    alt={currentSectionData.title} 
+                    className="w-full h-auto max-h-full object-contain"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </SlideAnimation>
+      
+      {/* Calendar Modal */}
+      <CalendarModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }; 
