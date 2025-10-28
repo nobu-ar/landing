@@ -40,18 +40,19 @@ const dropdownItems = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = React.useState(false);
+  const navRef = React.useRef(null);
 
   React.useEffect(() => {
-    const handleClickOutside = () => {
-      if (isOpen) {
+    const handleClickOutside = (event) => {
+      if (isOpen && navRef.current && !navRef.current.contains(event.target)) {
         setIsOpen(false);
+        setMobileDropdownOpen(false);
       }
     };
-
-    document.addEventListener("click", handleClickOutside);
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -62,7 +63,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full h-16 flex flex-col justify-center items-center fixed top-0 left-0 bg-customPrimary z-[9999] lg:backdrop-blur-xl shadow-lg">
+      <nav ref={navRef} className="w-full h-16 flex flex-col justify-center items-center fixed top-0 left-0 bg-customPrimary z-[9999] lg:backdrop-blur-xl shadow-lg">
         <div className="2xl:w-[1280px] xl:w-10/12 w-11/12 flex justify-between items-center relative">
           <motion.div
             initial={{ opacity: 0 }}
@@ -70,7 +71,7 @@ export const Navbar = () => {
             transition={{ duration: 0.3 }}
             exit={{ opacity: 0 }}
           >
-            <a className="navbar-link" href="#inicio" aria-label="Inicio">
+            <a className="navbar-link" href="/#inicio" aria-label="Inicio">
               <div className="flex justify-start grow basis-0">
                 <div className="text-white mr-2 text-6xl">
                   <img src={LogoColorVersion2} alt="Nobu" className="w-10 h-10 navbar-place" />
@@ -122,26 +123,67 @@ export const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 3, duration: 0.9 }}
-              animate={{ opacity: 1, duration: 0.3 }}
-              transition={{ duration: 0.3 }}
-              exit={{ opacity: 3, duration: 5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed top-16 left-0 w-full z-[9998]"
+              onClick={(e) => e.stopPropagation()}
             >
-              <div
-                className="flex flex-col mt-16 lg:hidden absolute top-4 left-0  bg-customTercery z-50 w-full 
-        items-center gap-10 pb-10 border-y border-solid border-customDarkBg3
-        "
-              >
-                {navbarLinks.map(({ label, href, ariaLabel }) => (
-                  <a
-                    key={href}
-                    className="navbar-link"
-                    href={href}
-                    onClick={() => setIsOpen(false)}
-                    aria-label={ariaLabel}
-                  >
-                    {label}
-                  </a>
+              <div className="bg-customWhite w-full flex flex-col items-center gap-6 py-8 border-t border-solid border-customDarkBg3">
+                {navbarLinks.map(({ label, href, ariaLabel, hasDropdown }) => (
+                  hasDropdown ? (
+                    <div key={label} className="w-full max-w-md px-4">
+                      <button
+                        type="button"
+                        className="navbar-link w-full flex items-center justify-center gap-2 text-center !text-blue-600 lg:text-inherit"
+                        onClick={(e) => { e.stopPropagation(); setMobileDropdownOpen((prev) => !prev); }}
+                        aria-label={ariaLabel}
+                      >
+                        <span>{label}</span>
+                        <span className={`transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`}>▾</span>
+                      </button>
+                      <AnimatePresence>
+                        {mobileDropdownOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="mt-3 flex flex-col gap-3"
+                          >
+                            {dropdownItems.map((category) => (
+                              <div key={category.category} className="w-full">
+                                <div className="text-sm font-semibold text-customNobuColor text-center mb-1">{category.category}</div>
+                                <div className="grid grid-cols-2 gap-2 justify-items-center">
+                                  {category.items.map((item) => (
+                                    <a
+                                      key={item.label}
+                                      href={item.href}
+                                      className="text-sm text-gray-700 hover:text-customNobuGreen text-center"
+                                      onClick={() => { setIsOpen(false); setMobileDropdownOpen(false); }}
+                                    >
+                                      {item.label}
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <a
+                      key={href}
+                      className="navbar-link w-full text-center !text-blue-600 lg:text-inherit"
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      aria-label={ariaLabel}
+                    >
+                      {label}
+                    </a>
+                  )
                 ))}
               </div>
             </motion.div>

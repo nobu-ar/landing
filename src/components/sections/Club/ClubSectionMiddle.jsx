@@ -106,10 +106,10 @@ const whyUs = [
 
 export const ClubSectionMiddle = () => {
   return (
-    <section id="clubSectionMiddle" className="relative w-full bg-transparent overflow-hidden">
+    <section id="clubSectionMiddle" className="relative w-full bg-transparent overflow-hidden mt-16 sm:mt-20">
       {/* Contenedor principal en grilla (sin absolute para layout) */}
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-[85vh]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center min-h-[70vh] lg:min-h-[85vh]">
           {/* Columna izquierda: ¿Por qué elegir Nobu? */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}

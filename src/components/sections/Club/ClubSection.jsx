@@ -6,9 +6,9 @@ import { ClubSectionServices } from "./ClubSectionServices";
 export const ClubSection = () => {
   return (
     <>
-      <ClubSectionMain />
-      <ClubSectionMiddle />
       <ClubSectionServices />
+      <ClubSectionMiddle />
+      <ClubSectionMain />
     </>
   );
 };

@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import LogoPrincipal from "/LogoPrincipal.svg";
 import CelularNobu2 from "../assets/images/celularNobu2.png";
 
 export const Hero = () => {
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section
-      className="lg:mb-16 w-full flex flex-wrap bg-customGray" 
+      className="lg:mb-16 w-full flex flex-wrap bg-customGray relative overflow-hidden min-h-[85vh] lg:min-h-screen" 
       id="inicio"
     >
-      <div className="relative w-full flex lg:flex-row flex-col justify-between items-center pt-16 pb-32 px-4 lg:px-16 mt-8">
+      <div className="relative w-full max-w-7xl mx-auto flex lg:flex-row flex-col justify-between items-center gap-8 lg:gap-16 xl:gap-24 pt-24 pb-40 px-4 sm:px-6 lg:px-16 mt-8">
       {/* Decorative shapes */}
-    <div class="absolute top-0 left-0 w-64 h-64 bg-customNobuGreen opacity-50  -translate-x-32 -translate-y-32 rotate-45"></div>
+    <div className="hidden md:block absolute top-0 left-0 w-64 h-64 bg-customNobuGreen opacity-50  -translate-x-32 -translate-y-32 rotate-45"></div>
         {/* Lado izquierdo: Texto e icono */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center mt-14">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left justify-center mt-14 lg:pr-8 xl:pr-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,7 +41,7 @@ export const Hero = () => {
           >
           </motion.div>
           
-          <div className="text-5xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mt-4">
+          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-7xl font-bold mt-4">
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -98,20 +96,20 @@ export const Hero = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full lg:w-1/2 mt-8 lg:mt-0 flex items-center justify-center"
+          className="w-full lg:w-1/2 mt-8 lg:mt-0 flex items-center justify-center lg:pl-4 xl:pl-8"
         >
           <img 
             src={CelularNobu2} 
             alt="Aplicacion mobil nobu" 
-            className="w-4/5 md:w-3/4 lg:w-full xl:w-4/5 2xl:w-3/4 object-contain filter-bottom-shadow mt-12"
+            className="w-auto max-w-full h-[42vh] md:h-[45vh] lg:h-[50vh] xl:h-[55vh] 2xl:h-[60vh] object-contain filter-bottom-shadow mt-12"
           />
         </motion.div>
 
       </div>
-      <div class="absolute bottom-0 w-96 h-96 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-50 translate-y-36 rotate-45 z-1"></div>
+      <div className="hidden md:block absolute bottom-0 left-0 w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-[28rem] xl:h-[28rem] 2xl:w-[32rem] 2xl:h-[32rem] bg-gradient-to-r from-blue-600 to-cyan-500 opacity-40 translate-y-10 translate-x-0 rotate-45 z-0 pointer-events-none"></div>
 
 
-      <div className="custom-shape-divider-top-1665696661 w-full  z-[9999]">
+      <div className="custom-shape-divider-top-1665696661 absolute bottom-0 left-0 w-full pointer-events-none z-10">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"

@@ -11,13 +11,13 @@ export const ClubSectionMain = () => {
   return (
     <section
       id="clubSectionMain"
-      className="relative w-full bg-customWhite overflow-hidden"
+      className="relative w-full bg-customWhite overflow-hidden mt-16 sm:mt-20"
     >
       {/* Fondo sutil en degradé usando tu paleta */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-customWhite via-customGray/30 to-customSecondary/10" />
 
       {/* Contenido: layout fluido y responsivo */}
-      <div className="mx-auto flex min-h-[90vh] flex-col lg:flex-row items-center lg:items-stretch max-w-7xl px-6 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24 relative z-10">
+      <div className="mx-auto flex min-h-[90vh] flex-col lg:flex-row items-center lg:items-stretch max-w-7xl px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-24 relative z-10">
         {/* Izquierda: Título + CTA */}
         <div className="flex-1 flex flex-col justify-center">
           {/* Eyebrow + Subtítulo */}
@@ -79,9 +79,9 @@ export const ClubSectionMain = () => {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="flex items-center justify-center mt-12 lg:mt-0 lg:ml-8 w-1/3"
+          className="flex items-center justify-center mt-12 lg:mt-0 lg:ml-8 w-full lg:w-1/2"
         >
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md sm:max-w-lg">
             <div className="rounded-3xl border border-customGrayBorder bg-white/95 backdrop-blur-sm shadow-2xl p-6 sm:p-8 relative overflow-hidden">
               {/* Header con icono animado */}
               <div className="flex items-center justify-center mb-8">
