@@ -11,7 +11,7 @@ export const ClubSectionServices = () => {
   return (
     <section
       id="clubSectionServices"
-      className="relative w-full bg-customWhite"
+      className="relative w-full bg-customWhite mt-16 sm:mt-20"
     >
       {/* Fondo con corte diagonal */}
       <motion.div
@@ -29,7 +29,7 @@ export const ClubSectionServices = () => {
       </motion.div>
 
       {/* Contenido */}
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-24">
         {/* Header comprimido y elegante */}
         <div className="mb-8 sm:mb-10 text-center">
           <motion.span
@@ -52,7 +52,7 @@ export const ClubSectionServices = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="rounded-3xl border border-customGrayBorder bg-white/95 backdrop-blur-md shadow-2xl"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-6 sm:p-10 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-5 sm:p-8 lg:p-12">
             {/* Columna izquierda: features */}
             <div className="space-y-5">
               {[

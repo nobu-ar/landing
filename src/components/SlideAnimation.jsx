@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa"; // Importamos el icono de flecha
 
@@ -36,16 +36,16 @@ export const SlideAnimation = ({
   actionText = "Haz clic en la flecha para continuar"
 }) => {
   // Estado para controlar si el slide está expandido o no
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = React.useState(false);
   
   // Estado para controlar si el slide es visible o no
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = React.useState(true);
   
   // Estado para controlar si ya mostró el contenido
-  const [showContent, setShowContent] = useState(false);
+  const [showContent, setShowContent] = React.useState(false);
 
   // Efecto para ocultar el slide después de un tiempo cuando está expandido
-  useEffect(() => {
+  React.useEffect(() => {
     let timerId;
     
     if (expanded) {
@@ -96,10 +96,10 @@ export const SlideAnimation = ({
   };
 
   return (
-    <div className="relative w-full h-screen">
+    <div className={`relative w-full ${visible ? 'h-screen' : 'h-auto'}`}>
       {/* Contenido principal que solo se muestra cuando termina la animación */}
       {showContent && (
-        <div className="w-full h-screen absolute top-0 left-0 right-0 bottom-0 overflow-auto">
+        <div className="w-full">
           {children}
         </div>
       )}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import Commerce from "../../assets/images/commerce.webp";
 import RegistryCommerce from "../../assets/images/registryCommerce.png";
 import MapCommerce from "../../assets/images/mapCommerce.png";
@@ -9,8 +8,8 @@ import { CalendarModal } from '../CalendarModal';
 
 export const CommerceSection = ({ setCurrentSection }) => {
   const [currentSection, setCurrentSectionState] = React.useState('overview');
-  const [animationCompleted, setAnimationCompleted] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [animationCompleted, setAnimationCompleted] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   
   // Definimos los colores personalizados para la animación en esta sección
   const slideColors = {
@@ -73,12 +72,7 @@ export const CommerceSection = ({ setCurrentSection }) => {
     return (
     <section 
       id="commerceSection" 
-      className="w-full h-full bg-customGray relative"
-      style={{ 
-        overflowY: 'hidden',
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none'
-      }}
+      className="w-full bg-customGray relative mt-16 sm:mt-20"
     >
       <SlideAnimation 
         backgroundColor={slideColors.backgroundColor}
@@ -115,18 +109,18 @@ export const CommerceSection = ({ setCurrentSection }) => {
         </div>
 
         {/* Content Section - Full Screen */}
-        <div className="h-full bg-customGray flex items-center pt-20" style={{ maxHeight: 'calc(100vh - 5rem)' }}>
-          <div className="w-full h-full px-8">
+        <div className="bg-customGray flex items-start pt-28 pb-8">
+          <div className="w-full h-full px-4 sm:px-6 lg:px-8">
             <motion.div
               key={currentSection}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex h-full max-h-full"
+              className="flex flex-col lg:flex-row h-full max-h-full gap-8"
             >
               {/* Content Panel - 1/4 */}
-              <div className="w-1/4 flex flex-col justify-center pr-8">
-                <div className="bg-white rounded-2xl shadow-2xl p-8">
+              <div className="w-full lg:w-1/3 flex flex-col justify-center lg:pr-8 order-1 lg:order-none">
+                <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
                   <div className="mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-customNobuColor to-customNobuGreen rounded-2xl flex items-center justify-center mb-6">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,18 +213,18 @@ export const CommerceSection = ({ setCurrentSection }) => {
               </div>
 
               {/* Image Panel - 3/4 */}
-              <div className="w-3/4 flex items-center justify-center">
+              <div className="w-full lg:w-2/3 flex items-center justify-center order-2 lg:order-none">
                 <motion.div
                   key={currentSectionData.image}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="w-full h-full flex items-center justify-center"
+                  className="w-full h-auto flex items-center justify-center"
                 >
                   <img 
                     src={currentSectionData.image} 
                     alt={currentSectionData.title} 
-                    className="w-full h-auto max-h-full object-contain"
+                    className="w-full max-w-full h-auto object-contain"
                   />
                 </motion.div>
               </div>

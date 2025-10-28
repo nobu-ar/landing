@@ -25,8 +25,7 @@ export const FeaturesDiagonal = () => {
   ];
 
   return (
-    <section className="lg:mb-16 flex-col justify-center items-center bg-customGray 2xl:w-full xl:w-auto md:w-auto sm:w-auto mx-auto"
-      id="aboutus">
+    <section className="lg:mb-16 w-full bg-customGray relative overflow-hidden" id="aboutus">
         <div className="custom-shape-divider-bottom-1665696614">
           <svg
             data-name="Layer 1"
@@ -49,8 +48,8 @@ export const FeaturesDiagonal = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="bg-customGray lg:pt-22 lg:pb-12 lg:flex-row flex flex-col mx-auto mt-20 p-3 px-8">
-            <div className="lg:w-1/2 flex justify-center items-center">
+          <div className="bg-customGray lg:pt-22 lg:pb-12 flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl mx-auto mt-20 gap-8 px-4 sm:px-6 lg:px-16">
+            <div className="w-full lg:w-1/2 flex justify-center items-center">
               <img 
                 src={inicioNobu} 
                 alt="Inicio Nobu" 
@@ -61,11 +60,11 @@ export const FeaturesDiagonal = () => {
                 }}
               />
             </div>
-            <div className="lg:w-1/2 flex flex-col lg:mx-unset mx-auto">
-              <span className="justify-center items-center text-center custom-block-subtitle mb-4">  
+            <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left lg:mx-unset mx-auto">
+              <span className="text-center custom-block-subtitle mb-4">  
                 Sobre Nosotros
               </span>
-              <h2 className="2xl:text-5xl sm:text-2xl mt-6 mb-8 text-2xl lg:text-4xl custom-block-big-title sm:w-auto mx-auto xs:justify-center">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl mt-6 mb-8 custom-block-big-title w-full">
                 <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                   Innovación Argentina para el Futuro Digital
                 </span>
@@ -107,7 +106,7 @@ export const FeaturesDiagonal = () => {
         </motion.div>
 
 
-      <div className="justify-between flex flex-col tex-center items-center mx-auto">
+      <div className="justify-between flex flex-col text-center items-center w-full max-w-7xl px-4 sm:px-6 lg:px-16 mx-auto">
         {isModalOpen && (
         <InvitationModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         )}
