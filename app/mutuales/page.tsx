@@ -6,6 +6,21 @@ import {
   MutualesPlansSection,
   MutualesBookingSection,
 } from "@/components/mutuales";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Plataforma para Mutuales",
+  description: "Plataforma completa para administrar afiliados, servicios de salud, subsidios y trámites con total transparencia. Portal digital para afiliados.",
+  keywords: ["software mutuales", "gestión afiliados", "subsidios", "portal mutual", "servicios salud", "Argentina"],
+  openGraph: {
+    title: "Plataforma para Mutuales | Nobu",
+    description: "Plataforma completa para administrar afiliados, servicios de salud, subsidios y trámites con total transparencia.",
+    url: "https://nobu.com.ar/mutuales",
+  },
+  alternates: {
+    canonical: "https://nobu.com.ar/mutuales",
+  },
+};
 
 export default function MutualesPage() {
   return (
