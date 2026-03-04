@@ -6,6 +6,21 @@ import {
   FinancierasPlansSection,
   FinancierasBookingSection,
 } from "@/components/financieras";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Software para Financieras",
+  description: "Gestión de préstamos, simuladores de créditos, inversiones, carteras y cobranzas con análisis de riesgo automatizado. Compliance y cumplimiento regulatorio.",
+  keywords: ["software financieras", "gestión préstamos", "simulador créditos", "análisis riesgo", "cobranzas", "compliance"],
+  openGraph: {
+    title: "Software para Financieras | Nobu",
+    description: "Gestión de préstamos, simuladores de créditos, inversiones y cobranzas con análisis de riesgo automatizado.",
+    url: "https://nobu.com.ar/financieras",
+  },
+  alternates: {
+    canonical: "https://nobu.com.ar/financieras",
+  },
+};
 
 export default function FinancierasPage() {
   return (

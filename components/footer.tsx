@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { MapPin, Mail, Phone } from "lucide-react"
+import { MapPin, Mail, Phone, Instagram, Linkedin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -24,29 +24,33 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Servicios */}
+          {/* Redes sociales */}
           <div>
-            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Servicios</h3>
+            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Redes sociales</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#servicios" className="transition-colors text-sm" style={{ color: 'black' }}>
-                  Panel de Gestión
-                </Link>
+                <a
+                  href="https://www.instagram.com/nobuempresarial/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 transition-colors text-sm hover:opacity-80"
+                  style={{ color: 'black' }}
+                >
+                  <Instagram className="w-4 h-4 text-primary" />
+                  Instagram
+                </a>
               </li>
               <li>
-                <Link href="#servicios" className="transition-colors text-sm" style={{ color: 'black' }}>
-                  Inteligencia Artificial
-                </Link>
-              </li>
-              <li>
-                <Link href="#servicios" className="transition-colors text-sm" style={{ color: 'black' }}>
-                  Analytics Avanzado
-                </Link>
-              </li>
-              <li>
-                <Link href="#servicios" className="transition-colors text-sm" style={{ color: 'black' }}>
-                  Módulos Personalizados
-                </Link>
+                <a
+                  href="https://www.linkedin.com/company/nobuar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 transition-colors text-sm hover:opacity-80"
+                  style={{ color: 'black' }}
+                >
+                  <Linkedin className="w-4 h-4 text-primary" />
+                  LinkedIn
+                </a>
               </li>
             </ul>
           </div>
@@ -94,10 +98,10 @@ export function Footer() {
             © {new Date().getFullYear()} Nobu. Todos los derechos reservados.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
-            <Link href="#" className="transition-colors text-sm" style={{ color: 'black' }}>
+            <Link href="/privacidad" className="transition-colors text-sm" style={{ color: 'black' }}>
               Política de Privacidad
             </Link>
-            <Link href="#" className="transition-colors text-sm" style={{ color: 'black' }}>
+            <Link href="/terminos" className="transition-colors text-sm" style={{ color: 'black' }}>
               Términos de Servicio
             </Link>
           </div>

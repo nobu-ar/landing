@@ -6,6 +6,21 @@ import {
   GimnasiosPlansSection,
   GimnasiosBookingSection,
 } from "@/components/gimnasios";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sistema para Gimnasios",
+  description: "Sistema completo para gestionar membresías, clases, instructores y pagos. Control total de tu centro fitness. App para socios, reservas y gestión de cuotas.",
+  keywords: ["software gimnasios", "gestión de socios", "membresías gym", "clases fitness", "reservas gimnasio", "Argentina"],
+  openGraph: {
+    title: "Sistema para Gimnasios | Nobu",
+    description: "Sistema completo para gestionar membresías, clases, instructores y pagos. Control total de tu centro fitness.",
+    url: "https://nobu.com.ar/gimnasios",
+  },
+  alternates: {
+    canonical: "https://nobu.com.ar/gimnasios",
+  },
+};
 
 export default function GimnasiosPage() {
   return (

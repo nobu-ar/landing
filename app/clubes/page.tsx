@@ -6,6 +6,21 @@ import {
   ClubesPlansSection,
   ClubesBookingSection,
 } from "@/components/clubes";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Gestión para Clubes",
+  description: "Sistema integral para gestionar socios, cuotas, eventos y beneficios. Todo en un solo lugar con acceso digital, portal del socio y marketplace integrado.",
+  keywords: ["software clubes", "gestión socios", "cuotas club", "eventos club", "portal socio", "marketplace club"],
+  openGraph: {
+    title: "Gestión para Clubes | Nobu",
+    description: "Sistema integral para gestionar socios, cuotas, eventos y beneficios. Portal digital y acceso móvil.",
+    url: "https://nobu.com.ar/clubes",
+  },
+  alternates: {
+    canonical: "https://nobu.com.ar/clubes",
+  },
+};
 
 export default function ClubesPage() {
   return (
