@@ -13,6 +13,9 @@ export const clubesConfig: ServiceSliceConfig = {
     backgroundImage: "/clubBg.png",
     image: "/clubService.png",
     imageAlt: "Sistema de gestión para clubes - Nobu",
+    allowsUsersAccess: true,
+    usersAccessText: "Acceder al portal del socio",
+    usersAccessLink: "https://app.club.nobu.com.ar",
   },
   content: {
     sectionSubtitle: "Funcionalidades",

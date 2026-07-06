@@ -11,6 +11,9 @@ export const gimnasiosConfig: ServiceSliceConfig = {
     description:
       "Sistema completo para gestionar membresías, clases, instructores y pagos. Control total de tu centro fitness.",
     backgroundImage: "/gymBg.png",
+    allowsUsersAccess: true,
+    usersAccessText: "Acceder al portal del socio",
+    usersAccessLink: "https://app.gym.nobu.com.ar",
   },
   content: {
     sectionSubtitle: "Funcionalidades",

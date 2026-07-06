@@ -55,6 +55,23 @@ export function ServiceHeroSection({ config }: ServiceHeroSectionProps) {
               </Link>
             </Button>
           </div>
+          <div className="h-4" /> {/* Spacer between Agendar una Demo and users access button */}
+          <div className="flex justify-center lg:justify-start">
+            {config.allowsUsersAccess && (
+              <Button
+                size="lg"
+                className="bg-secondary hover:bg-secondary/90 text-sm sm:text-base px-5 sm:px-8 py-4 sm:py-6 shadow-lg shadow-secondary/20 w-full sm:w-auto max-w-xs sm:max-w-none"
+                style={{ color: "white", lineHeight: "4px" } as React.CSSProperties}
+                asChild
+              >
+                <Link href={config.usersAccessLink ?? "#contacto"} style={{ color: "black", lineHeight: "4px" } as React.CSSProperties}>
+                  {config.usersAccessText ?? "Iniciar sesión"}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+            )}
+          </div>
+     
         </div>
         {config.image && (
           <>

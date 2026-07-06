@@ -8,6 +8,10 @@ export interface ServiceHeroConfig {
   imageAlt?: string;
   /** Optional: custom background image for the hero section (e.g. "/financieraBg.png") */
   backgroundImage?: string;
+
+  allowsUsersAccess?: boolean;
+  usersAccessText?: string;
+  usersAccessLink?: string;
 }
 
 export interface ServiceFeatureItem {
