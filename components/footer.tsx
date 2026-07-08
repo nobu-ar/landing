@@ -13,7 +13,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4">
               <img 
                 src="/Logo_Color_Version_2.svg" 
-                alt="Nobu Logo" 
+                alt="Nobu"
                 className="h-8 w-auto"
               />
             </Link>

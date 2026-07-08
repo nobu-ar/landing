@@ -30,7 +30,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2">
             <img 
               src="/logo.svg" 
-              alt="Nobu Logo" 
+              alt="Nobu"
               className="h-10 sm:h-11 lg:h-12 w-auto"
             />
           </Link>

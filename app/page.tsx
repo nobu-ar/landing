@@ -7,39 +7,48 @@ import { AboutSection } from "@/components/about-section"
 import { BookingSection } from "@/components/booking-section"
 import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site"
 
-const SITE_URL = "https://nobu.com.ar"
+const HOME_TITLE =
+  "Nobu | Soluciones Digitales, IA y Data para Empresas"
+
+const HOME_DESCRIPTION =
+  "Diseñamos sistemas a medida y plataformas inteligentes que conectan procesos, automatizan operaciones y convierten tus datos en valor real. Menos burocracia, más crecimiento."
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Nobu",
+    absolute: HOME_TITLE,
   },
 
-  description:
-    "Creamos soluciones digitales a medida para transformar y escalar tu negocio. Menos burocracia, más crecimiento con IA y automatización.",
+  description: HOME_DESCRIPTION,
+
+  keywords: [
+    "Nobu",
+    "soluciones digitales",
+    "inteligencia artificial",
+    "data analytics",
+    "automatización empresarial",
+    "desarrollo software a medida",
+    "software empresarial Argentina",
+    "transformación digital",
+    "Tucumán",
+  ],
 
   openGraph: {
-    title: "Nobu",
-    description:
-      "Creamos soluciones digitales a medida para transformar y escalar tu empresa. Soluciones digitales con IA y automatización.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     url: SITE_URL,
-    siteName: "Nobu",
-    images: [
-      {
-        url: "/nobuBlue.png",
-        width: 512,
-        height: 512,
-        alt: "Nobu",
-      },
-    ],
+    siteName: SITE_NAME,
+    locale: "es_AR",
+    type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Nobu",
-    description:
-      "Creamos soluciones digitales a medida para transformar y escalar tu negocio.",
-    images: ["/nobuBlue.png"],
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE.url],
   },
 
   alternates: {
@@ -47,9 +56,29 @@ export const metadata: Metadata = {
   },
 }
 
+const webSiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: HOME_DESCRIPTION,
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    logo: `${SITE_URL}/nobuBlue.png`,
+  },
+}
+
 export default function Home() {
   return (
     <main className="relative z-10 min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webSiteJsonLd),
+        }}
+      />
+
       <Navbar />
       <HeroSection />
 
