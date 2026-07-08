@@ -27,8 +27,8 @@ const features = [
 ]
 
 const highlights = [
-  { icon: Award, value: "+10", label: "Años en el rubro" },
-  { icon: Users, value: "50+", label: "Clientes activos" },
+  { icon: Award, value: "#1", label: "Inmediatez de respuestas"},
+  { icon: Users, value: "100%", label: "Adaptaciones a medida" },
   { icon: Clock, value: "24/7", label: "Soporte dedicado" },
 ]
 
