@@ -1,4 +1,4 @@
-export { ServiceHeroSection } from "./service-hero-section";
+export { ServiceHeroSection, ExploreServicesHeroSection } from "./service-hero-section";
 export { ServiceContentSection } from "./service-content-section";
 export { ServicePlansSection } from "./service-plans-section";
 export { ServiceBookingSection } from "./service-booking-section";

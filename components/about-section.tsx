@@ -67,9 +67,8 @@ export function AboutSection() {
               Innovación para el Futuro Digital
             </h2>
             <p className="text-base sm:text-lg mb-7 sm:mb-8 text-pretty leading-relaxed" style={{ color: '#ffffff' }}>
-              Somos la empresa que vino a revolucionar la gestión empresarial. 
-              Nuestro compromiso es eliminar la burocracia innecesaria y brindarte 
-              soluciones que impulsen el crecimiento de tu negocio.
+              Vinimos a revolucionar la gestión empresarial. Con una combinación de tecnología y experiencia, nos aseguramos de que cada detalle se gestione de manera eficiente y efectiva.
+              Nuestro compromiso es brindarte soluciones personalizadas que impulsen el crecimiento de tu negocio.
             </p>
 
             <div className="space-y-5 sm:space-y-6">

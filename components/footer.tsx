@@ -13,7 +13,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4">
               <img 
                 src="/Logo_Color_Version_2.svg" 
-                alt="Nobu Logo" 
+                alt="Nobu"
                 className="h-8 w-auto"
               />
             </Link>
@@ -55,7 +55,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Empresa */}
+           {/* // Empresa *
           <div>
             <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Empresa</h3>
             <ul className="space-y-3">
@@ -71,6 +71,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
 
           {/* Contacto */}
           <div>

@@ -30,7 +30,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2">
             <img 
               src="/logo.svg" 
-              alt="Nobu Logo" 
+              alt="Nobu"
               className="h-10 sm:h-11 lg:h-12 w-auto"
             />
           </Link>
@@ -42,9 +42,7 @@ export function Navbar() {
             <Link href="/#nosotros" className="text-white hover:text-white/80 transition-colors text-sm">
               Nosotros
             </Link>
-            <Link href="/#contacto" className="text-white hover:text-white/80 transition-colors text-sm">
-              Contacto
-            </Link>
+            
             <div className="ml-2 xl:ml-4 gap-2 xl:gap-4 flex">
               <Button 
               size="lg"
@@ -53,7 +51,7 @@ export function Navbar() {
               asChild
             >
               <Link href="/#contacto" style={{ color: 'rgba(0, 0, 0, 1)', lineHeight: '4px' } as React.CSSProperties}>
-                Agendar una Demo
+                Agendar reunión
               </Link>
             </Button>
             <Button 
@@ -82,10 +80,10 @@ export function Navbar() {
         {isOpen && (
           <div className="lg:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              <Link href="/#servicios" className="text-white hover:text-white/80 transition-colors py-2">
+              <Link href="/servicios" className="text-white hover:text-white/80 transition-colors py-2">
                 Servicios
               </Link>
-              <Link href="/#nosotros" className="text-white hover:text-white/80 transition-colors py-2">
+              <Link href="/servicios#nosotros" className="text-white hover:text-white/80 transition-colors py-2">
                 Nosotros
               </Link>
               <Link href="/#contacto" className="text-white hover:text-white/80 transition-colors py-2">

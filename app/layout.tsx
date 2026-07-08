@@ -3,19 +3,18 @@ import type { Metadata } from "next"
 import Script from "next/script"
 import { Inter, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" })
 
-const SITE_URL = "https://nobu.com.ar"
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "Nobu",
-    template: "%s | Nobu",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
 
   description:
@@ -36,10 +35,12 @@ export const metadata: Metadata = {
     "clubes",
     "financieras",
     "mutuales",
+    "agro",
+    "soluciones digitales",
   ],
 
-  authors: [{ name: "Nobu", url: SITE_URL }],
-  creator: "Nobu",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
   publisher: "Nobu Fintech S.A.S.",
 
   robots: {
@@ -48,12 +49,17 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/nobuBlue.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "48x48" },
+    ],
+    shortcut: "/nobuBlue.png",
     apple: "/nobuBlue.png",
   },
 
@@ -61,26 +67,19 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: SITE_URL,
-    siteName: "Nobu",
-    title: "Nobu",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
     description:
       "Creamos soluciones digitales a medida para transformar y escalar tu negocio. Menos burocracia, más crecimiento con IA y automatización.",
-    images: [
-      {
-        url: "/nobuBlue.png",
-        width: 512,
-        height: 512,
-        alt: "Nobu",
-      },
-    ],
+    images: [DEFAULT_OG_IMAGE],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Nobu",
+    title: SITE_NAME,
     description:
       "Creamos soluciones digitales a medida para transformar y escalar tu negocio.",
-    images: ["/nobuBlue.png"],
+    images: [DEFAULT_OG_IMAGE.url],
   },
 
   alternates: {
@@ -91,12 +90,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Nobu",
+  name: SITE_NAME,
   legalName: "Nobu Fintech S.A.S.",
   url: SITE_URL,
   logo: `${SITE_URL}/nobuBlue.png`,
   description:
-    "Soluciones digitales a medida para transformar y escalar tu negocio. Software para gimnasios, clubes, financieras, mutuales, e-commerce y más.",
+    "Soluciones digitales a medida para transformar y escalar tu negocio. Software para gimnasios, clubes, financieras, mutuales, e-commerce, agro y más.",
   email: "info@nobu.com.ar",
   sameAs: [
     "https://www.instagram.com/nobuempresarial/",

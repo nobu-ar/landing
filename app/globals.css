@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --background: #205cfa;
   --foreground: #94eecf;
@@ -40,41 +38,6 @@
   --sidebar-border: rgba(32, 92, 250, 0.2);
   --sidebar-ring: rgb(11, 217, 146);
   --color-white: #ffffff;
-}
-
-.dark {
-  --background: #000000;
-  --foreground: #94eecf;
-  --card: #000000;
-  --card-foreground: #94eecf;
-  --popover: #000000;
-  --popover-foreground: #94eecf;
-  --primary: rgb(11, 217, 146);
-  --primary-foreground: #000000;
-  --secondary: rgba(148, 238, 207, 0.1);
-  --secondary-foreground: #94eecf;
-  --muted: rgba(148, 238, 207, 0.1);
-  --muted-foreground: #94eecf;
-  --accent: #205cfa;
-  --accent-foreground: #94eecf;
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(1 0 0);
-  --border: rgba(32, 92, 250, 0.2);
-  --input: rgba(32, 92, 250, 0.2);
-  --ring: rgb(11, 217, 146);
-  --chart-1: rgb(11, 217, 146);
-  --chart-2: #205cfa;
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #000000;
-  --sidebar-foreground: #94eecf;
-  --sidebar-primary: rgb(11, 217, 146);
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: rgba(148, 238, 207, 0.1);
-  --sidebar-accent-foreground: #94eecf;
-  --sidebar-border: rgba(32, 92, 250, 0.2);
-  --sidebar-ring: rgb(11, 217, 146);
 }
 
 @theme inline {
@@ -174,7 +137,3 @@
   animation-play-state: var(--play);
 }
 
-.logo-marquee-track:hover,
-.logo-marquee-pause-on-hover:hover .logo-marquee-track {
-  --play: paused;
-}
