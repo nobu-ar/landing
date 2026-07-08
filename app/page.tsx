@@ -1,7 +1,8 @@
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
+import { CompanyIntroSection } from "@/components/company-intro-section"
 import { LogoCarousel } from "@/components/logo-carousel"
-import { ServicesSection } from "@/components/services-section"
+import { ServiceCategoriesSection } from "@/components/service-categories-section"
 import { AboutSection } from "@/components/about-section"
 import { BookingSection } from "@/components/booking-section"
 import { Footer } from "@/components/footer"
@@ -55,13 +56,12 @@ export default function Home() {
       <div className="h-1 bg-primary" />
 
       <LogoCarousel />
-
-      <div className="h-1 bg-primary" />
-
-      <ServicesSection />
-
-      <div className="h-1 bg-primary" />
-
+      <div className="h-1 bg-primary"></div>
+      <CompanyIntroSection />
+      <div className="h-1 bg-primary"></div>
+      
+      <ServiceCategoriesSection />
+      <div className="h-1 bg-primary"></div>
       <AboutSection />
 
       <div className="h-1 bg-primary" />

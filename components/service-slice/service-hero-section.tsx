@@ -13,6 +13,49 @@ interface ServiceHeroSectionProps {
   config: ServiceHeroConfig;
 }
 
+export function ExploreServicesHeroSection() {
+  const [isVisible, setIsVisible] = React.useState(false)
+
+  React.useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  return (
+    <section
+      className="relative flex items-center pt-28 sm:pt-32 pb-14 sm:pb-16 lg:pb-20 overflow-hidden"
+      style={heroBackground}
+    >
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 w-full">
+        <div
+          className={`max-w-3xl mx-auto text-center transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <p
+            className="font-medium mb-4 uppercase tracking-wider text-sm"
+            style={{ color: "var(--primary)" }}
+          >
+            Nuestros Servicios
+          </p>
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 text-balance leading-tight"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-white)" }}
+          >
+            Explora nuestros servicios
+          </h1>
+          <p
+            className="text-base sm:text-lg md:text-xl text-pretty leading-relaxed max-w-2xl mx-auto"
+            style={{ color: "var(--color-white)" }}
+          >
+            Soluciones integrales que se adaptan a las necesidades de tu empresa,
+            desde startups hasta grandes corporaciones.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export function ServiceHeroSection({ config }: ServiceHeroSectionProps) {
   const [lightboxOpen, setLightboxOpen] = React.useState(false);
 

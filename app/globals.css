@@ -174,7 +174,3 @@
   animation-play-state: var(--play);
 }
 
-.logo-marquee-track:hover,
-.logo-marquee-pause-on-hover:hover .logo-marquee-track {
-  --play: paused;
-}
