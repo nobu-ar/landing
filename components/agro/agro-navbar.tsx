@@ -38,7 +38,7 @@ export function AgroNavbar() {
               alt="Nobu Agro"
               width={48}
               height={48}
-              className="h-10 sm:h-11 lg:h-12 w-auto"
+              className="h-10 sm:h-11 lg:h-12 w-auto block"
               priority
             />
           </Link>
