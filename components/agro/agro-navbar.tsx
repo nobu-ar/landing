@@ -32,7 +32,7 @@ export function AgroNavbar() {
     >
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-[4.5rem] lg:h-20 gap-3">
-          <Link href="/agro" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/svg/nobuAgro.svg"
               alt="Nobu Agro"

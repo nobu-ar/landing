@@ -58,7 +58,7 @@ function AgroBannerSection() {
         >
           <p
             className="font-medium mb-4 uppercase tracking-wider text-xs sm:text-sm"
-            style={{ color: agroTheme.olive }}
+            style={{ color: agroTheme.oliveMuted}}
           >
             Nobu Agro
           </p>
@@ -90,11 +90,12 @@ function AgroSplitSection({
   reversed = false,
   backgroundColor = agroTheme.cream,
   textColor = agroTheme.dark,
+  iconColor = agroTheme.dark,
 }: {
   eyebrow: string
   title: string
   description: string
-  bullets: Array<{ icon: React.ComponentType<{ className?: string }>; text: string }>
+  bullets: Array<{ icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>; text: string }>
   imageSrc: string
   imageAlt: string
   imageWidth: number
@@ -102,6 +103,7 @@ function AgroSplitSection({
   reversed?: boolean
   backgroundColor?: string
   textColor?: string
+  iconColor?: string
 }) {
   const { isVisible, sectionRef } = useSectionVisibility()
 
@@ -145,9 +147,9 @@ function AgroSplitSection({
                 <li key={bullet.text} className="flex items-start gap-3">
                   <div
                     className="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: `${agroTheme.olive}22` }}
+                    style={{ backgroundColor: `${iconColor}18` }}
                   >
-                    <bullet.icon className={`w-5 h-5 ${agroTheme.olive}`} />
+                    <bullet.icon className="w-5 h-5" style={{ color: iconColor }} />
                   </div>
                   <span className="text-sm sm:text-base leading-relaxed pt-2" style={{ color: textColor }}>
                     {bullet.text}
@@ -286,6 +288,7 @@ export function AgroContentSections() {
         reversed
         backgroundColor={agroTheme.dark}
         textColor={agroTheme.cream}
+        iconColor={agroTheme.oliveMuted}
       />
 
       <AgroCtaSection />

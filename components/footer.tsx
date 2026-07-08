@@ -55,7 +55,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Empresa */}
+           {/* // Empresa *
           <div>
             <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Empresa</h3>
             <ul className="space-y-3">
@@ -71,6 +71,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
 
           {/* Contacto */}
           <div>

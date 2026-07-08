@@ -66,10 +66,6 @@ export function AgroHeroSection() {
             }}
             asChild
           >
-            <Link href="/">
-              <ArrowLeft className="mr-2 h-5 w-5" />
-              Volver al inicio
-            </Link>
           </Button>
         </div>
       </div>
