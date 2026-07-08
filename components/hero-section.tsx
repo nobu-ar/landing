@@ -5,51 +5,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
-// Hook para animación de contador
-function useCounter(end: number, duration: number = 2000, start: number = 0) {
-  const [count, setCount] = React.useState(start)
-  const [hasStarted, setHasStarted] = React.useState(false)
-
-  React.useEffect(() => {
-    if (!hasStarted) return
-
-    let startTime: number | null = null
-    const animate = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-      
-      // Easing function (ease-out)
-      const easeOut = 1 - Math.pow(1 - progress, 3)
-      setCount(Math.floor(start + (end - start) * easeOut))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        setCount(end)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [hasStarted, end, duration, start])
-
-  return { count, startCounter: () => setHasStarted(true) }
-}
-
 export function HeroSection() {
   const [isVisible, setIsVisible] = React.useState(false)
-  const counter50 = useCounter(50, 2000)
-  const counter98 = useCounter(98, 2000)
-  const counter3 = useCounter(24, 2000)
 
   React.useEffect(() => {
     setIsVisible(true)
-    // Iniciar contadores cuando el componente es visible
-    const timer = setTimeout(() => {
-      counter50.startCounter()
-      counter98.startCounter()
-      counter3.startCounter()
-    }, 300) // Delay para que coincida con la animación de entrada
-    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -85,21 +45,12 @@ export function HeroSection() {
                   animation: fadeInOut 2s ease-in-out infinite;
                 }
               `}} />
-              El futuro de tu empresa:
-              <span className="block" style={{ color: 'var(--color-white)' }}>
-                Me<span 
-                  className="inline-block green-pulse"
-                  style={{ color: 'rgba(59, 201, 151, 1)' }}
-                >no</span>s <span
-                  className="inline-block green-pulse"
-                  style={{ color: 'rgba(59, 201, 151, 1)' }}
-                >bu</span>rocracia
-              </span>
+              Engineering, AI & Data para transformar tu negocio
             </h1>
 
             {/* Subtitle */}
             <p className={`text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0 text-pretty leading-relaxed transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ color: 'var(--color-white)' }}>
-            Organizá, controlá y hacé crecer tu empresa desde un solo lugar, de manera simple y eficiente.
+            Diseñamos sistemas a medida y plataformas inteligentes que conectan procesos, automatizan operaciones y convierten tus datos en valor real.
             </p>
 
             {/* CTA Buttons */}
@@ -111,7 +62,7 @@ export function HeroSection() {
                 asChild
               >
                 <Link href="#contacto" style={{ color: 'rgba(0, 0, 0, 1)', lineHeight: '4px' } as React.CSSProperties}>
-                  Agendar una Demo
+                  Agendar reunión
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
@@ -126,28 +77,6 @@ export function HeroSection() {
                   Explorar Servicios
                 </Link>
               </Button>
-            </div>
-
-            {/* Stats */}
-            <div className={`mt-10 sm:mt-10 lg:mt-5 mb-10 grid grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 gap-5 sm:gap-8 pt-6 sm:pt-10 lg:pt-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-white)' }}>
-                  {counter50.count}+
-                </p>
-                <p className="text-sm mt-1" style={{ color: 'var(--color-white)' }}>Empresas Activas</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-white)' }}>
-                  {counter98.count}%
-                </p>
-                <p className="text-sm mt-1" style={{ color: 'var(--color-white)' }}>Satisfacción</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl md:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-white)' }}>
-                  {counter3.count}/7
-                </p>
-                <p className="text-sm mt-1" style={{ color: 'var(--color-white)' }}>Soporte</p>
-              </div>
             </div>
           </div>
 

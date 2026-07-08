@@ -44,7 +44,7 @@ export function LogoCarousel() {
     >
       <div className="mx-auto px-4 lg:px-6">
         <div
-          className={`logo-marquee-pause-on-hover transition-all duration-1000 overflow-hidden`}
+          className={`transition-all duration-1000 overflow-hidden`}
         >
           <div
             className="logo-marquee-track flex w-max gap-6 sm:gap-8 md:gap-12"
