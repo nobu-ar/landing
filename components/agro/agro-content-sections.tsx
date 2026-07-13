@@ -3,7 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, BarChart3, Leaf, ShieldCheck, Tractor } from "lucide-react"
+import { ArrowRight, BarChart3, Eye, Leaf, Map, ScanLine, ShieldCheck, Tractor } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { agroTheme } from "./theme"
 
@@ -289,6 +289,21 @@ export function AgroContentSections() {
         backgroundColor={agroTheme.dark}
         textColor={agroTheme.cream}
         iconColor={agroTheme.oliveMuted}
+      />
+
+      <AgroSplitSection
+        eyebrow="Análisis con drones"
+        title="Visión aérea para decisiones más precisas"
+        description="Cobertura total del lote con drones y procesamiento de datos para detectar problemas antes de que impacten el rendimiento."
+        bullets={[
+          { icon: ScanLine, text: "Análisis multiespectral con índices NDVI: vigor, salud y uniformidad del cultivo." },
+          { icon: Map, text: "Monitoreo de grandes extensiones con detección rápida de zonas críticas." },
+          { icon: Eye, text: "Control del estado: estrés hídrico, nutrientes, enfermedades y plagas." },
+        ]}
+        imageSrc="/agroImage7.jpg"
+        imageAlt="Drone agrícola sobrevolando cultivos para análisis multiespectral"
+        imageWidth={3000}
+        imageHeight={2000}
       />
 
       <AgroCtaSection />

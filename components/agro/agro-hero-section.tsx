@@ -73,7 +73,7 @@ export function AgroHeroSection() {
       {/* Right — full-bleed image */}
       <div className="relative w-full lg:w-1/2 min-h-[45vh] sm:min-h-[50vh] lg:min-h-screen flex-1 lg:flex-none">
         <Image
-          src="/agroImage.png"
+          src="/agroImage.jpg"
           alt="Campo agrícola al atardecer"
           fill
           className="object-cover object-center lg:object-center"
