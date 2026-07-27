@@ -51,6 +51,12 @@ export const redesConfig: ServiceSliceConfig = {
       image: "/bigdataAnalisis.png",
       imageAlt: "Metrícas detalladas - Nobu",
     },
+    extraBlock3: {
+      title: "Informes inteligentes",
+      description: "Tendras informes diarios, semanales y mensuales, con métricas, comparativas y sugerencias de como mejorar tu presencia en redes para tomar decisiones basadas en datos.",
+      image: "/bigdataInformes.png",
+      imageAlt: "Informes inteligentes - Nobu",
+    },
   },
   /*plans: {
     ...defaultPlans,
