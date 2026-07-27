@@ -6,13 +6,21 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { servicesBackground } from "./backgrounds";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 import type { ServiceContentConfig } from "./types";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 interface ServiceContentSectionProps {
   config: ServiceContentConfig;
 }
 
+const content = {
+  es: { imagePlaceholder: "Imagen" },
+  en: { imagePlaceholder: "Image" },
+} as const;
+
 export function ServiceContentSection({ config }: ServiceContentSectionProps) {
   const [isVisible, setIsVisible] = React.useState(false);
+  const { language } = useLanguage();
+  const t = content[language];
   const [lightboxImage, setLightboxImage] = React.useState<{ src: string; alt: string } | null>(null);
   const sectionRef = React.useRef<HTMLElement>(null);
 
@@ -106,7 +114,7 @@ export function ServiceContentSection({ config }: ServiceContentSectionProps) {
                 </div>
               ) : (
                 <div className="w-full aspect-video rounded-2xl bg-white/10 flex items-center justify-center text-white/70">
-                  Imagen
+                  {t.imagePlaceholder}
                 </div>
               )}
             </div>
@@ -170,7 +178,7 @@ export function ServiceContentSection({ config }: ServiceContentSectionProps) {
                 </div>
               ) : (
                 <div className="w-full max-w-lg aspect-video rounded-2xl bg-white/10 flex items-center justify-center text-white/70">
-                  Imagen
+                  {t.imagePlaceholder}
                 </div>
               )}
               
@@ -211,7 +219,7 @@ export function ServiceContentSection({ config }: ServiceContentSectionProps) {
                 </div>
               ) : (
                 <div className="w-full aspect-video rounded-2xl bg-white/10 flex items-center justify-center text-white/70">
-                  Imagen
+                  {t.imagePlaceholder}
                 </div>
               )}
             </div>

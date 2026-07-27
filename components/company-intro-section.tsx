@@ -2,6 +2,7 @@
 
 import React from "react"
 import { Shield, Cog, Database, Layers } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/language-context"
 
 function useCounter(end: number, duration: number = 2000, start: number = 0) {
   const [count, setCount] = React.useState(start)
@@ -30,32 +31,80 @@ function useCounter(end: number, duration: number = 2000, start: number = 0) {
   return { count, startCounter: () => setHasStarted(true) }
 }
 
-const capabilities = [
-  {
-    icon: Cog,
-    title: "Automatización de procesos",
-    description: "Lo que te imagines, lo podemos construir para optimizar y automatizar cada etapa de tu operación.",
+const content = {
+  es: {
+    eyebrow: "Sobre la empresa",
+    title: "Sistemas a medida con la confianza de años en el rubro",
+    description:
+      "En Nobu creamos soluciones digitales personalizadas para cada cliente, con la seguridad y el respaldo que solo da la experiencia. Transformamos ideas en herramientas reales para automatizar procesos, analizar datos de gran escala y gestionar servicios de forma integral.",
+    capabilities: [
+      {
+        icon: Cog,
+        title: "Automatización de procesos",
+        description: "Lo que te imagines, lo podemos construir para optimizar y automatizar cada etapa de tu operación.",
+      },
+      {
+        icon: Database,
+        title: "Análisis de datos masivos",
+        description: "Procesamos y analizamos grandes volúmenes de información para darle valor a tus datos.",
+      },
+      {
+        icon: Layers,
+        title: "Gestión de servicios",
+        description: "Centralizamos la administración de tus servicios en plataformas intuitivas, escalables y a medida.",
+      },
+      {
+        icon: Shield,
+        title: "Seguridad y confianza",
+        description: "Desarrollamos con los más altos estándares de protección para que tu negocio opere con total tranquilidad.",
+      },
+    ],
+    stats: [
+      { label: "Empresas Activas" },
+      { label: "Satisfacción" },
+      { label: "Soporte" },
+    ],
   },
-  {
-    icon: Database,
-    title: "Análisis de datos masivos",
-    description: "Procesamos y analizamos grandes volúmenes de información para darle valor a tus datos.",
+  en: {
+    eyebrow: "About the company",
+    title: "Custom systems backed by years of industry trust",
+    description:
+      "At Nobu we create personalized digital solutions for every client, with the security and support that only real experience can provide. We turn ideas into real tools to automate processes, analyze large-scale data, and manage services end to end.",
+    capabilities: [
+      {
+        icon: Cog,
+        title: "Process automation",
+        description: "Whatever you can imagine, we can build it to optimize and automate every stage of your operation.",
+      },
+      {
+        icon: Database,
+        title: "Big data analysis",
+        description: "We process and analyze large volumes of information to add real value to your data.",
+      },
+      {
+        icon: Layers,
+        title: "Service management",
+        description: "We centralize your service management in intuitive, scalable, and tailored platforms.",
+      },
+      {
+        icon: Shield,
+        title: "Security and trust",
+        description: "We build with the highest protection standards so your business runs with total peace of mind.",
+      },
+    ],
+    stats: [
+      { label: "Active Businesses" },
+      { label: "Satisfaction" },
+      { label: "Support" },
+    ],
   },
-  {
-    icon: Layers,
-    title: "Gestión de servicios",
-    description: "Centralizamos la administración de tus servicios en plataformas intuitivas, escalables y a medida.",
-  },
-  {
-    icon: Shield,
-    title: "Seguridad y confianza",
-    description: "Desarrollamos con los más altos estándares de protección para que tu negocio opere con total tranquilidad.",
-  },
-]
+} as const
 
 export function CompanyIntroSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const t = content[language]
   const counter50 = useCounter(50, 2000)
   const counter98 = useCounter(98, 2000)
   const counter24 = useCounter(24, 2000)
@@ -108,27 +157,24 @@ export function CompanyIntroSection() {
           }`}
         >
           <p className="text-primary font-medium mb-4 uppercase tracking-wider text-sm">
-            Sobre la empresa
+            {t.eyebrow}
           </p>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 sm:mb-6 text-balance"
             style={{ fontFamily: "var(--font-display)", color: "#ffffff" }}
           >
-            Sistemas a medida con la confianza de años en el rubro
+            {t.title}
           </h2>
           <p
             className="text-base sm:text-lg text-pretty leading-relaxed"
             style={{ color: "#ffffff" }}
           >
-            En Nobu creamos soluciones digitales personalizadas para cada cliente,
-            con la seguridad y el respaldo que solo da la experiencia. Transformamos
-            ideas en herramientas reales para automatizar procesos, analizar datos
-            de gran escala y gestionar servicios de forma integral.
+            {t.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-          {capabilities.map((item, index) => (
+          {t.capabilities.map((item, index) => (
             <div
               key={item.title}
               className={`rounded-xl p-5 sm:p-6 backdrop-blur-sm transition-all duration-1000 ${
@@ -169,7 +215,7 @@ export function CompanyIntroSection() {
               {counter50.count}+
             </p>
             <p className="text-sm mt-1" style={{ color: "#ffffff" }}>
-              Empresas Activas
+              {t.stats[0].label}
             </p>
           </div>
           <div className="text-center">
@@ -180,7 +226,7 @@ export function CompanyIntroSection() {
               {counter98.count}%
             </p>
             <p className="text-sm mt-1" style={{ color: "#ffffff" }}>
-              Satisfacción
+              {t.stats[1].label}
             </p>
           </div>
           <div className="text-center">
@@ -191,7 +237,7 @@ export function CompanyIntroSection() {
               {counter24.count}/7
             </p>
             <p className="text-sm mt-1" style={{ color: "#ffffff" }}>
-              Soporte
+              {t.stats[2].label}
             </p>
           </div>
         </div>

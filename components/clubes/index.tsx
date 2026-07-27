@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { clubesConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function ClubesHeroSection() {
-  return <ServiceHeroSection config={clubesConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={clubesConfig[language].hero} />;
 }
 
 export function ClubesContentSection() {
-  return <ServiceContentSection config={clubesConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={clubesConfig[language].content} />;
 }
 
 export function ClubesPlansSection() {
-  return <ServicePlansSection config={clubesConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={clubesConfig[language].plans} />;
 }
 
 export function ClubesBookingSection() {
-  return <ServiceBookingSection config={clubesConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={clubesConfig[language].booking} />;
 }

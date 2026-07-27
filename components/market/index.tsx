@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { marketConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function MarketHeroSection() {
-  return <ServiceHeroSection config={marketConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={marketConfig[language].hero} />;
 }
 
 export function MarketContentSection() {
-  return <ServiceContentSection config={marketConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={marketConfig[language].content} />;
 }
 
 export function MarketPlansSection() {
-  return <ServicePlansSection config={marketConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={marketConfig[language].plans} />;
 }
 
 export function MarketBookingSection() {
-  return <ServiceBookingSection config={marketConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={marketConfig[language].booking} />;
 }

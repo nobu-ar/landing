@@ -4,6 +4,7 @@ import Script from "next/script"
 import { Inter, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site"
+import { LanguageProvider } from "@/lib/i18n/language-context"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -139,7 +140,7 @@ export default function RootLayout({
           }}
         />
 
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
 
         <Analytics />
       </body>

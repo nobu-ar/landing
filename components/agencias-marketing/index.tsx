@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { agenciasMarketingConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function AgenciasMarketingHeroSection() {
-  return <ServiceHeroSection config={agenciasMarketingConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={agenciasMarketingConfig[language].hero} />;
 }
 
 export function AgenciasMarketingContentSection() {
-  return <ServiceContentSection config={agenciasMarketingConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={agenciasMarketingConfig[language].content} />;
 }
 
 export function AgenciasMarketingPlansSection() {
-  return <ServicePlansSection config={agenciasMarketingConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={agenciasMarketingConfig[language].plans} />;
 }
 
 export function AgenciasMarketingBookingSection() {
-  return <ServiceBookingSection config={agenciasMarketingConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={agenciasMarketingConfig[language].booking} />;
 }

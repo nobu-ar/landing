@@ -4,12 +4,35 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { Menu, X } from "lucide-react"
 import { agroTheme } from "./theme"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    servicios: "Servicios",
+    nosotros: "Nosotros",
+    contacto: "Contacto",
+    agendar: "Agendar una reunión",
+    agendarDemo: "Agendar Demo",
+    iniciarSesion: "Iniciar sesión",
+  },
+  en: {
+    servicios: "Services",
+    nosotros: "About",
+    contacto: "Contact",
+    agendar: "Book a meeting",
+    agendarDemo: "Book a Demo",
+    iniciarSesion: "Sign in",
+  },
+} as const
 
 export function AgroNavbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -50,15 +73,21 @@ export function AgroNavbar() {
               className="transition-colors text-sm hover:opacity-80"
               style={{ color: agroTheme.cream }}
             >
-              Nosotros
+              {t.nosotros}
             </Link>
             <Link
               href="/agro#contacto"
               className="transition-colors text-sm hover:opacity-80"
               style={{ color: agroTheme.cream }}
             >
-              Contacto
+              {t.contacto}
             </Link>
+
+            <LanguageSwitcher
+              textColor={agroTheme.cream}
+              hoverBackgroundColor="rgba(251, 249, 241, 0.12)"
+            />
+
             <div className="ml-2 xl:ml-4 gap-2 xl:gap-4 flex">
               <Button
                 size="lg"
@@ -71,7 +100,7 @@ export function AgroNavbar() {
                 asChild
               >
                 <Link href="/agro#contacto" style={{ color: agroTheme.cream, lineHeight: "4px" }}>
-                  Agendar una reunión
+                  {t.agendar}
                 </Link>
               </Button>
               <Button
@@ -90,20 +119,26 @@ export function AgroNavbar() {
                   href="https://espacios.nobu.com.ar"
                   style={{ color: agroTheme.cream, lineHeight: "4px" }}
                 >
-                  Iniciar sesión
+                  {t.iniciarSesion}
                 </Link>
               </Button>
             </div>
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 shrink-0"
-            style={{ color: agroTheme.cream }}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <LanguageSwitcher
+              textColor={agroTheme.cream}
+              hoverBackgroundColor="rgba(251, 249, 241, 0.12)"
+            />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 shrink-0"
+              style={{ color: agroTheme.cream }}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {isOpen && (
@@ -117,21 +152,21 @@ export function AgroNavbar() {
                 className="py-2 transition-colors hover:opacity-80"
                 style={{ color: agroTheme.cream }}
               >
-                Servicios
+                {t.servicios}
               </Link>
               <Link
                 href="/agro#nosotros"
                 className="py-2 transition-colors hover:opacity-80"
                 style={{ color: agroTheme.cream }}
               >
-                Nosotros
+                {t.nosotros}
               </Link>
               <Link
                 href="/agro#contacto"
                 className="py-2 transition-colors hover:opacity-80"
                 style={{ color: agroTheme.cream }}
               >
-                Contacto
+                {t.contacto}
               </Link>
               <div
                 className="flex flex-col gap-3 pt-4"
@@ -144,7 +179,7 @@ export function AgroNavbar() {
                   asChild
                 >
                   <Link href="/agro#contacto" style={{ color: agroTheme.cream }}>
-                    Agendar Demo
+                    {t.agendarDemo}
                   </Link>
                 </Button>
                 <Button
@@ -159,7 +194,7 @@ export function AgroNavbar() {
                   asChild
                 >
                   <Link href="https://espacios.nobu.com.ar" style={{ color: agroTheme.cream }}>
-                    Iniciar sesión
+                    {t.iniciarSesion}
                   </Link>
                 </Button>
               </div>

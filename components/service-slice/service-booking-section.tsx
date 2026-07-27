@@ -5,14 +5,73 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Calendar, Video, Mail, Phone } from "lucide-react";
 import { bookingBackground } from "./backgrounds";
 import type { ServiceBookingConfig } from "./types";
+import { useLanguage, type Language } from "@/lib/i18n/language-context";
 
 interface ServiceBookingSectionProps {
   config: ServiceBookingConfig;
 }
 
+const content: Record<
+  Language,
+  {
+    googleCalendar: string;
+    calendarTitle: string;
+    calendarDescription: string;
+    meetTitle: string;
+    meetDescription: string;
+    directContact: string;
+    contactTitle: string;
+    contactDescription: string;
+    email: string;
+    whatsapp: string;
+    hoursTitle: string;
+    weekdays: string;
+    saturdays: string;
+    guaranteed: string;
+    guaranteedRest: string;
+  }
+> = {
+  es: {
+    googleCalendar: "Google Calendar",
+    calendarTitle: "Agendá directo en nuestro calendario",
+    calendarDescription: "Elegí el horario que mejor te quede y recibí confirmación automática.",
+    meetTitle: "Reunión por Google Meet",
+    meetDescription: "Te enviaremos el link de la videollamada por email.",
+    directContact: "Contacto Directo",
+    contactTitle: "O escribinos directamente",
+    contactDescription: "Preferís coordinar por otro medio? Contactanos por email o WhatsApp.",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    hoursTitle: "Horarios de atención",
+    weekdays: "Lunes a Viernes",
+    saturdays: "Sábados",
+    guaranteed: "Respuesta garantizada",
+    guaranteedRest: "en menos de 24 horas hábiles.",
+  },
+  en: {
+    googleCalendar: "Google Calendar",
+    calendarTitle: "Book directly on our calendar",
+    calendarDescription: "Pick the time that suits you best and get automatic confirmation.",
+    meetTitle: "Meeting via Google Meet",
+    meetDescription: "We'll send you the video call link by email.",
+    directContact: "Direct Contact",
+    contactTitle: "Or write to us directly",
+    contactDescription: "Prefer another way to reach us? Contact us by email or WhatsApp.",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    hoursTitle: "Business hours",
+    weekdays: "Monday to Friday",
+    saturdays: "Saturdays",
+    guaranteed: "Guaranteed response",
+    guaranteedRest: "in less than 24 business hours.",
+  },
+};
+
 export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
   const [isVisible, setIsVisible] = React.useState(false);
   const sectionRef = React.useRef<HTMLElement>(null);
+  const { language } = useLanguage();
+  const t = content[language];
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,14 +125,14 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-5 h-5 text-primary" />
                   <span className="text-sm font-medium" style={{ color: "#000000" }}>
-                    Google Calendar
+                    {t.googleCalendar}
                   </span>
                 </div>
                 <CardTitle style={{ fontFamily: "var(--font-display)", color: "black" }}>
-                  Agendá directo en nuestro calendario
+                  {t.calendarTitle}
                 </CardTitle>
                 <CardDescription style={{ color: "black" }}>
-                  Elegí el horario que mejor te quede y recibí confirmación automática.
+                  {t.calendarDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -89,10 +148,10 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
                     <Video className="w-5 h-5 text-primary mt-0.5" />
                     <div>
                       <p className="font-medium text-sm" style={{ color: "black" }}>
-                        Reunión por Google Meet
+                        {t.meetTitle}
                       </p>
                       <p className="text-xs mt-1" style={{ color: "black" }}>
-                        Te enviaremos el link de la videollamada por email.
+                        {t.meetDescription}
                       </p>
                     </div>
                   </div>
@@ -110,14 +169,14 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
                 <div className="flex items-center gap-2 mb-2">
                   <Mail className="w-5 h-5 text-primary" />
                   <span className="text-sm font-medium" style={{ color: "#000000" }}>
-                    Contacto Directo
+                    {t.directContact}
                   </span>
                 </div>
                 <CardTitle style={{ fontFamily: "var(--font-display)", color: "black" }}>
-                  O escribinos directamente
+                  {t.contactTitle}
                 </CardTitle>
                 <CardDescription style={{ color: "black" }}>
-                  Preferís coordinar por otro medio? Contactanos por email o WhatsApp.
+                  {t.contactDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -127,7 +186,7 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
                       <Mail className="w-5 h-5 text-primary mt-0.5" />
                       <div className="flex-1">
                         <p className="font-medium text-sm mb-1" style={{ color: "black" }}>
-                          Email
+                          {t.email}
                         </p>
                         <a
                           href="mailto:info@nobu.com.ar"
@@ -144,7 +203,7 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
                       <Phone className="w-5 h-5 text-primary mt-0.5" />
                       <div className="flex-1">
                         <p className="font-medium text-sm mb-1" style={{ color: "black" }}>
-                          WhatsApp
+                          {t.whatsapp}
                         </p>
                         <a
                           href="https://wa.me/5493844405628"
@@ -161,22 +220,22 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
                 </div>
                 <div className="pt-6 border-t border-border">
                   <h4 className="font-semibold mb-3 text-sm" style={{ color: "black" }}>
-                    Horarios de atención
+                    {t.hoursTitle}
                   </h4>
                   <div className="space-y-2 text-sm" style={{ color: "black" }}>
                     <div className="flex justify-between">
-                      <span>Lunes a Viernes</span>
+                      <span>{t.weekdays}</span>
                       <span>9:00 - 18:00</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Sábados</span>
+                      <span>{t.saturdays}</span>
                       <span>9:00 - 13:00</span>
                     </div>
                   </div>
                 </div>
                 <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                   <p className="text-sm" style={{ color: "black" }}>
-                    <strong className="text-primary">Respuesta garantizada</strong> en menos de 24 horas hábiles.
+                    <strong className="text-primary">{t.guaranteed}</strong> {t.guaranteedRest}
                   </p>
                 </div>
               </CardContent>

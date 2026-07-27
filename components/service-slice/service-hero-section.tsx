@@ -8,13 +8,42 @@ import Link from "next/link";
 import { heroBackground } from "./backgrounds";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
 import type { ServiceHeroConfig } from "./types";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 interface ServiceHeroSectionProps {
   config: ServiceHeroConfig;
 }
 
+const exploreContent = {
+  es: {
+    eyebrow: "Nuestros Servicios",
+    title: "Explora nuestros servicios",
+    description:
+      "Soluciones integrales que se adaptan a las necesidades de tu empresa, desde startups hasta grandes corporaciones.",
+  },
+  en: {
+    eyebrow: "Our Services",
+    title: "Explore our services",
+    description:
+      "Comprehensive solutions that adapt to your company's needs, from startups to large corporations.",
+  },
+} as const;
+
+const heroContent = {
+  es: {
+    demo: "Agendar una Demo",
+    signIn: "Iniciar sesión",
+  },
+  en: {
+    demo: "Book a Demo",
+    signIn: "Sign in",
+  },
+} as const;
+
 export function ExploreServicesHeroSection() {
   const [isVisible, setIsVisible] = React.useState(false)
+  const { language } = useLanguage()
+  const t = exploreContent[language]
 
   React.useEffect(() => {
     setIsVisible(true)
@@ -35,20 +64,19 @@ export function ExploreServicesHeroSection() {
             className="font-medium mb-4 uppercase tracking-wider text-sm"
             style={{ color: "var(--primary)" }}
           >
-            Nuestros Servicios
+            {t.eyebrow}
           </p>
           <h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 text-balance leading-tight"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-white)" }}
           >
-            Explora nuestros servicios
+            {t.title}
           </h1>
           <p
             className="text-base sm:text-lg md:text-xl text-pretty leading-relaxed max-w-2xl mx-auto"
             style={{ color: "var(--color-white)" }}
           >
-            Soluciones integrales que se adaptan a las necesidades de tu empresa,
-            desde startups hasta grandes corporaciones.
+            {t.description}
           </p>
         </div>
       </div>
@@ -58,6 +86,8 @@ export function ExploreServicesHeroSection() {
 
 export function ServiceHeroSection({ config }: ServiceHeroSectionProps) {
   const [lightboxOpen, setLightboxOpen] = React.useState(false);
+  const { language } = useLanguage();
+  const t = heroContent[language];
 
   const sectionStyle = config.backgroundImage
     ? {
@@ -93,7 +123,7 @@ export function ServiceHeroSection({ config }: ServiceHeroSectionProps) {
               asChild
             >
               <Link href="#contacto" style={{ color: "black", lineHeight: "4px" } as React.CSSProperties}>
-                Agendar una Demo
+                {t.demo}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
@@ -108,7 +138,7 @@ export function ServiceHeroSection({ config }: ServiceHeroSectionProps) {
                 asChild
               >
                 <Link href={config.usersAccessLink ?? "#contacto"} style={{ color: "black", lineHeight: "4px" } as React.CSSProperties}>
-                  {config.usersAccessText ?? "Iniciar sesión"}
+                  {config.usersAccessText ?? t.signIn}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>

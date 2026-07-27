@@ -17,82 +17,144 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/lib/i18n/language-context"
 
-const services: Array<{
+type ServiceItem = {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
   image: string;
   href?: string;
-}> = [
-  {
-    icon: Building2,
-    title: "Financieras",
-    description: "Software para gestión de préstamos, inversiones, carteras y cobranzas con análisis de riesgo automatizado.",
-    image: "/financiera.png",
-    href: "/financieras",
+}
+
+const content: Record<"es" | "en", { services: ServiceItem[] }> = {
+  es: {
+    services: [
+      {
+        icon: Building2,
+        title: "Financieras",
+        description: "Software para gestión de préstamos, inversiones, carteras y cobranzas con análisis de riesgo automatizado.",
+        image: "/financiera.png",
+        href: "/financieras",
+      },
+      {
+        icon: Users,
+        title: "Clubes",
+        description: "Sistema integral para gestionar socios, cuotas, eventos y beneficios. Todo en un solo lugar con acceso digital.",
+        image: "/club.png",
+        href: "/clubes",
+      },
+      {
+        icon: Wine,
+        title: "Bares",
+        description: "Sistema POS, control de inventario, comandas digitales y análisis de ventas para optimizar tu local.",
+        image: "/bar.png",
+        href: "/bar",
+      },
+      {
+        icon: ShoppingCart,
+        title: "E-commerce",
+        description: "Tienda online completa con catálogo, carrito, pagos integrados y panel de administración profesional.",
+        image: "/emarket.png",
+        href: "/market",
+      },
+      {
+        icon: Heart,
+        title: "Mutuales",
+        description: "Plataforma completa para administrar afiliados, servicios de salud, subsidios y trámites con total transparencia.",
+        image: "/mutual.png",
+        href: "/mutuales",
+      },
+      {
+        icon: Share2,
+        title: "Big Data",
+        description: "Plataforma de análisis de datos de redes sociales. Carga perfiles y obtén reportes específicos con métricas detalladas.",
+        image: "/redes.png",
+        href: "/redes",
+      },
+      {
+        icon: Dumbbell,
+        title: "Gimnasios",
+        description: "Sistema completo para gestionar membresías, clases, instructores y pagos. Control total de tu centro fitness.",
+        image: "/gym.png",
+        href: "/gimnasios",
+      },
+      {
+        icon: Bot,
+        title: "Chatbot",
+        description: "Asistente virtual inteligente con IA para atención al cliente 24/7, automatización de respuestas y integración multi-canal.",
+        image: "/chatbot.png",
+        href: "/chatbot",
+      },
+    ],
   },
-  {
-    icon: Users,
-    title: "Clubes",
-    description: "Sistema integral para gestionar socios, cuotas, eventos y beneficios. Todo en un solo lugar con acceso digital.",
-    image: "/club.png",
-    href: "/clubes",
+  en: {
+    services: [
+      {
+        icon: Building2,
+        title: "Financial Services",
+        description: "Software to manage loans, investments, portfolios, and collections with automated risk analysis.",
+        image: "/financiera.png",
+        href: "/financieras",
+      },
+      {
+        icon: Users,
+        title: "Clubs",
+        description: "A complete system to manage members, dues, events, and benefits. Everything in one place with digital access.",
+        image: "/club.png",
+        href: "/clubes",
+      },
+      {
+        icon: Wine,
+        title: "Bars",
+        description: "POS system, inventory control, digital orders, and sales analytics to optimize your venue.",
+        image: "/bar.png",
+        href: "/bar",
+      },
+      {
+        icon: ShoppingCart,
+        title: "E-commerce",
+        description: "A complete online store with catalog, cart, integrated payments, and a professional admin panel.",
+        image: "/emarket.png",
+        href: "/market",
+      },
+      {
+        icon: Heart,
+        title: "Mutual Associations",
+        description: "A complete platform to manage members, health services, subsidies, and paperwork with total transparency.",
+        image: "/mutual.png",
+        href: "/mutuales",
+      },
+      {
+        icon: Share2,
+        title: "Big Data",
+        description: "A social media data analysis platform. Load profiles and get specific reports with detailed metrics.",
+        image: "/redes.png",
+        href: "/redes",
+      },
+      {
+        icon: Dumbbell,
+        title: "Gyms",
+        description: "A complete system to manage memberships, classes, instructors, and payments. Total control of your fitness center.",
+        image: "/gym.png",
+        href: "/gimnasios",
+      },
+      {
+        icon: Bot,
+        title: "Chatbot",
+        description: "An intelligent AI virtual assistant for 24/7 customer service, automated responses, and multi-channel integration.",
+        image: "/chatbot.png",
+        href: "/chatbot",
+      },
+    ],
   },
-  {
-    icon: Wine,
-    title: "Bares",
-    description: "Sistema POS, control de inventario, comandas digitales y análisis de ventas para optimizar tu local.",
-    image: "/bar.png",
-    href: "/bar",
-  },
-  {
-    icon: ShoppingCart,
-    title: "E-commerce",
-    description: "Tienda online completa con catálogo, carrito, pagos integrados y panel de administración profesional.",
-    image: "/emarket.png",
-    href: "/market",
-  },
-  {
-    icon: Heart,
-    title: "Mutuales",
-    description: "Plataforma completa para administrar afiliados, servicios de salud, subsidios y trámites con total transparencia.",
-    image: "/mutual.png",
-    href: "/mutuales",
-  },
-  {
-    icon: Share2,
-    title: "Big Data",
-    description: "Plataforma de análisis de datos de redes sociales. Carga perfiles y obtén reportes específicos con métricas detalladas.",
-    image: "/redes.png",
-    href: "/redes",
-  },
-  /*{
-    icon: Megaphone,
-    title: "Marketing tools",
-    description: "Gestiona clientes, campañas, métricas y reportes. Workflow completo para agencias digitales.",
-    image: "/marketing.png",
-    href: "/agencias-marketing",
-  },*/
-  {
-    icon: Dumbbell,
-    title: "Gimnasios",
-    description: "Sistema completo para gestionar membresías, clases, instructores y pagos. Control total de tu centro fitness.",
-    image: "/gym.png",
-    href: "/gimnasios",
-  },
-  {
-    icon: Bot,
-    title: "Chatbot",
-    description: "Asistente virtual inteligente con IA para atención al cliente 24/7, automatización de respuestas y integración multi-canal.",
-    image: "/chatbot.png",
-    href: "/chatbot",
-  }
-]
+}
 
 export function ServicesSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const services = content[language].services
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(

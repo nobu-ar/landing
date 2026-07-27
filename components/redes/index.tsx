@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { redesConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function RedesHeroSection() {
-  return <ServiceHeroSection config={redesConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={redesConfig[language].hero} />;
 }
 
 export function RedesContentSection() {
-  return <ServiceContentSection config={redesConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={redesConfig[language].content} />;
 }
 
 export function RedesPlansSection() {
-  return <ServicePlansSection config={redesConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={redesConfig[language].plans} />;
 }
 
 export function RedesBookingSection() {
-  return <ServiceBookingSection config={redesConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={redesConfig[language].booking} />;
 }

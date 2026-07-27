@@ -4,37 +4,80 @@ import React from "react"
 import Image from "next/image"
 import { Rocket, Zap, ChartNoAxesColumnIncreasing, Award, Users, Clock } from "lucide-react"
 import { agroTheme } from "./theme"
+import { useLanguage } from "@/lib/i18n/language-context"
 
-const features = [
-  {
-    icon: ChartNoAxesColumnIncreasing,
-    title: "Datos que impulsan el campo",
+const content = {
+  es: {
+    eyebrow: "Sobre Nosotros",
+    title: "Tecnología con raíces en el campo",
     description:
-      "Transformamos la información de tu producción en decisiones claras para optimizar cada campaña.",
+      "En Nobu Agro combinamos experiencia en el rubro con desarrollo de software a medida. Creamos plataformas seguras y confiables para productores y empresas del sector, con el respaldo de años trabajando junto al agro argentino.",
+    imageAlt: "Equipo y trabajo en el campo agrícola",
+    features: [
+      {
+        icon: ChartNoAxesColumnIncreasing,
+        title: "Datos que impulsan el campo",
+        description:
+          "Transformamos la información de tu producción en decisiones claras para optimizar cada campaña.",
+      },
+      {
+        icon: Rocket,
+        title: "Innovación para el agro",
+        description:
+          "Aplicamos IA, automatización y Big Data para modernizar la gestión de cultivos y operaciones rurales.",
+      },
+      {
+        icon: Zap,
+        title: "Menos complejidad, más resultados",
+        description:
+          "Simplificamos procesos para que te enfoques en producir, mientras la tecnología trabaja por vos.",
+      },
+    ],
+    highlights: [
+      { icon: Award, value: "#1", label: "Inmediatez de respuestas" },
+      { icon: Users, value: "100%", label: "Adaptaciones a medida" },
+      { icon: Clock, value: "24/7", label: "Soporte dedicado" },
+    ],
   },
-  {
-    icon: Rocket,
-    title: "Innovación para el agro",
+  en: {
+    eyebrow: "About Us",
+    title: "Technology rooted in the field",
     description:
-      "Aplicamos IA, automatización y Big Data para modernizar la gestión de cultivos y operaciones rurales.",
+      "At Nobu Agro we combine industry experience with custom software development. We build secure, reliable platforms for producers and agribusinesses, backed by years working alongside Argentine agriculture.",
+    imageAlt: "Team and work in the agricultural field",
+    features: [
+      {
+        icon: ChartNoAxesColumnIncreasing,
+        title: "Data that drives the field",
+        description:
+          "We turn your production data into clear decisions to optimize every season.",
+      },
+      {
+        icon: Rocket,
+        title: "Innovation for agriculture",
+        description:
+          "We apply AI, automation, and Big Data to modernize crop management and rural operations.",
+      },
+      {
+        icon: Zap,
+        title: "Less complexity, more results",
+        description:
+          "We simplify processes so you can focus on producing, while technology works for you.",
+      },
+    ],
+    highlights: [
+      { icon: Award, value: "#1", label: "Response time" },
+      { icon: Users, value: "100%", label: "Tailored solutions" },
+      { icon: Clock, value: "24/7", label: "Dedicated support" },
+    ],
   },
-  {
-    icon: Zap,
-    title: "Menos complejidad, más resultados",
-    description:
-      "Simplificamos procesos para que te enfoques en producir, mientras la tecnología trabaja por vos.",
-  },
-]
-
-const highlights = [
-  { icon: Award, value: "#1", label: "Inmediatez de respuestas"},
-  { icon: Users, value: "100%", label: "Adaptaciones a medida" },
-  { icon: Clock, value: "24/7", label: "Soporte dedicado" },
-]
+} as const
 
 export function AgroAboutSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,13 +113,13 @@ export function AgroAboutSection() {
             className="font-medium mb-3 sm:mb-4 uppercase tracking-wider text-xs sm:text-sm"
             style={{ color: agroTheme.olive }}
           >
-            Sobre Nosotros
+            {t.eyebrow}
           </p>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-balance leading-tight"
             style={{ fontFamily: "var(--font-display)", color: agroTheme.dark }}
           >
-            Tecnología con raíces en el campo
+            {t.title}
           </h2>
         </div>
 
@@ -95,7 +138,7 @@ export function AgroAboutSection() {
           <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_30px_60px_-20px_rgba(30,77,47,0.45)]">
             <Image
               src="/agroImage6.jpg"
-              alt="Equipo y trabajo en el campo agrícola"
+              alt={t.imageAlt}
               width={7360}
               height={4912}
               className="w-full h-auto block"
@@ -120,13 +163,11 @@ export function AgroAboutSection() {
                 className="text-base sm:text-lg lg:text-xl leading-relaxed text-pretty mb-6 sm:mb-8"
                 style={{ color: agroTheme.cream }}
               >
-                En Nobu Agro combinamos experiencia en el rubro con desarrollo de software a medida.
-                Creamos plataformas seguras y confiables para productores y empresas del sector,
-                con el respaldo de años trabajando junto al agro argentino.
+                {t.description}
               </p>
 
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
-                {highlights.map((item) => (
+                {t.highlights.map((item) => (
                   <div
                     key={item.label}
                     className="rounded-xl px-3 py-3 sm:px-4 sm:py-4 text-center backdrop-blur-sm"
@@ -156,7 +197,7 @@ export function AgroAboutSection() {
         </div>
 
         <div className="max-w-6xl mx-auto mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-          {features.map((feature, index) => (
+          {t.features.map((feature, index) => (
             <div
               key={feature.title}
               className={`rounded-2xl p-5 sm:p-6 transition-all duration-1000 ${

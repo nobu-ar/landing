@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { chatbotConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function ChatbotHeroSection() {
-  return <ServiceHeroSection config={chatbotConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={chatbotConfig[language].hero} />;
 }
 
 export function ChatbotContentSection() {
-  return <ServiceContentSection config={chatbotConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={chatbotConfig[language].content} />;
 }
 
 export function ChatbotPlansSection() {
-  return <ServicePlansSection config={chatbotConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={chatbotConfig[language].plans} />;
 }
 
 export function ChatbotBookingSection() {
-  return <ServiceBookingSection config={chatbotConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={chatbotConfig[language].booking} />;
 }

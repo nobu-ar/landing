@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { mutualesConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function MutualesHeroSection() {
-  return <ServiceHeroSection config={mutualesConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={mutualesConfig[language].hero} />;
 }
 
 export function MutualesContentSection() {
-  return <ServiceContentSection config={mutualesConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={mutualesConfig[language].content} />;
 }
 
 export function MutualesPlansSection() {
-  return <ServicePlansSection config={mutualesConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={mutualesConfig[language].plans} />;
 }
 
 export function MutualesBookingSection() {
-  return <ServiceBookingSection config={mutualesConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={mutualesConfig[language].booking} />;
 }

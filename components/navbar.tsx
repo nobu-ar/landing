@@ -3,11 +3,34 @@
 import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { Menu, X } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    servicios: "Servicios",
+    nosotros: "Nosotros",
+    contacto: "Contacto",
+    agendar: "Agendar reunión",
+    agendarDemo: "Agendar Demo",
+    iniciarSesion: "Iniciar sesión",
+  },
+  en: {
+    servicios: "Services",
+    nosotros: "About",
+    contacto: "Contact",
+    agendar: "Book a meeting",
+    agendarDemo: "Book a Demo",
+    iniciarSesion: "Sign in",
+  },
+} as const
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -37,12 +60,14 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-5 xl:gap-6">
             <Link href="/#servicios" className="text-white hover:text-white/80 transition-colors text-sm">
-              Servicios
+              {t.servicios}
             </Link>
             <Link href="/#nosotros" className="text-white hover:text-white/80 transition-colors text-sm">
-              Nosotros
+              {t.nosotros}
             </Link>
-            
+
+            <LanguageSwitcher />
+
             <div className="ml-2 xl:ml-4 gap-2 xl:gap-4 flex">
               <Button 
               size="lg"
@@ -51,7 +76,7 @@ export function Navbar() {
               asChild
             >
               <Link href="/#contacto" style={{ color: 'rgba(0, 0, 0, 1)', lineHeight: '4px' } as React.CSSProperties}>
-                Agendar reunión
+                {t.agendar}
               </Link>
             </Button>
             <Button 
@@ -62,32 +87,35 @@ export function Navbar() {
               asChild
             >
               <Link href="https://espacios.nobu.com.ar" style={{ color: 'white', lineHeight: '4px' } as React.CSSProperties}>
-                Iniciar sesión
+                {t.iniciarSesion}
               </Link>
             </Button>
             </div>
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-white shrink-0"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-white shrink-0"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {isOpen && (
           <div className="lg:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               <Link href="/servicios" className="text-white hover:text-white/80 transition-colors py-2">
-                Servicios
+                {t.servicios}
               </Link>
               <Link href="/servicios#nosotros" className="text-white hover:text-white/80 transition-colors py-2">
-                Nosotros
+                {t.nosotros}
               </Link>
               <Link href="/#contacto" className="text-white hover:text-white/80 transition-colors py-2">
-                Contacto
+                {t.contacto}
               </Link>
               <div className="flex flex-col gap-3 pt-4 border-t border-border">
                 <Button
@@ -97,7 +125,7 @@ export function Navbar() {
                   asChild
                 >
                   <Link href="/#contacto" style={{ color: "black" }}>
-                    Agendar Demo
+                    {t.agendarDemo}
                   </Link>
                 </Button>
                 <Button
@@ -108,7 +136,7 @@ export function Navbar() {
                   asChild
                 >
                   <Link href="https://espacios.nobu.com.ar" style={{ color: "white" }}>
-                    Iniciar sesión
+                    {t.iniciarSesion}
                   </Link>
                 </Button>
               </div>

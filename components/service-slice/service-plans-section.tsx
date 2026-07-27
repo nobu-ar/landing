@@ -12,12 +12,18 @@ import {
 import { servicesBackground } from "./backgrounds";
 import { Check, Minus } from "lucide-react";
 import type { ServicePlansConfig, PlanCellValue } from "./types";
+import { useLanguage, type Language } from "@/lib/i18n/language-context";
 
 interface ServicePlansSectionProps {
   config?: ServicePlansConfig | null;
 }
 
-function CellContent({ value }: { value: PlanCellValue }) {
+const content: Record<Language, { unlimited: string; feature: string }> = {
+  es: { unlimited: "Ilimitado", feature: "Funcionalidad" },
+  en: { unlimited: "Unlimited", feature: "Feature" },
+};
+
+function CellContent({ value, unlimitedLabel }: { value: PlanCellValue; unlimitedLabel: string }) {
   if (value === true) {
     return <Check className="w-5 h-5 text-primary shrink-0" aria-hidden />;
   }
@@ -25,7 +31,7 @@ function CellContent({ value }: { value: PlanCellValue }) {
     return (
       <span className="inline-flex items-center gap-1">
         <Check className="w-5 h-5 text-primary shrink-0" aria-hidden />
-        <span className="text-xs font-medium text-white/90">Ilimitado</span>
+        <span className="text-xs font-medium text-white/90">{unlimitedLabel}</span>
       </span>
     );
   }
@@ -35,6 +41,8 @@ function CellContent({ value }: { value: PlanCellValue }) {
 export function ServicePlansSection({ config }: ServicePlansSectionProps) {
   const [isVisible, setIsVisible] = React.useState(false);
   const sectionRef = React.useRef<HTMLElement>(null);
+  const { language } = useLanguage();
+  const t = content[language];
 
   if (!config) return null;
 
@@ -90,7 +98,7 @@ export function ServicePlansSection({ config }: ServicePlansSectionProps) {
                       className="min-w-[180px] sm:min-w-[220px] py-4 px-3 sm:px-4 text-left font-semibold text-white bg-white/10 text-xs sm:text-sm"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
-                      Funcionalidad
+                      {t.feature}
                     </TableHead>
                     {config.planLabels.map((label) => (
                       <TableHead
@@ -132,7 +140,7 @@ export function ServicePlansSection({ config }: ServicePlansSectionProps) {
                         {row.plans.map((value, i) => (
                           <TableCell key={i} className="py-3 px-3 text-center align-middle">
                             <div className="flex justify-center items-center">
-                              <CellContent value={value} />
+                              <CellContent value={value} unlimitedLabel={t.unlimited} />
                             </div>
                           </TableCell>
                         ))}

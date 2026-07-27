@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { financierasConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function FinancierasHeroSection() {
-  return <ServiceHeroSection config={financierasConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={financierasConfig[language].hero} />;
 }
 
 export function FinancierasContentSection() {
-  return <ServiceContentSection config={financierasConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={financierasConfig[language].content} />;
 }
 
 export function FinancierasPlansSection() {
-  return <ServicePlansSection config={financierasConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={financierasConfig[language].plans} />;
 }
 
 export function FinancierasBookingSection() {
-  return <ServiceBookingSection config={financierasConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={financierasConfig[language].booking} />;
 }

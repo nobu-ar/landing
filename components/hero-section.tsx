@@ -4,9 +4,29 @@ import React from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    headline: "Engineering, AI & Data para transformar tu negocio",
+    subtitle:
+      "Diseñamos sistemas a medida y plataformas inteligentes que conectan procesos, automatizan operaciones y convierten tus datos en valor real.",
+    cta: "Agendar reunión",
+    ctaSecondary: "Explorar Servicios",
+  },
+  en: {
+    headline: "Engineering, AI & Data to transform your business",
+    subtitle:
+      "We design custom systems and intelligent platforms that connect processes, automate operations, and turn your data into real value.",
+    cta: "Book a meeting",
+    ctaSecondary: "Explore Services",
+  },
+} as const
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = React.useState(false)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     setIsVisible(true)
@@ -45,12 +65,12 @@ export function HeroSection() {
                   animation: fadeInOut 2s ease-in-out infinite;
                 }
               `}} />
-              Engineering, AI & Data para transformar tu negocio
+              {t.headline}
             </h1>
 
             {/* Subtitle */}
             <p className={`text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0 text-pretty leading-relaxed transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ color: 'var(--color-white)' }}>
-            Diseñamos sistemas a medida y plataformas inteligentes que conectan procesos, automatizan operaciones y convierten tus datos en valor real.
+            {t.subtitle}
             </p>
 
             {/* CTA Buttons */}
@@ -62,7 +82,7 @@ export function HeroSection() {
                 asChild
               >
                 <Link href="#contacto" style={{ color: 'rgba(0, 0, 0, 1)', lineHeight: '4px' } as React.CSSProperties}>
-                  Agendar reunión
+                  {t.cta}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
@@ -74,7 +94,7 @@ export function HeroSection() {
                 asChild
               >
                 <Link href="#servicios" style={{ color: 'white' }}>
-                  Explorar Servicios
+                  {t.ctaSecondary}
                 </Link>
               </Button>
             </div>

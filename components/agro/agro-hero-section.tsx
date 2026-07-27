@@ -6,9 +6,23 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { agroTheme } from "./theme"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    eyebrow: "Soluciones para el agro",
+    title: "Tecnología que cultiva resultados",
+  },
+  en: {
+    eyebrow: "Solutions for agriculture",
+    title: "Technology that grows results",
+  },
+} as const
 
 export function AgroHeroSection() {
   const [isVisible, setIsVisible] = React.useState(false)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     setIsVisible(true)
@@ -43,14 +57,14 @@ export function AgroHeroSection() {
             className="font-medium mb-3 sm:mb-4 uppercase tracking-wider text-xs sm:text-sm items-center justify-center text-center"
             style={{ color: agroTheme.olive }}
           >
-            Soluciones para el agro
+            {t.eyebrow}
           </p>
 
           <h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] font-bold mb-4 sm:mb-6 text-balance leading-tight"
             style={{ fontFamily: "var(--font-display)", color: agroTheme.dark }}
           >
-            Tecnología que cultiva resultados
+            {t.title}
           </h1>
 
         

@@ -7,19 +7,24 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { gimnasiosConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function GimnasiosHeroSection() {
-  return <ServiceHeroSection config={gimnasiosConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={gimnasiosConfig[language].hero} />;
 }
 
 export function GimnasiosContentSection() {
-  return <ServiceContentSection config={gimnasiosConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={gimnasiosConfig[language].content} />;
 }
 
 export function GimnasiosPlansSection() {
-  return <ServicePlansSection config={gimnasiosConfig.plans} />;
+  const { language } = useLanguage();
+  return <ServicePlansSection config={gimnasiosConfig[language].plans} />;
 }
 
 export function GimnasiosBookingSection() {
-  return <ServiceBookingSection config={gimnasiosConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={gimnasiosConfig[language].booking} />;
 }

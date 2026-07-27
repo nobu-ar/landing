@@ -3,10 +3,56 @@
 import React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, Video, Mail, Phone } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    eyebrow: "Agendá una Reunión",
+    title: "Conversemos sobre tu proyecto",
+    description: "Elegí el método que prefieras para agendar una reunión con nosotros",
+    googleCalendar: "Google Calendar",
+    calendarTitle: "Agendá directo en nuestro calendario",
+    calendarDescription: "Elegí el horario que mejor te quede y recibí confirmación automática",
+    meetTitle: "Reunión por Google Meet",
+    meetDescription: "Te enviaremos el link de la videollamada por email",
+    directContact: "Contacto Directo",
+    contactTitle: "O escribinos directamente",
+    contactDescription: "Preferís coordinar por otro medio? Contactanos por email o WhatsApp",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    hoursTitle: "Horarios de atención",
+    weekdays: "Lunes a Viernes",
+    saturdays: "Sábados",
+    guaranteed: "Respuesta garantizada",
+    guaranteedRest: "en menos de 24 horas hábiles",
+  },
+  en: {
+    eyebrow: "Book a Meeting",
+    title: "Let's talk about your project",
+    description: "Choose the method you prefer to schedule a meeting with us",
+    googleCalendar: "Google Calendar",
+    calendarTitle: "Book directly on our calendar",
+    calendarDescription: "Pick the time that suits you best and get automatic confirmation",
+    meetTitle: "Meeting via Google Meet",
+    meetDescription: "We'll send you the video call link by email",
+    directContact: "Direct Contact",
+    contactTitle: "Or write to us directly",
+    contactDescription: "Prefer another way to reach us? Contact us by email or WhatsApp",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    hoursTitle: "Business hours",
+    weekdays: "Monday to Friday",
+    saturdays: "Saturdays",
+    guaranteed: "Guaranteed response",
+    guaranteedRest: "in less than 24 business hours",
+  },
+} as const
 
 export function BookingSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,15 +87,15 @@ export function BookingSection() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className={`max-w-3xl mx-auto text-center mb-10 sm:mb-14 lg:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="font-medium mb-4 uppercase tracking-wider text-sm" style={{ color: 'white' }}>Agendá una Reunión</p>
+          <p className="font-medium mb-4 uppercase tracking-wider text-sm" style={{ color: 'white' }}>{t.eyebrow}</p>
           <h2 
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 sm:mb-6 text-balance"
             style={{ fontFamily: 'var(--font-display)', color: 'white' }}
           >
-            Conversemos sobre tu proyecto
+            {t.title}
           </h2>
           <p className="text-base sm:text-lg text-pretty" style={{ color: 'white' }}>
-            Elegí el método que prefieras para agendar una reunión con nosotros
+            {t.description}
           </p>
         </div>
 
@@ -63,11 +109,11 @@ export function BookingSection() {
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium" style={{ color: '#000000' }}>Google Calendar</span>
+                  <span className="text-sm font-medium" style={{ color: '#000000' }}>{t.googleCalendar}</span>
                 </div>
-                <CardTitle style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Agendá directo en nuestro calendario</CardTitle>
+                <CardTitle style={{ fontFamily: 'var(--font-display)', color: 'black' }}>{t.calendarTitle}</CardTitle>
                 <CardDescription style={{ color: 'black' }}>
-                  Elegí el horario que mejor te quede y recibí confirmación automática
+                  {t.calendarDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -82,9 +128,9 @@ export function BookingSection() {
                   <div className="flex items-start gap-3">
                     <Video className="w-5 h-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-sm" style={{ color: 'black' }}>Reunión por Google Meet</p>
+                      <p className="font-medium text-sm" style={{ color: 'black' }}>{t.meetTitle}</p>
                       <p className="text-xs mt-1" style={{ color: 'black' }}>
-                        Te enviaremos el link de la videollamada por email
+                        {t.meetDescription}
                       </p>
                     </div>
                   </div>
@@ -100,11 +146,11 @@ export function BookingSection() {
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium" style={{ color: '#000000' }}>Contacto Directo</span>
+                  <span className="text-sm font-medium" style={{ color: '#000000' }}>{t.directContact}</span>
                 </div>
-                <CardTitle style={{ fontFamily: 'var(--font-display)', color: 'black' }}>O escribinos directamente</CardTitle>
+                <CardTitle style={{ fontFamily: 'var(--font-display)', color: 'black' }}>{t.contactTitle}</CardTitle>
                 <CardDescription style={{ color: 'black' }}>
-                  Preferís coordinar por otro medio? Contactanos por email o WhatsApp
+                  {t.contactDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -113,7 +159,7 @@ export function BookingSection() {
                     <div className="flex items-start gap-3">
                       <Mail className="w-5 h-5 text-primary mt-0.5" />
                       <div className="flex-1">
-                        <p className="font-medium text-sm mb-1" style={{ color: 'black' }}>Email</p>
+                        <p className="font-medium text-sm mb-1" style={{ color: 'black' }}>{t.email}</p>
                         <a 
                           href="mailto:info@nobu.com.ar" 
                           className="hover:opacity-80 transition-colors text-sm"
@@ -129,7 +175,7 @@ export function BookingSection() {
                     <div className="flex items-start gap-3">
                       <Phone className="w-5 h-5 text-primary mt-0.5" />
                       <div className="flex-1">
-                        <p className="font-medium text-sm mb-1" style={{ color: 'black' }}>WhatsApp</p>
+                        <p className="font-medium text-sm mb-1" style={{ color: 'black' }}>{t.whatsapp}</p>
                         <a 
                           href="https://wa.me/5493844405628" 
                           target="_blank" 
@@ -145,14 +191,14 @@ export function BookingSection() {
                 </div>
 
                 <div className="pt-6 border-t border-border">
-                  <h4 className="font-semibold mb-3 text-sm" style={{ color: 'black' }}>Horarios de atención</h4>
+                  <h4 className="font-semibold mb-3 text-sm" style={{ color: 'black' }}>{t.hoursTitle}</h4>
                   <div className="space-y-2 text-sm" style={{ color: 'black' }}>
                     <div className="flex justify-between gap-3">
-                      <span>Lunes a Viernes</span>
+                      <span>{t.weekdays}</span>
                       <span>9:00 - 18:00</span>
                     </div>
                     <div className="flex justify-between gap-3">
-                      <span>Sábados</span>
+                      <span>{t.saturdays}</span>
                       <span>9:00 - 13:00</span>
                     </div>
                   </div>
@@ -160,7 +206,7 @@ export function BookingSection() {
 
                 <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                   <p className="text-sm" style={{ color: 'black' }}>
-                    <strong className="text-primary">Respuesta garantizada</strong> en menos de 24 horas hábiles
+                    <strong className="text-primary">{t.guaranteed}</strong> {t.guaranteedRest}
                   </p>
                 </div>
               </CardContent>

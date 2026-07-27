@@ -4,29 +4,64 @@ import React from "react"
 import Link from "next/link"
 import { ArrowRight, Sprout, Layers } from "lucide-react"
 import { heroBackground } from "@/components/service-slice/backgrounds"
+import { useLanguage } from "@/lib/i18n/language-context"
 
-const categories = [
-  {
-    title: "Agro",
-    description: "Tecnología para el campo",
-    href: "/agro",
-    icon: Sprout,
-    gradient: "linear-gradient(135deg, #1e4d2f 0%, #2d6a4f 45%, #87a345 100%)",
-    accent: "#94eecf",
+const content = {
+  es: {
+    eyebrow: "Nuestros Servicios",
+    title: "Explora nuestros servicios",
+    description: "Elegí el camino que mejor se adapte a tu negocio y descubrí todo lo que Nobu puede hacer por vos.",
+    explore: "Explorar",
+    categories: [
+      {
+        title: "Agro",
+        description: "Tecnología para el campo",
+        href: "/agro",
+        icon: Sprout,
+        gradient: "linear-gradient(135deg, #1e4d2f 0%, #2d6a4f 45%, #87a345 100%)",
+        accent: "#94eecf",
+      },
+      {
+        title: "Otros servicios",
+        description: "Financieras, clubes, e-commerce y más",
+        href: "/servicios",
+        icon: Layers,
+        gradient: "linear-gradient(135deg, #1a3fa0 0%, #173FAB 50%, #3a5dd8 100%)",
+        accent: "#94eecf",
+      },
+    ],
   },
-  {
-    title: "Otros servicios",
-    description: "Financieras, clubes, e-commerce y más",
-    href: "/servicios",
-    icon: Layers,
-    gradient: "linear-gradient(135deg, #1a3fa0 0%, #173FAB 50%, #3a5dd8 100%)",
-    accent: "#94eecf",
+  en: {
+    eyebrow: "Our Services",
+    title: "Explore our services",
+    description: "Choose the path that best fits your business and discover everything Nobu can do for you.",
+    explore: "Explore",
+    categories: [
+      {
+        title: "Agro",
+        description: "Technology for the field",
+        href: "/agro",
+        icon: Sprout,
+        gradient: "linear-gradient(135deg, #1e4d2f 0%, #2d6a4f 45%, #87a345 100%)",
+        accent: "#94eecf",
+      },
+      {
+        title: "Other services",
+        description: "Financial services, clubs, e-commerce, and more",
+        href: "/servicios",
+        icon: Layers,
+        gradient: "linear-gradient(135deg, #1a3fa0 0%, #173FAB 50%, #3a5dd8 100%)",
+        accent: "#94eecf",
+      },
+    ],
   },
-]
+} as const
 
 export function ServiceCategoriesSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,19 +95,19 @@ export function ServiceCategoriesSection() {
             className="font-medium mb-4 uppercase tracking-wider text-sm"
             style={{ color: "var(--primary)" }}
           >
-            Nuestros Servicios
+            {t.eyebrow}
           </p>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 text-balance leading-tight"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-white)" }}
           >
-            Explora nuestros servicios
+            {t.title}
           </h2>
           <p
             className="text-base sm:text-lg md:text-xl text-pretty leading-relaxed max-w-2xl mx-auto"
             style={{ color: "var(--color-white)" }}
           >
-            Elegí el camino que mejor se adapte a tu negocio y descubrí todo lo que Nobu puede hacer por vos.
+            {t.description}
           </p>
         </div>
 
@@ -81,7 +116,7 @@ export function ServiceCategoriesSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          {categories.map((category) => (
+          {t.categories.map((category) => (
             <Link
               key={category.title}
               href={category.href}
@@ -111,7 +146,7 @@ export function ServiceCategoriesSection() {
 
                   <div className="flex items-center gap-2 text-white font-medium">
                     <span className="text-xs sm:text-sm uppercase tracking-wider opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                      Explorar
+                      {t.explore}
                     </span>
                     <ArrowRight
                       className="h-4 w-4 sm:h-5 sm:w-5 origin-center transition-transform duration-500 ease-out group-hover:scale-125"

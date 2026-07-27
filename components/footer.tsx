@@ -1,7 +1,38 @@
+"use client"
+
 import Link from "next/link"
 import { MapPin, Mail, Phone, Instagram, Linkedin } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    location: "Tucumán, Argentina",
+    redesSociales: "Redes sociales",
+    empresa: "Empresa",
+    sobreNosotros: "Sobre Nosotros",
+    contacto: "Contacto",
+    contactoTitle: "Contacto",
+    rights: "Todos los derechos reservados.",
+    privacidad: "Política de Privacidad",
+    terminos: "Términos de Servicio",
+  },
+  en: {
+    location: "Tucumán, Argentina",
+    redesSociales: "Social media",
+    empresa: "Company",
+    sobreNosotros: "About Us",
+    contacto: "Contact",
+    contactoTitle: "Contact",
+    rights: "All rights reserved.",
+    privacidad: "Privacy Policy",
+    terminos: "Terms of Service",
+  },
+} as const
 
 export function Footer() {
+  const { language } = useLanguage()
+  const t = content[language]
+
   return (
     <footer className="relative isolate overflow-hidden border-t border-border outline-none" style={{ backgroundColor: '#f3f4f6', transform: 'translateZ(0)' }}>
       {/* Capa sólida para que nada (body, scripts, etc.) se dibuje encima */}
@@ -20,13 +51,13 @@ export function Footer() {
             
             <div className="flex items-center gap-2 text-sm" style={{ color: 'black' }}>
               <MapPin className="w-4 h-4 text-primary" />
-              <span>Tucumán, Argentina</span>
+              <span>{t.location}</span>
             </div>
           </div>
 
           {/* Redes sociales */}
           <div>
-            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Redes sociales</h3>
+            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>{t.redesSociales}</h3>
             <ul className="space-y-3">
               <li>
                 <a
@@ -55,27 +86,26 @@ export function Footer() {
             </ul>
           </div>
 
-           {/* // Empresa *
+          {/* Empresa */}
           <div>
-            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Empresa</h3>
+            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>{t.empresa}</h3>
             <ul className="space-y-3">
               <li>
                 <Link href="#nosotros" className="transition-colors text-sm" style={{ color: 'black' }}>
-                  Sobre Nosotros
+                  {t.sobreNosotros}
                 </Link>
               </li>
               <li>
                 <Link href="#contacto" className="transition-colors text-sm" style={{ color: 'black' }}>
-                  Contacto
+                  {t.contacto}
                 </Link>
               </li>
             </ul>
           </div>
 
-
           {/* Contacto */}
           <div>
-            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>Contacto</h3>
+            <h3 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-display)', color: 'black' }}>{t.contactoTitle}</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm" style={{ color: 'black' }}>
                 <Mail className="w-4 h-4 text-primary" />
@@ -96,14 +126,14 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-center md:text-left" style={{ color: 'black' }}>
-            © {new Date().getFullYear()} Nobu. Todos los derechos reservados.
+            © {new Date().getFullYear()} Nobu. {t.rights}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             <Link href="/privacidad" className="transition-colors text-sm" style={{ color: 'black' }}>
-              Política de Privacidad
+              {t.privacidad}
             </Link>
             <Link href="/terminos" className="transition-colors text-sm" style={{ color: 'black' }}>
-              Términos de Servicio
+              {t.terminos}
             </Link>
           </div>
         </div>

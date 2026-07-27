@@ -2,28 +2,62 @@
 
 import React from "react"
 import { Rocket, Zap, ChartNoAxesColumnIncreasing } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/language-context"
 
-const features = [
-  {
-    icon: ChartNoAxesColumnIncreasing,
-    title: "Automatizar procesos",
-    description: "Automatizamos procesos complejos para que puedas enfocarte en lo que realmente importa: tu negocio."
+const content = {
+  es: {
+    eyebrow: "Sobre Nosotros",
+    title: "Innovación para el Futuro Digital",
+    description:
+      "Vinimos a revolucionar la gestión empresarial. Con una combinación de tecnología y experiencia, nos aseguramos de que cada detalle se gestione de manera eficiente y efectiva. Nuestro compromiso es brindarte soluciones personalizadas que impulsen el crecimiento de tu negocio.",
+    features: [
+      {
+        icon: ChartNoAxesColumnIncreasing,
+        title: "Automatizar procesos",
+        description: "Automatizamos procesos complejos para que puedas enfocarte en lo que realmente importa: tu negocio.",
+      },
+      {
+        icon: Rocket,
+        title: "Te Acercamos al Futuro",
+        description: "Nuestros sistemas se basan en la implementación de IA y Big Data logrando transformar la manera de gestionar y escalar tus negocios.",
+      },
+      {
+        icon: Zap,
+        title: "Menos Burocracia",
+        description: "Simplificamos procesos complejos para que puedas enfocarte en lo que realmente importa: tu negocio.",
+      },
+    ],
   },
-  {
-    icon: Rocket,
-    title: "Te Acercamos al Futuro",
-    description: "Nuestros sistemas se basan en la implementación de IA y Big Data logrando transformar la manera de gestionar y escalar tus negocios."
+  en: {
+    eyebrow: "About Us",
+    title: "Innovation for a Digital Future",
+    description:
+      "We're here to revolutionize business management. By combining technology and experience, we make sure every detail is handled efficiently and effectively. Our commitment is to deliver tailored solutions that drive your business's growth.",
+    features: [
+      {
+        icon: ChartNoAxesColumnIncreasing,
+        title: "Automate processes",
+        description: "We automate complex processes so you can focus on what truly matters: your business.",
+      },
+      {
+        icon: Rocket,
+        title: "Bringing You Closer to the Future",
+        description: "Our systems are built on AI and Big Data, transforming the way you manage and scale your business.",
+      },
+      {
+        icon: Zap,
+        title: "Less Bureaucracy",
+        description: "We simplify complex processes so you can focus on what truly matters: your business.",
+      },
+    ],
   },
-  {
-    icon: Zap,
-    title: "Menos Burocracia",
-    description: "Simplificamos procesos complejos para que puedas enfocarte en lo que realmente importa: tu negocio."
-  }
-]
+} as const
 
 export function AboutSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,20 +93,19 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`} style={{ color: '#ffffff' }}>
-            <p className="text-primary font-medium mb-4 uppercase tracking-wider text-sm">Sobre Nosotros</p>
+            <p className="text-primary font-medium mb-4 uppercase tracking-wider text-sm">{t.eyebrow}</p>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 sm:mb-6 text-balance"
               style={{ fontFamily: 'var(--font-display)', color: '#ffffff' }}
             >
-              Innovación para el Futuro Digital
+              {t.title}
             </h2>
             <p className="text-base sm:text-lg mb-7 sm:mb-8 text-pretty leading-relaxed" style={{ color: '#ffffff' }}>
-              Vinimos a revolucionar la gestión empresarial. Con una combinación de tecnología y experiencia, nos aseguramos de que cada detalle se gestione de manera eficiente y efectiva.
-              Nuestro compromiso es brindarte soluciones personalizadas que impulsen el crecimiento de tu negocio.
+              {t.description}
             </p>
 
             <div className="space-y-5 sm:space-y-6">
-              {features.map((feature, index) => (
+              {t.features.map((feature, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                     <feature.icon className="w-6 h-6 text-primary" />

@@ -4,10 +4,56 @@ import React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, Video, Mail, Phone } from "lucide-react"
 import { agroTheme } from "./theme"
+import { useLanguage } from "@/lib/i18n/language-context"
+
+const content = {
+  es: {
+    eyebrow: "Agendá una Reunión",
+    title: "Conversemos sobre tu proyecto agro",
+    description: "Elegí el método que prefieras para coordinar una reunión con nuestro equipo",
+    googleCalendar: "Google Calendar",
+    calendarTitle: "Agendá directo en nuestro calendario",
+    calendarDescription: "Elegí el horario que mejor te quede y recibí confirmación automática",
+    meetTitle: "Reunión por Google Meet",
+    meetDescription: "Te enviaremos el link de la videollamada por email",
+    directContact: "Contacto Directo",
+    contactTitle: "O escribinos directamente",
+    contactDescription: "Preferís coordinar por otro medio? Contactanos por email o WhatsApp",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    hoursTitle: "Horarios de atención",
+    weekdays: "Lunes a Viernes",
+    saturdays: "Sábados",
+    guaranteed: "Respuesta garantizada",
+    guaranteedRest: "en menos de 24 horas hábiles",
+  },
+  en: {
+    eyebrow: "Book a Meeting",
+    title: "Let's talk about your agro project",
+    description: "Choose the method you prefer to coordinate a meeting with our team",
+    googleCalendar: "Google Calendar",
+    calendarTitle: "Book directly on our calendar",
+    calendarDescription: "Pick the time that suits you best and get automatic confirmation",
+    meetTitle: "Meeting via Google Meet",
+    meetDescription: "We'll send you the video call link by email",
+    directContact: "Direct Contact",
+    contactTitle: "Or write to us directly",
+    contactDescription: "Prefer another way to reach us? Contact us by email or WhatsApp",
+    email: "Email",
+    whatsapp: "WhatsApp",
+    hoursTitle: "Business hours",
+    weekdays: "Monday to Friday",
+    saturdays: "Saturdays",
+    guaranteed: "Guaranteed response",
+    guaranteedRest: "in less than 24 business hours",
+  },
+} as const
 
 export function AgroBookingSection() {
   const [isVisible, setIsVisible] = React.useState(false)
   const sectionRef = React.useRef<HTMLElement>(null)
+  const { language } = useLanguage()
+  const t = content[language]
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,16 +92,16 @@ export function AgroBookingSection() {
             className="font-medium mb-4 uppercase tracking-wider text-sm"
             style={{ color: agroTheme.olive }}
           >
-            Agendá una Reunión
+            {t.eyebrow}
           </p>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 sm:mb-6 text-balance"
             style={{ fontFamily: "var(--font-display)", color: agroTheme.cream }}
           >
-            Conversemos sobre tu proyecto agro
+            {t.title}
           </h2>
           <p className="text-base sm:text-lg text-pretty" style={{ color: agroTheme.cream }}>
-            Elegí el método que prefieras para coordinar una reunión con nuestro equipo
+            {t.description}
           </p>
         </div>
 
@@ -75,14 +121,14 @@ export function AgroBookingSection() {
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-5 h-5" style={{ color: agroTheme.olive }} />
                   <span className="text-sm font-medium" style={{ color: agroTheme.dark }}>
-                    Google Calendar
+                    {t.googleCalendar}
                   </span>
                 </div>
                 <CardTitle style={{ fontFamily: "var(--font-display)", color: agroTheme.dark }}>
-                  Agendá directo en nuestro calendario
+                  {t.calendarTitle}
                 </CardTitle>
                 <CardDescription style={{ color: `${agroTheme.dark}bb` }}>
-                  Elegí el horario que mejor te quede y recibí confirmación automática
+                  {t.calendarDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -104,10 +150,10 @@ export function AgroBookingSection() {
                     <Video className="w-5 h-5 mt-0.5" style={{ color: agroTheme.olive }} />
                     <div>
                       <p className="font-medium text-sm" style={{ color: agroTheme.dark }}>
-                        Reunión por Google Meet
+                        {t.meetTitle}
                       </p>
                       <p className="text-xs mt-1" style={{ color: `${agroTheme.dark}bb` }}>
-                        Te enviaremos el link de la videollamada por email
+                        {t.meetDescription}
                       </p>
                     </div>
                   </div>
@@ -129,14 +175,14 @@ export function AgroBookingSection() {
                 <div className="flex items-center gap-2 mb-2">
                   <Mail className="w-5 h-5" style={{ color: agroTheme.olive }} />
                   <span className="text-sm font-medium" style={{ color: agroTheme.dark }}>
-                    Contacto Directo
+                    {t.directContact}
                   </span>
                 </div>
                 <CardTitle style={{ fontFamily: "var(--font-display)", color: agroTheme.dark }}>
-                  O escribinos directamente
+                  {t.contactTitle}
                 </CardTitle>
                 <CardDescription style={{ color: `${agroTheme.dark}bb` }}>
-                  Preferís coordinar por otro medio? Contactanos por email o WhatsApp
+                  {t.contactDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -149,7 +195,7 @@ export function AgroBookingSection() {
                       <Mail className="w-5 h-5 mt-0.5" style={{ color: agroTheme.olive }} />
                       <div className="flex-1">
                         <p className="font-medium text-sm mb-1" style={{ color: agroTheme.dark }}>
-                          Email
+                          {t.email}
                         </p>
                         <a
                           href="mailto:info@nobu.com.ar"
@@ -170,7 +216,7 @@ export function AgroBookingSection() {
                       <Phone className="w-5 h-5 mt-0.5" style={{ color: agroTheme.olive }} />
                       <div className="flex-1">
                         <p className="font-medium text-sm mb-1" style={{ color: agroTheme.dark }}>
-                          WhatsApp
+                          {t.whatsapp}
                         </p>
                         <a
                           href="https://wa.me/5493844405628"
@@ -188,15 +234,15 @@ export function AgroBookingSection() {
 
                 <div className="pt-6 border-t" style={{ borderColor: `${agroTheme.olive}35` }}>
                   <h4 className="font-semibold mb-3 text-sm" style={{ color: agroTheme.dark }}>
-                    Horarios de atención
+                    {t.hoursTitle}
                   </h4>
                   <div className="space-y-2 text-sm" style={{ color: agroTheme.dark }}>
                     <div className="flex justify-between gap-3">
-                      <span>Lunes a Viernes</span>
+                      <span>{t.weekdays}</span>
                       <span>9:00 - 18:00</span>
                     </div>
                     <div className="flex justify-between gap-3">
-                      <span>Sábados</span>
+                      <span>{t.saturdays}</span>
                       <span>9:00 - 13:00</span>
                     </div>
                   </div>
@@ -210,8 +256,7 @@ export function AgroBookingSection() {
                   }}
                 >
                   <p className="text-sm" style={{ color: agroTheme.dark }}>
-                    <strong style={{ color: agroTheme.olive }}>Respuesta garantizada</strong> en menos
-                    de 24 horas hábiles
+                    <strong style={{ color: agroTheme.olive }}>{t.guaranteed}</strong> {t.guaranteedRest}
                   </p>
                 </div>
               </CardContent>

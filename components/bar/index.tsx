@@ -7,20 +7,25 @@ import {
   ServiceBookingSection,
 } from "@/components/service-slice";
 import { barConfig } from "./config";
+import { useLanguage } from "@/lib/i18n/language-context";
 
 export function BarHeroSection() {
-  return <ServiceHeroSection config={barConfig.hero} />;
+  const { language } = useLanguage();
+  return <ServiceHeroSection config={barConfig[language].hero} />;
 }
 
 export function BarContentSection() {
-  return <ServiceContentSection config={barConfig.content} />;
+  const { language } = useLanguage();
+  return <ServiceContentSection config={barConfig[language].content} />;
 }
 
 export function BarPlansSection() {
-  if (!barConfig.plans) return null;
-  return <ServicePlansSection config={barConfig.plans} />;
+  const { language } = useLanguage();
+  if (!barConfig[language].plans) return null;
+  return <ServicePlansSection config={barConfig[language].plans} />;
 }
 
 export function BarBookingSection() {
-  return <ServiceBookingSection config={barConfig.booking} />;
+  const { language } = useLanguage();
+  return <ServiceBookingSection config={barConfig[language].booking} />;
 }
