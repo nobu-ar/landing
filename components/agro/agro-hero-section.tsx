@@ -20,13 +20,9 @@ const content = {
 } as const
 
 export function AgroHeroSection() {
-  const [isVisible, setIsVisible] = React.useState(false)
+  const [isVisible] = React.useState(true)
   const { language } = useLanguage()
   const t = content[language]
-
-  React.useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   return (
     <section
@@ -48,7 +44,6 @@ export function AgroHeroSection() {
                 width={200}
                 height={200}
                 className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44"
-                priority
               />
             </div>
           </div>

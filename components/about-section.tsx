@@ -128,6 +128,8 @@ export function AboutSection() {
           <img 
               src="/celularNobu2.png" 
               alt="Nobu Mobile App" 
+              loading="lazy"
+              decoding="async"
               className={`mb-4 sm:mb-8 lg:mb-0 w-full max-w-[600px] lg:max-w-[1100px] h-auto filter-[drop-shadow(0_8px_18px_rgba(0,0,0,.25))_drop-shadow(0_20px_35px_rgba(0,0,0,.18))] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             />
           </div>

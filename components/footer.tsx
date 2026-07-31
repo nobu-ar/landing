@@ -45,6 +45,8 @@ export function Footer() {
               <img 
                 src="/Logo_Color_Version_2.svg" 
                 alt="Nobu"
+                loading="lazy"
+                decoding="async"
                 className="h-8 w-auto"
               />
             </Link>

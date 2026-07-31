@@ -72,6 +72,7 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
   const sectionRef = React.useRef<HTMLElement>(null);
   const { language } = useLanguage();
   const t = content[language];
+  const shouldLoadCalendar = isVisible;
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -137,11 +138,18 @@ export function ServiceBookingSection({ config }: ServiceBookingSectionProps) {
               </CardHeader>
               <CardContent>
                 <div className="relative w-full bg-gray-200 rounded-lg overflow-hidden h-[420px] sm:h-[510px]">
-                  <iframe
-                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2zSqgVFcuVzptWhs23heY0yUMqGW6kaNdeq4kkdwBveXI5npTpSoHFoMm655n9AESoHodN4UGZ?gv=true"
-                    className="absolute top-0 left-0 w-full h-full border-0"
-                    title="Agendar reunión con Nobu"
-                  />
+                  {shouldLoadCalendar ? (
+                    <iframe
+                      src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2zSqgVFcuVzptWhs23heY0yUMqGW6kaNdeq4kkdwBveXI5npTpSoHFoMm655n9AESoHodN4UGZ?gv=true"
+                      className="absolute top-0 left-0 w-full h-full border-0"
+                      title="Agendar reunión con Nobu"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-sm text-black/70 px-4 text-center">
+                      {t.calendarDescription}
+                    </div>
+                  )}
                 </div>
                 <div className="mt-4 p-4 bg-primary/10 rounded-lg">
                   <div className="flex items-start gap-3">

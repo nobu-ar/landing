@@ -41,13 +41,9 @@ const heroContent = {
 } as const;
 
 export function ExploreServicesHeroSection() {
-  const [isVisible, setIsVisible] = React.useState(false)
+  const [isVisible] = React.useState(true)
   const { language } = useLanguage()
   const t = exploreContent[language]
-
-  React.useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   return (
     <section

@@ -24,13 +24,9 @@ const content = {
 } as const
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = React.useState(false)
+  const [isVisible] = React.useState(true)
   const { language } = useLanguage()
   const t = content[language]
-
-  React.useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   return (
     <section 
