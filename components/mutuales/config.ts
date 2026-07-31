@@ -12,6 +12,9 @@ export const mutualesConfig: Record<Language, ServiceSliceConfig> = {
       backgroundImage: "/mutualBg.png",
       imageAlt: "Sistema para mutuales - Nobu",
       image: "/mutualService.png",
+      allowsUsersAccess: true,
+      usersAccessText: "Acceder al portal del afiliado",
+      usersAccessLink: "https://app.mutual.nobu.com.ar",
     },
     content: {
       sectionSubtitle: "Funcionalidades",
