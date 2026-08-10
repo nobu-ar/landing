@@ -124,12 +124,12 @@ export function ServiceHeroSection({ config }: ServiceHeroSectionProps) {
               </Link>
             </Button>
           </div>
-          <div className="h-4" /> {/* Spacer between Agendar una Demo and users access button */}
-          <div className="flex justify-center lg:justify-start">
+          <div className="h-4 sm:hidden" /> {/* Spacer between Agendar una Demo and users access button */}
+          <div className="flex justify-center sm:hidden">
             {config.allowsUsersAccess && (
               <Button
                 size="lg"
-                className="bg-secondary hover:bg-secondary/90 text-sm sm:text-base px-5 sm:px-8 py-4 sm:py-6 shadow-lg shadow-secondary/20 w-full sm:w-auto max-w-xs sm:max-w-none"
+                className="bg-secondary hover:bg-secondary/90 text-sm px-5 py-4 shadow-lg shadow-secondary/20 w-full max-w-xs"
                 style={{ color: "white", lineHeight: "4px" } as React.CSSProperties}
                 asChild
               >
